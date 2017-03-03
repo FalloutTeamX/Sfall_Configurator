@@ -108,9 +108,9 @@
 
     Friend Sub Check_Exe()
         Dim game_exe As String = vbNullString
-        If Not (IO.File.Exists(Main_Path & "\fallout2.exe")) Then game_exe = GetIni_Param("sFallConfigatorGameExe")
+        game_exe = GetIni_Param("sFallConfigatorGameExe")
         If game_exe = vbNullString Then game_exe = "fallout2.exe"
-        Check_CRC(game_exe)
+        If IO.File.Exists(Main_Path & "\" & game_exe) Then Check_CRC(game_exe)
     End Sub
 
     Friend Sub Check_CRC(ByVal game_exe As String)
@@ -126,7 +126,7 @@
             Next
             If Not (equal) Then
                 If MainForm.TextBox1.Text.Length > 0 Then
-                    MainForm.TextBox1.Text = "0x" & crc(n) & ", " & MainForm.TextBox1.Text  'заносим в тексбох
+                    MainForm.TextBox1.Text &= ", " & "0x" & crc(n) '& ", " & MainForm.TextBox1.Text  'заносим в тексбох
                 Else
                     MainForm.TextBox1.Text = "0x" & crc(n)
                 End If
@@ -138,8 +138,8 @@
 
     Friend Function Get_CRC(ByVal path As String) As String
         Dim Bytes() As Byte = IO.File.ReadAllBytes(path)
-        Dim LineCrc As String = Hex(CalcCRC(Bytes, &H1EDC6F41)).ToUpper
-        LineCrc &= "|" & Hex(CalcCRC(Bytes, &HEDB88320UI)).ToUpper
+        Dim LineCrc As String = Hex(CalcCRC(Bytes, &HEDB88320UI)).ToUpper
+        LineCrc &= "|" & Hex(CalcCRC(Bytes, &H1EDC6F41)).ToUpper
         Return LineCrc
     End Function
 

@@ -652,15 +652,17 @@ Public Class MainForm
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        On Error GoTo CUSTEXE
+        On Error GoTo FO2EXE
         Check_Exe()
         Save_ini()
-        Process.Start("fallout2.exe")
+        Process.Start(GetIni_Param("sFallConfigatorGameExe"))
         GoTo EXITAPP
-CUSTEXE:
+FO2EXE:
         On Error GoTo -1
         On Error GoTo SELEXE
-        Process.Start(GetIni_Param("sFallConfigatorGameExe"))
+        Check_CRC("fallout2.exe")
+        Save_ini()
+        Process.Start("fallout2.exe")
         GoTo EXITAPP
 SELEXE:
         OpenFileDialog1.Filter = "Exe files|*.exe"
@@ -669,7 +671,7 @@ SELEXE:
         SetGameExe_Ini(OpenFileDialog1.SafeFileName)
         Check_Exe()
         Save_ini()
-        Process.Start(GetIni_Param("sFallConfigatorGameExe")) 'GoTo CUSTEXE
+        Process.Start(GetIni_Param("sFallConfigatorGameExe")) 'GoTo FO2EXE
 EXITAPP:
         Application.Exit()
     End Sub
