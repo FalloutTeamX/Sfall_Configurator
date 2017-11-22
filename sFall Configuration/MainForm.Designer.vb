@@ -28,91 +28,95 @@ Partial Class MainForm
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.CheckBox29 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox36 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
+        Me.cbInstanWeaponEquip = New System.Windows.Forms.CheckBox()
+        Me.cbCanSellGeiger = New System.Windows.Forms.CheckBox()
+        Me.cbAutoReloadWeapon = New System.Windows.Forms.CheckBox()
+        Me.cbFreeWeight = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
-        Me.ComboBox6 = New System.Windows.Forms.ComboBox()
-        Me.CheckBox26 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox23 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox37 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox13 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox12 = New System.Windows.Forms.CheckBox()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
+        Me.cbDontTurnOffSneak = New System.Windows.Forms.CheckBox()
+        Me.cbEquipArmor = New System.Windows.Forms.CheckBox()
+        Me.cmbQuickSave = New System.Windows.Forms.ComboBox()
+        Me.cbBonusDamage = New System.Windows.Forms.CheckBox()
+        Me.cbWeaponAmmoCost = New System.Windows.Forms.CheckBox()
+        Me.cbNumbersInDialogue = New System.Windows.Forms.CheckBox()
+        Me.cbSpeedMultiInit = New System.Windows.Forms.CheckBox()
+        Me.cbHighlightContainers = New System.Windows.Forms.CheckBox()
+        Me.cmbReloadReserve = New System.Windows.Forms.ComboBox()
+        Me.cbExtraSaveSlots = New System.Windows.Forms.CheckBox()
+        Me.cbScrollingQuestsList = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.CheckBox11 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox25 = New System.Windows.Forms.CheckBox()
+        Me.cbItemHighlightsKey = New System.Windows.Forms.CheckBox()
+        Me.cbStackEmptyWeapons = New System.Windows.Forms.CheckBox()
+        Me.cbMusicInDialogue = New System.Windows.Forms.CheckBox()
+        Me.cbDisplayKarma = New System.Windows.Forms.CheckBox()
+        Me.cbReloadWeapon = New System.Windows.Forms.CheckBox()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.cbHeroAppearMod = New System.Windows.Forms.CheckBox()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.ComboBox11 = New System.Windows.Forms.ComboBox()
+        Me.cbSaveInCombat = New System.Windows.Forms.ComboBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.cbCanSeeHear = New System.Windows.Forms.CheckBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.NumericUpDown5 = New System.Windows.Forms.NumericUpDown()
-        Me.CheckBox31 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox35 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox34 = New System.Windows.Forms.CheckBox()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
+        Me.cbDrugExploit = New System.Windows.Forms.CheckBox()
+        Me.cbPartySkills = New System.Windows.Forms.CheckBox()
+        Me.cbCorpseLine = New System.Windows.Forms.CheckBox()
+        Me.cmbFastShotFix = New System.Windows.Forms.ComboBox()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
-        Me.CheckBox32 = New System.Windows.Forms.CheckBox()
-        Me.ComboBox7 = New System.Windows.Forms.ComboBox()
+        Me.cmbDamageFormula = New System.Windows.Forms.ComboBox()
+        Me.cbObjCanSeeObj = New System.Windows.Forms.CheckBox()
+        Me.cmbTimeLimit = New System.Windows.Forms.ComboBox()
         Me.NumericUpDown6 = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.CheckBox38 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox10 = New System.Windows.Forms.CheckBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.cbRemoveCriticalTime = New System.Windows.Forms.CheckBox()
+        Me.cbControlCombat = New System.Windows.Forms.CheckBox()
+        Me.cmbMotionScanner = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox30 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox28 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox27 = New System.Windows.Forms.CheckBox()
+        Me.cbPipboyTimeAnim = New System.Windows.Forms.CheckBox()
+        Me.cbAmmoMetre = New System.Windows.Forms.CheckBox()
+        Me.cbIsGrayScale = New System.Windows.Forms.CheckBox()
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.CheckBox18 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox17 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox16 = New System.Windows.Forms.CheckBox()
+        Me.cbExplosionsEmitLight = New System.Windows.Forms.CheckBox()
+        Me.cbSpeedInterfaceCounter = New System.Windows.Forms.CheckBox()
+        Me.cbSkipOpeningMovies = New System.Windows.Forms.CheckBox()
         Me.NumericUpDown4 = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
-        Me.CheckBox15 = New System.Windows.Forms.CheckBox()
+        Me.cbGPUBlt = New System.Windows.Forms.CheckBox()
         Me.CheckBox14 = New System.Windows.Forms.CheckBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cmbMode = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Label15 = New System.Windows.Forms.Label()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.ComboBox8 = New System.Windows.Forms.ComboBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.ComboBox10 = New System.Windows.Forms.ComboBox()
-        Me.CheckBox24 = New System.Windows.Forms.CheckBox()
-        Me.ComboBox9 = New System.Windows.Forms.ComboBox()
+        Me.cmbXltTable = New System.Windows.Forms.ComboBox()
+        Me.cbReverseMouseButtons = New System.Windows.Forms.CheckBox()
+        Me.cmbXltKey = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.cbAllowUnsafe = New System.Windows.Forms.CheckBox()
+        Me.cmbDebugLog = New System.Windows.Forms.ComboBox()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.CheckBox22 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox21 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox20 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox19 = New System.Windows.Forms.CheckBox()
+        Me.tbExtraCRC = New System.Windows.Forms.TextBox()
+        Me.cbSingleCore = New System.Windows.Forms.CheckBox()
+        Me.cbProcessorIdle = New System.Windows.Forms.CheckBox()
+        Me.cbSkipSize = New System.Windows.Forms.CheckBox()
+        Me.cbDebugMode = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
@@ -141,9 +145,9 @@ Partial Class MainForm
         CType(Me.NumericUpDown4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TabPage5.SuspendLayout()
         Me.SuspendLayout()
@@ -164,20 +168,20 @@ Partial Class MainForm
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.GroupBox6)
-        Me.TabPage1.Controls.Add(Me.CheckBox26)
-        Me.TabPage1.Controls.Add(Me.CheckBox23)
-        Me.TabPage1.Controls.Add(Me.CheckBox37)
-        Me.TabPage1.Controls.Add(Me.CheckBox13)
-        Me.TabPage1.Controls.Add(Me.CheckBox12)
-        Me.TabPage1.Controls.Add(Me.ComboBox3)
-        Me.TabPage1.Controls.Add(Me.CheckBox2)
-        Me.TabPage1.Controls.Add(Me.CheckBox4)
+        Me.TabPage1.Controls.Add(Me.cbBonusDamage)
+        Me.TabPage1.Controls.Add(Me.cbWeaponAmmoCost)
+        Me.TabPage1.Controls.Add(Me.cbNumbersInDialogue)
+        Me.TabPage1.Controls.Add(Me.cbSpeedMultiInit)
+        Me.TabPage1.Controls.Add(Me.cbHighlightContainers)
+        Me.TabPage1.Controls.Add(Me.cmbReloadReserve)
+        Me.TabPage1.Controls.Add(Me.cbExtraSaveSlots)
+        Me.TabPage1.Controls.Add(Me.cbScrollingQuestsList)
         Me.TabPage1.Controls.Add(Me.Label6)
-        Me.TabPage1.Controls.Add(Me.CheckBox11)
-        Me.TabPage1.Controls.Add(Me.CheckBox6)
-        Me.TabPage1.Controls.Add(Me.CheckBox5)
-        Me.TabPage1.Controls.Add(Me.CheckBox1)
-        Me.TabPage1.Controls.Add(Me.CheckBox25)
+        Me.TabPage1.Controls.Add(Me.cbItemHighlightsKey)
+        Me.TabPage1.Controls.Add(Me.cbStackEmptyWeapons)
+        Me.TabPage1.Controls.Add(Me.cbMusicInDialogue)
+        Me.TabPage1.Controls.Add(Me.cbDisplayKarma)
+        Me.TabPage1.Controls.Add(Me.cbReloadWeapon)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -189,14 +193,14 @@ Partial Class MainForm
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.Label20)
-        Me.GroupBox6.Controls.Add(Me.CheckBox29)
-        Me.GroupBox6.Controls.Add(Me.CheckBox36)
-        Me.GroupBox6.Controls.Add(Me.CheckBox9)
-        Me.GroupBox6.Controls.Add(Me.CheckBox7)
+        Me.GroupBox6.Controls.Add(Me.cbInstanWeaponEquip)
+        Me.GroupBox6.Controls.Add(Me.cbCanSellGeiger)
+        Me.GroupBox6.Controls.Add(Me.cbAutoReloadWeapon)
+        Me.GroupBox6.Controls.Add(Me.cbFreeWeight)
         Me.GroupBox6.Controls.Add(Me.Label5)
-        Me.GroupBox6.Controls.Add(Me.CheckBox3)
-        Me.GroupBox6.Controls.Add(Me.CheckBox8)
-        Me.GroupBox6.Controls.Add(Me.ComboBox6)
+        Me.GroupBox6.Controls.Add(Me.cbDontTurnOffSneak)
+        Me.GroupBox6.Controls.Add(Me.cbEquipArmor)
+        Me.GroupBox6.Controls.Add(Me.cmbQuickSave)
         Me.GroupBox6.Location = New System.Drawing.Point(7, 191)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(276, 112)
@@ -213,72 +217,72 @@ Partial Class MainForm
         Me.Label20.TabIndex = 5
         Me.Label20.Text = "Slot:"
         '
-        'CheckBox29
+        'cbInstanWeaponEquip
         '
-        Me.CheckBox29.AutoSize = True
-        Me.CheckBox29.Checked = True
-        Me.CheckBox29.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox29.Enabled = False
-        Me.CheckBox29.Location = New System.Drawing.Point(6, 19)
-        Me.CheckBox29.Name = "CheckBox29"
-        Me.CheckBox29.Size = New System.Drawing.Size(132, 17)
-        Me.CheckBox29.TabIndex = 3
-        Me.CheckBox29.Text = "Instant Weapon Equip"
-        Me.ToolTip1.SetToolTip(Me.CheckBox29, "Disable weapon animation (put away/take out) when searching containers and doing " & _
+        Me.cbInstanWeaponEquip.AutoSize = True
+        Me.cbInstanWeaponEquip.Checked = True
+        Me.cbInstanWeaponEquip.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbInstanWeaponEquip.Enabled = False
+        Me.cbInstanWeaponEquip.Location = New System.Drawing.Point(6, 19)
+        Me.cbInstanWeaponEquip.Name = "cbInstanWeaponEquip"
+        Me.cbInstanWeaponEquip.Size = New System.Drawing.Size(132, 17)
+        Me.cbInstanWeaponEquip.TabIndex = 3
+        Me.cbInstanWeaponEquip.Text = "Instant Weapon Equip"
+        Me.ToolTip1.SetToolTip(Me.cbInstanWeaponEquip, "Disable weapon animation (put away/take out) when searching containers and doing " & _
                 "other stuff.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox29, "Отключает анимацию убирания/доставания оружия при его смене, открытии ящиков, две" & _
+        Me.ToolTip2.SetToolTip(Me.cbInstanWeaponEquip, "Отключает анимацию убирания/доставания оружия при его смене, открытии ящиков, две" & _
                 "рей и т.д.")
-        Me.CheckBox29.UseVisualStyleBackColor = True
+        Me.cbInstanWeaponEquip.UseVisualStyleBackColor = True
         '
-        'CheckBox36
+        'cbCanSellGeiger
         '
-        Me.CheckBox36.AutoSize = True
-        Me.CheckBox36.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox36.Checked = True
-        Me.CheckBox36.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox36.Enabled = False
-        Me.CheckBox36.Location = New System.Drawing.Point(171, 42)
-        Me.CheckBox36.Name = "CheckBox36"
-        Me.CheckBox36.Size = New System.Drawing.Size(99, 17)
-        Me.CheckBox36.TabIndex = 6
-        Me.CheckBox36.Text = "Can Sell Geiger"
-        Me.ToolTip1.SetToolTip(Me.CheckBox36, "Enable sale of earlier used Geiger Counter/Stealth Boy.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox36, "Разрешить продажу ранее использованых счетчиков Гейгера или Stealth Boy.")
-        Me.CheckBox36.UseVisualStyleBackColor = True
+        Me.cbCanSellGeiger.AutoSize = True
+        Me.cbCanSellGeiger.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbCanSellGeiger.Checked = True
+        Me.cbCanSellGeiger.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbCanSellGeiger.Enabled = False
+        Me.cbCanSellGeiger.Location = New System.Drawing.Point(171, 42)
+        Me.cbCanSellGeiger.Name = "cbCanSellGeiger"
+        Me.cbCanSellGeiger.Size = New System.Drawing.Size(99, 17)
+        Me.cbCanSellGeiger.TabIndex = 6
+        Me.cbCanSellGeiger.Text = "Can Sell Geiger"
+        Me.ToolTip1.SetToolTip(Me.cbCanSellGeiger, "Enable sale of earlier used Geiger Counter/Stealth Boy.")
+        Me.ToolTip2.SetToolTip(Me.cbCanSellGeiger, "Разрешить продажу ранее использованых счетчиков Гейгера или Stealth Boy.")
+        Me.cbCanSellGeiger.UseVisualStyleBackColor = True
         '
-        'CheckBox9
+        'cbAutoReloadWeapon
         '
-        Me.CheckBox9.AutoSize = True
-        Me.CheckBox9.Checked = True
-        Me.CheckBox9.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox9.Enabled = False
-        Me.CheckBox9.Location = New System.Drawing.Point(6, 42)
-        Me.CheckBox9.Name = "CheckBox9"
-        Me.CheckBox9.Size = New System.Drawing.Size(129, 17)
-        Me.CheckBox9.TabIndex = 2
-        Me.CheckBox9.Text = "Auto Reload Weapon"
-        Me.ToolTip1.SetToolTip(Me.CheckBox9, "Automatically reload weapon at the end of combat. (Only for sFall Crafty version)" & _
+        Me.cbAutoReloadWeapon.AutoSize = True
+        Me.cbAutoReloadWeapon.Checked = True
+        Me.cbAutoReloadWeapon.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbAutoReloadWeapon.Enabled = False
+        Me.cbAutoReloadWeapon.Location = New System.Drawing.Point(6, 42)
+        Me.cbAutoReloadWeapon.Name = "cbAutoReloadWeapon"
+        Me.cbAutoReloadWeapon.Size = New System.Drawing.Size(129, 17)
+        Me.cbAutoReloadWeapon.TabIndex = 2
+        Me.cbAutoReloadWeapon.Text = "Auto Reload Weapon"
+        Me.ToolTip1.SetToolTip(Me.cbAutoReloadWeapon, "Automatically reload weapon at the end of combat. (Only for sFall Crafty version)" & _
                 "")
-        Me.ToolTip2.SetToolTip(Me.CheckBox9, "Автоматически перезаряжать оружие после окончания боя. (Только для версии Sfall о" & _
+        Me.ToolTip2.SetToolTip(Me.cbAutoReloadWeapon, "Автоматически перезаряжать оружие после окончания боя. (Только для версии Sfall о" & _
                 "т Crafty)")
-        Me.CheckBox9.UseVisualStyleBackColor = True
+        Me.cbAutoReloadWeapon.UseVisualStyleBackColor = True
         '
-        'CheckBox7
+        'cbFreeWeight
         '
-        Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.Checked = True
-        Me.CheckBox7.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox7.Enabled = False
-        Me.CheckBox7.Location = New System.Drawing.Point(6, 89)
-        Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(135, 17)
-        Me.CheckBox7.TabIndex = 2
-        Me.CheckBox7.Text = "View Free Weight/Size"
-        Me.ToolTip1.SetToolTip(Me.CheckBox7, "Enable view of free weight in an exchange window. (Only for sFall Crafty version)" & _
+        Me.cbFreeWeight.AutoSize = True
+        Me.cbFreeWeight.Checked = True
+        Me.cbFreeWeight.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbFreeWeight.Enabled = False
+        Me.cbFreeWeight.Location = New System.Drawing.Point(6, 89)
+        Me.cbFreeWeight.Name = "cbFreeWeight"
+        Me.cbFreeWeight.Size = New System.Drawing.Size(135, 17)
+        Me.cbFreeWeight.TabIndex = 2
+        Me.cbFreeWeight.Text = "View Free Weight/Size"
+        Me.ToolTip1.SetToolTip(Me.cbFreeWeight, "Enable view of free weight in an exchange window. (Only for sFall Crafty version)" & _
                 "")
-        Me.ToolTip2.SetToolTip(Me.CheckBox7, "Показывать оставшийся вес для игрока и НПС в инвентаре  обмена и торговли. (Тольк" & _
+        Me.ToolTip2.SetToolTip(Me.cbFreeWeight, "Показывать оставшийся вес для игрока и НПС в инвентаре  обмена и торговли. (Тольк" & _
                 "о для версии Sfall от Crafty)")
-        Me.CheckBox7.UseVisualStyleBackColor = True
+        Me.cbFreeWeight.UseVisualStyleBackColor = True
         '
         'Label5
         '
@@ -291,169 +295,169 @@ Partial Class MainForm
         Me.ToolTip1.SetToolTip(Me.Label5, "Automatically selects the appropriate slot for quick save.")
         Me.ToolTip2.SetToolTip(Me.Label5, "Позволяет автоматически выбирать подходящий слот для быстрого сохранения.")
         '
-        'CheckBox3
+        'cbDontTurnOffSneak
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Checked = True
-        Me.CheckBox3.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox3.Enabled = False
-        Me.CheckBox3.Location = New System.Drawing.Point(6, 65)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(125, 17)
-        Me.CheckBox3.TabIndex = 2
-        Me.CheckBox3.Text = "Dont Turn Off Sneak"
-        Me.ToolTip1.SetToolTip(Me.CheckBox3, "Do not disable the skill to ""Sneak"" when running. (Only for sFall Crafty version)" & _
+        Me.cbDontTurnOffSneak.AutoSize = True
+        Me.cbDontTurnOffSneak.Checked = True
+        Me.cbDontTurnOffSneak.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbDontTurnOffSneak.Enabled = False
+        Me.cbDontTurnOffSneak.Location = New System.Drawing.Point(6, 65)
+        Me.cbDontTurnOffSneak.Name = "cbDontTurnOffSneak"
+        Me.cbDontTurnOffSneak.Size = New System.Drawing.Size(125, 17)
+        Me.cbDontTurnOffSneak.TabIndex = 2
+        Me.cbDontTurnOffSneak.Text = "Dont Turn Off Sneak"
+        Me.ToolTip1.SetToolTip(Me.cbDontTurnOffSneak, "Do not disable the skill to ""Sneak"" when running. (Only for sFall Crafty version)" & _
                 "")
-        Me.ToolTip2.SetToolTip(Me.CheckBox3, "Не отключать активное умение ""Скрытность"" при беге игрока. Полезно при настройки " & _
+        Me.ToolTip2.SetToolTip(Me.cbDontTurnOffSneak, "Не отключать активное умение ""Скрытность"" при беге игрока. Полезно при настройки " & _
                 "в игре ""Бег всегда"". (Только для версии Sfall от Crafty)")
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.cbDontTurnOffSneak.UseVisualStyleBackColor = True
         '
-        'CheckBox8
+        'cbEquipArmor
         '
-        Me.CheckBox8.AutoSize = True
-        Me.CheckBox8.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox8.Checked = True
-        Me.CheckBox8.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox8.Enabled = False
-        Me.CheckBox8.Location = New System.Drawing.Point(184, 19)
-        Me.CheckBox8.Name = "CheckBox8"
-        Me.CheckBox8.Size = New System.Drawing.Size(86, 17)
-        Me.CheckBox8.TabIndex = 2
-        Me.CheckBox8.Text = "Equip Armor "
-        Me.ToolTip1.SetToolTip(Me.CheckBox8, "Equip best armor after closing of an exchange window. (Only for sFall Crafty vers" & _
+        Me.cbEquipArmor.AutoSize = True
+        Me.cbEquipArmor.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbEquipArmor.Checked = True
+        Me.cbEquipArmor.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbEquipArmor.Enabled = False
+        Me.cbEquipArmor.Location = New System.Drawing.Point(184, 19)
+        Me.cbEquipArmor.Name = "cbEquipArmor"
+        Me.cbEquipArmor.Size = New System.Drawing.Size(86, 17)
+        Me.cbEquipArmor.TabIndex = 2
+        Me.cbEquipArmor.Text = "Equip Armor "
+        Me.ToolTip1.SetToolTip(Me.cbEquipArmor, "Equip best armor after closing of an exchange window. (Only for sFall Crafty vers" & _
                 "ion)")
-        Me.ToolTip2.SetToolTip(Me.CheckBox8, "После обмена с партийцем, автоматически экипировать ему лучшую броню. (Только для" & _
+        Me.ToolTip2.SetToolTip(Me.cbEquipArmor, "После обмена с партийцем, автоматически экипировать ему лучшую броню. (Только для" & _
                 " версии Sfall от Crafty)")
-        Me.CheckBox8.UseVisualStyleBackColor = True
+        Me.cbEquipArmor.UseVisualStyleBackColor = True
         '
-        'ComboBox6
+        'cmbQuickSave
         '
-        Me.ComboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox6.Enabled = False
-        Me.ComboBox6.FormattingEnabled = True
-        Me.ComboBox6.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
-        Me.ComboBox6.Location = New System.Drawing.Point(222, 85)
-        Me.ComboBox6.Name = "ComboBox6"
-        Me.ComboBox6.Size = New System.Drawing.Size(48, 21)
-        Me.ComboBox6.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.ComboBox6, "The value determines the number of used slots (1..10).")
-        Me.ToolTip2.SetToolTip(Me.ComboBox6, "Значение определяет количество используемых слотов (1..10).")
+        Me.cmbQuickSave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbQuickSave.Enabled = False
+        Me.cmbQuickSave.FormattingEnabled = True
+        Me.cmbQuickSave.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
+        Me.cmbQuickSave.Location = New System.Drawing.Point(222, 85)
+        Me.cmbQuickSave.Name = "cmbQuickSave"
+        Me.cmbQuickSave.Size = New System.Drawing.Size(48, 21)
+        Me.cmbQuickSave.TabIndex = 3
+        Me.ToolTip1.SetToolTip(Me.cmbQuickSave, "The value determines the number of used slots (1..10).")
+        Me.ToolTip2.SetToolTip(Me.cmbQuickSave, "Значение определяет количество используемых слотов (1..10).")
         '
-        'CheckBox26
+        'cbBonusDamage
         '
-        Me.CheckBox26.AutoSize = True
-        Me.CheckBox26.Checked = True
-        Me.CheckBox26.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox26.Enabled = False
-        Me.CheckBox26.Location = New System.Drawing.Point(6, 29)
-        Me.CheckBox26.Name = "CheckBox26"
-        Me.CheckBox26.Size = New System.Drawing.Size(136, 17)
-        Me.CheckBox26.TabIndex = 4
-        Me.CheckBox26.Text = "Display Bonus Damage"
-        Me.ToolTip1.SetToolTip(Me.CheckBox26, "Display additional points of damage from Bonus HtH/Ranged Damage perks in the inv" & _
+        Me.cbBonusDamage.AutoSize = True
+        Me.cbBonusDamage.Checked = True
+        Me.cbBonusDamage.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbBonusDamage.Enabled = False
+        Me.cbBonusDamage.Location = New System.Drawing.Point(6, 29)
+        Me.cbBonusDamage.Name = "cbBonusDamage"
+        Me.cbBonusDamage.Size = New System.Drawing.Size(136, 17)
+        Me.cbBonusDamage.TabIndex = 4
+        Me.cbBonusDamage.Text = "Display Bonus Damage"
+        Me.ToolTip1.SetToolTip(Me.cbBonusDamage, "Display additional points of damage from Bonus HtH/Ranged Damage perks in the inv" & _
                 "entory.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox26, "Отобразить в инвентаре дополнительные очки повреждений от бонуса НТН атак и перка" & _
+        Me.ToolTip2.SetToolTip(Me.cbBonusDamage, "Отобразить в инвентаре дополнительные очки повреждений от бонуса НТН атак и перка" & _
                 " Ranged Damage.")
-        Me.CheckBox26.UseVisualStyleBackColor = True
+        Me.cbBonusDamage.UseVisualStyleBackColor = True
         '
-        'CheckBox23
+        'cbWeaponAmmoCost
         '
-        Me.CheckBox23.AutoSize = True
-        Me.CheckBox23.Location = New System.Drawing.Point(5, 98)
-        Me.CheckBox23.Name = "CheckBox23"
-        Me.CheckBox23.Size = New System.Drawing.Size(133, 17)
-        Me.CheckBox23.TabIndex = 2
-        Me.CheckBox23.Text = "Check Weapon Ammo"
-        Me.ToolTip1.SetToolTip(Me.CheckBox23, "Add proper checks if there is enough ammo to use weapons that use multiple ammo p" & _
+        Me.cbWeaponAmmoCost.AutoSize = True
+        Me.cbWeaponAmmoCost.Location = New System.Drawing.Point(5, 98)
+        Me.cbWeaponAmmoCost.Name = "cbWeaponAmmoCost"
+        Me.cbWeaponAmmoCost.Size = New System.Drawing.Size(133, 17)
+        Me.cbWeaponAmmoCost.TabIndex = 2
+        Me.cbWeaponAmmoCost.Text = "Check Weapon Ammo"
+        Me.ToolTip1.SetToolTip(Me.cbWeaponAmmoCost, "Add proper checks if there is enough ammo to use weapons that use multiple ammo p" & _
                 "er shot.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox23, "Проверять, есть ли достаточное колиичество боеприпасов в оружии, чтобы произвести" & _
+        Me.ToolTip2.SetToolTip(Me.cbWeaponAmmoCost, "Проверять, есть ли достаточное колиичество боеприпасов в оружии, чтобы произвести" & _
                 " выстрел очередью. (Sfall 1.5+ by Crafty)")
-        Me.CheckBox23.UseVisualStyleBackColor = True
+        Me.cbWeaponAmmoCost.UseVisualStyleBackColor = True
         '
-        'CheckBox37
+        'cbNumbersInDialogue
         '
-        Me.CheckBox37.AutoSize = True
-        Me.CheckBox37.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox37.Checked = True
-        Me.CheckBox37.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox37.Enabled = False
-        Me.CheckBox37.Location = New System.Drawing.Point(158, 52)
-        Me.CheckBox37.Name = "CheckBox37"
-        Me.CheckBox37.Size = New System.Drawing.Size(124, 17)
-        Me.CheckBox37.TabIndex = 2
-        Me.CheckBox37.Text = "Numbers in Dialogue"
-        Me.ToolTip1.SetToolTip(Me.CheckBox37, "Displaying reply numbers instead of dots in dialogue options.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox37, "Отображать в диалоге цифры к ответам игрока.")
-        Me.CheckBox37.UseVisualStyleBackColor = True
+        Me.cbNumbersInDialogue.AutoSize = True
+        Me.cbNumbersInDialogue.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbNumbersInDialogue.Checked = True
+        Me.cbNumbersInDialogue.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbNumbersInDialogue.Enabled = False
+        Me.cbNumbersInDialogue.Location = New System.Drawing.Point(158, 52)
+        Me.cbNumbersInDialogue.Name = "cbNumbersInDialogue"
+        Me.cbNumbersInDialogue.Size = New System.Drawing.Size(124, 17)
+        Me.cbNumbersInDialogue.TabIndex = 2
+        Me.cbNumbersInDialogue.Text = "Numbers in Dialogue"
+        Me.ToolTip1.SetToolTip(Me.cbNumbersInDialogue, "Displaying reply numbers instead of dots in dialogue options.")
+        Me.ToolTip2.SetToolTip(Me.cbNumbersInDialogue, "Отображать в диалоге цифры к ответам игрока.")
+        Me.cbNumbersInDialogue.UseVisualStyleBackColor = True
         '
-        'CheckBox13
+        'cbSpeedMultiInit
         '
-        Me.CheckBox13.AutoSize = True
-        Me.CheckBox13.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox13.Location = New System.Drawing.Point(181, 120)
-        Me.CheckBox13.Name = "CheckBox13"
-        Me.CheckBox13.Size = New System.Drawing.Size(102, 17)
-        Me.CheckBox13.TabIndex = 2
-        Me.CheckBox13.Text = "Game Speed x2"
-        Me.ToolTip1.SetToolTip(Me.CheckBox13, "Increases game speed.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox13, "Увеличить скорость игры в два раза. (действует на всю анимацию в игре)")
-        Me.CheckBox13.UseVisualStyleBackColor = True
+        Me.cbSpeedMultiInit.AutoSize = True
+        Me.cbSpeedMultiInit.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbSpeedMultiInit.Location = New System.Drawing.Point(181, 120)
+        Me.cbSpeedMultiInit.Name = "cbSpeedMultiInit"
+        Me.cbSpeedMultiInit.Size = New System.Drawing.Size(102, 17)
+        Me.cbSpeedMultiInit.TabIndex = 2
+        Me.cbSpeedMultiInit.Text = "Game Speed x2"
+        Me.ToolTip1.SetToolTip(Me.cbSpeedMultiInit, "Increases game speed.")
+        Me.ToolTip2.SetToolTip(Me.cbSpeedMultiInit, "Увеличить скорость игры в два раза. (действует на всю анимацию в игре)")
+        Me.cbSpeedMultiInit.UseVisualStyleBackColor = True
         '
-        'CheckBox12
+        'cbHighlightContainers
         '
-        Me.CheckBox12.AutoSize = True
-        Me.CheckBox12.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox12.Checked = True
-        Me.CheckBox12.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox12.Enabled = False
-        Me.CheckBox12.Location = New System.Drawing.Point(162, 29)
-        Me.CheckBox12.Name = "CheckBox12"
-        Me.CheckBox12.Size = New System.Drawing.Size(120, 17)
-        Me.CheckBox12.TabIndex = 2
-        Me.CheckBox12.Text = "Highlight Containers"
-        Me.ToolTip1.SetToolTip(Me.CheckBox12, "Also highlight containers.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox12, "Подсвечивать контейнеры (работает в паре с Highlights Item).")
-        Me.CheckBox12.UseVisualStyleBackColor = True
+        Me.cbHighlightContainers.AutoSize = True
+        Me.cbHighlightContainers.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbHighlightContainers.Checked = True
+        Me.cbHighlightContainers.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbHighlightContainers.Enabled = False
+        Me.cbHighlightContainers.Location = New System.Drawing.Point(162, 29)
+        Me.cbHighlightContainers.Name = "cbHighlightContainers"
+        Me.cbHighlightContainers.Size = New System.Drawing.Size(120, 17)
+        Me.cbHighlightContainers.TabIndex = 2
+        Me.cbHighlightContainers.Text = "Highlight Containers"
+        Me.ToolTip1.SetToolTip(Me.cbHighlightContainers, "Also highlight containers.")
+        Me.ToolTip2.SetToolTip(Me.cbHighlightContainers, "Подсвечивать контейнеры (работает в паре с Highlights Item).")
+        Me.cbHighlightContainers.UseVisualStyleBackColor = True
         '
-        'ComboBox3
+        'cmbReloadReserve
         '
-        Me.ComboBox3.DropDownWidth = 190
-        Me.ComboBox3.Enabled = False
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Items.AddRange(New Object() {"Vanilla behavior with a pop-up window", "Use all the ammo packs to reload", "Reserves extra magazines (1 and more)"})
-        Me.ComboBox3.Location = New System.Drawing.Point(6, 164)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(136, 21)
-        Me.ComboBox3.TabIndex = 3
-        Me.ToolTip2.SetToolTip(Me.ComboBox3, "1. Fallout 2 (по умолчанию)." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2. Использовать все количество боеприпасов в пачке " & _
+        Me.cmbReloadReserve.DropDownWidth = 200
+        Me.cmbReloadReserve.Enabled = False
+        Me.cmbReloadReserve.FormattingEnabled = True
+        Me.cmbReloadReserve.Items.AddRange(New Object() {"Default behavior with a pop-up window", "Use all the ammo packs to reload", "Reserves extra magazines (1 and more)"})
+        Me.cmbReloadReserve.Location = New System.Drawing.Point(6, 164)
+        Me.cmbReloadReserve.Name = "cmbReloadReserve"
+        Me.cmbReloadReserve.Size = New System.Drawing.Size(136, 21)
+        Me.cmbReloadReserve.TabIndex = 3
+        Me.ToolTip2.SetToolTip(Me.cmbReloadReserve, "1. Fallout 2 (по умолчанию)." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2. Использовать все количество боеприпасов в пачке " & _
                 "патронов." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3. Оставить количество пачек патронов (значение 1 и более).")
         '
-        'CheckBox2
+        'cbExtraSaveSlots
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox2.Location = New System.Drawing.Point(179, 166)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(104, 17)
-        Me.CheckBox2.TabIndex = 2
-        Me.CheckBox2.Text = "Extra Save Slots"
-        Me.ToolTip1.SetToolTip(Me.CheckBox2, "Add additional pages of save slots.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox2, "Добавить дополнительные слоты для сохранения игры.")
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.cbExtraSaveSlots.AutoSize = True
+        Me.cbExtraSaveSlots.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbExtraSaveSlots.Location = New System.Drawing.Point(179, 166)
+        Me.cbExtraSaveSlots.Name = "cbExtraSaveSlots"
+        Me.cbExtraSaveSlots.Size = New System.Drawing.Size(104, 17)
+        Me.cbExtraSaveSlots.TabIndex = 2
+        Me.cbExtraSaveSlots.Text = "Extra Save Slots"
+        Me.ToolTip1.SetToolTip(Me.cbExtraSaveSlots, "Add additional pages of save slots.")
+        Me.ToolTip2.SetToolTip(Me.cbExtraSaveSlots, "Добавить дополнительные слоты для сохранения игры.")
+        Me.cbExtraSaveSlots.UseVisualStyleBackColor = True
         '
-        'CheckBox4
+        'cbScrollingQuestsList
         '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox4.Location = New System.Drawing.Point(162, 143)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(121, 17)
-        Me.CheckBox4.TabIndex = 2
-        Me.CheckBox4.Text = "Scrolling Quests List"
-        Me.ToolTip1.SetToolTip(Me.CheckBox4, "Add scroll buttons to the pip boy quest list, and remove the quests per area limi" & _
+        Me.cbScrollingQuestsList.AutoSize = True
+        Me.cbScrollingQuestsList.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbScrollingQuestsList.Location = New System.Drawing.Point(162, 143)
+        Me.cbScrollingQuestsList.Name = "cbScrollingQuestsList"
+        Me.cbScrollingQuestsList.Size = New System.Drawing.Size(121, 17)
+        Me.cbScrollingQuestsList.TabIndex = 2
+        Me.cbScrollingQuestsList.Text = "Scrolling Quests List"
+        Me.ToolTip1.SetToolTip(Me.cbScrollingQuestsList, "Add scroll buttons to the pip boy quest list, and remove the quests per area limi" & _
                 "t.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox4, "Отобразить в PipBoy'е кнопки для прокрутки списка с квестами.")
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.ToolTip2.SetToolTip(Me.cbScrollingQuestsList, "Отобразить в PipBoy'е кнопки для прокрутки списка с квестами.")
+        Me.cbScrollingQuestsList.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -466,91 +470,93 @@ Partial Class MainForm
         Me.ToolTip1.SetToolTip(Me.Label6, "Behavior reload ammunition into a weapon in the inventory.")
         Me.ToolTip2.SetToolTip(Me.Label6, "Поведение при перезарядки патронов оружия в инвентаре игрока.")
         '
-        'CheckBox11
+        'cbItemHighlightsKey
         '
-        Me.CheckBox11.AutoSize = True
-        Me.CheckBox11.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox11.Location = New System.Drawing.Point(188, 6)
-        Me.CheckBox11.Name = "CheckBox11"
-        Me.CheckBox11.Size = New System.Drawing.Size(95, 17)
-        Me.CheckBox11.TabIndex = 2
-        Me.CheckBox11.Text = "Highlights Item"
-        Me.ToolTip1.SetToolTip(Me.CheckBox11, "Press ""Shift"" key to toggle the highlighting of all items on the ground on the cu" & _
+        Me.cbItemHighlightsKey.AutoSize = True
+        Me.cbItemHighlightsKey.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbItemHighlightsKey.Enabled = False
+        Me.cbItemHighlightsKey.Location = New System.Drawing.Point(187, 6)
+        Me.cbItemHighlightsKey.Name = "cbItemHighlightsKey"
+        Me.cbItemHighlightsKey.Size = New System.Drawing.Size(95, 17)
+        Me.cbItemHighlightsKey.TabIndex = 2
+        Me.cbItemHighlightsKey.Text = "Highlights Item"
+        Me.ToolTip1.SetToolTip(Me.cbItemHighlightsKey, "Press ""Shift"" key to toggle the highlighting of all items on the ground on the cu" & _
                 "rrent map.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox11, "Подсвечивать предметы на карте клавишей ""Shift"". ")
-        Me.CheckBox11.UseVisualStyleBackColor = True
+        Me.ToolTip2.SetToolTip(Me.cbItemHighlightsKey, "Подсвечивать предметы на карте клавишей ""Shift"". ")
+        Me.cbItemHighlightsKey.UseVisualStyleBackColor = True
         '
-        'CheckBox6
+        'cbStackEmptyWeapons
         '
-        Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(5, 121)
-        Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(135, 17)
-        Me.CheckBox6.TabIndex = 2
-        Me.CheckBox6.Text = "Stack Empty Weapons"
-        Me.ToolTip1.SetToolTip(Me.CheckBox6, "Stack together identical weapon without bullets.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox6, "Складывать разряженное одинаковое оружие с разными типами патронов в один слот ин" & _
+        Me.cbStackEmptyWeapons.AutoSize = True
+        Me.cbStackEmptyWeapons.Location = New System.Drawing.Point(5, 121)
+        Me.cbStackEmptyWeapons.Name = "cbStackEmptyWeapons"
+        Me.cbStackEmptyWeapons.Size = New System.Drawing.Size(135, 17)
+        Me.cbStackEmptyWeapons.TabIndex = 2
+        Me.cbStackEmptyWeapons.Text = "Stack Empty Weapons"
+        Me.ToolTip1.SetToolTip(Me.cbStackEmptyWeapons, "Stack together identical weapon without bullets.")
+        Me.ToolTip2.SetToolTip(Me.cbStackEmptyWeapons, "Складывать разряженное одинаковое оружие с разными типами патронов в один слот ин" & _
                 "вентаря.")
-        Me.CheckBox6.UseVisualStyleBackColor = True
+        Me.cbStackEmptyWeapons.UseVisualStyleBackColor = True
         '
-        'CheckBox5
+        'cbMusicInDialogue
         '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox5.Checked = True
-        Me.CheckBox5.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox5.Enabled = False
-        Me.CheckBox5.Location = New System.Drawing.Point(172, 75)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(110, 17)
-        Me.CheckBox5.TabIndex = 2
-        Me.CheckBox5.Text = "Music in Dialogue"
-        Me.ToolTip1.SetToolTip(Me.CheckBox5, "Not turn off music in dialogue mode with talking heads.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox5, "Проигрывать музыку в режиме диалога с говорящими головами.")
-        Me.CheckBox5.UseVisualStyleBackColor = True
+        Me.cbMusicInDialogue.AutoSize = True
+        Me.cbMusicInDialogue.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbMusicInDialogue.Checked = True
+        Me.cbMusicInDialogue.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbMusicInDialogue.Enabled = False
+        Me.cbMusicInDialogue.Location = New System.Drawing.Point(172, 75)
+        Me.cbMusicInDialogue.Name = "cbMusicInDialogue"
+        Me.cbMusicInDialogue.Size = New System.Drawing.Size(110, 17)
+        Me.cbMusicInDialogue.TabIndex = 2
+        Me.cbMusicInDialogue.Text = "Music in Dialogue"
+        Me.ToolTip1.SetToolTip(Me.cbMusicInDialogue, "Not turn off music in dialogue mode with talking heads.")
+        Me.ToolTip2.SetToolTip(Me.cbMusicInDialogue, "Проигрывать музыку в режиме диалога с говорящими головами.")
+        Me.cbMusicInDialogue.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'cbDisplayKarma
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(6, 6)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(138, 17)
-        Me.CheckBox1.TabIndex = 2
-        Me.CheckBox1.Text = "Display Karma Changes"
-        Me.ToolTip1.SetToolTip(Me.CheckBox1, "Get notification of karma changes in the notification window.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox1, "Уведомлять об изменениях кармы игрока в информационном окне.")
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.cbDisplayKarma.AutoSize = True
+        Me.cbDisplayKarma.Location = New System.Drawing.Point(6, 6)
+        Me.cbDisplayKarma.Name = "cbDisplayKarma"
+        Me.cbDisplayKarma.Size = New System.Drawing.Size(138, 17)
+        Me.cbDisplayKarma.TabIndex = 2
+        Me.cbDisplayKarma.Text = "Display Karma Changes"
+        Me.ToolTip1.SetToolTip(Me.cbDisplayKarma, "Get notification of karma changes in the notification window.")
+        Me.ToolTip2.SetToolTip(Me.cbDisplayKarma, "Уведомлять об изменениях кармы игрока в информационном окне.")
+        Me.cbDisplayKarma.UseVisualStyleBackColor = True
         '
-        'CheckBox25
+        'cbReloadWeapon
         '
-        Me.CheckBox25.AutoSize = True
-        Me.CheckBox25.Location = New System.Drawing.Point(6, 75)
-        Me.CheckBox25.Name = "CheckBox25"
-        Me.CheckBox25.Size = New System.Drawing.Size(145, 17)
-        Me.CheckBox25.TabIndex = 2
-        Me.CheckBox25.Text = "Reload Weapon Hot Key"
-        Me.ToolTip1.SetToolTip(Me.CheckBox25, "Press 'W' to reload your currently equipped weapon.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox25, "Перезаряжать оружие в активной руке по горячей клавише 'W'.")
-        Me.CheckBox25.UseVisualStyleBackColor = True
+        Me.cbReloadWeapon.AutoSize = True
+        Me.cbReloadWeapon.Location = New System.Drawing.Point(5, 75)
+        Me.cbReloadWeapon.Name = "cbReloadWeapon"
+        Me.cbReloadWeapon.Size = New System.Drawing.Size(145, 17)
+        Me.cbReloadWeapon.TabIndex = 2
+        Me.cbReloadWeapon.Text = "Reload Weapon Hot Key"
+        Me.ToolTip1.SetToolTip(Me.cbReloadWeapon, "Press 'W' to reload your currently equipped weapon.")
+        Me.ToolTip2.SetToolTip(Me.cbReloadWeapon, "Перезаряжать оружие в активной руке по горячей клавише 'W'.")
+        Me.cbReloadWeapon.UseVisualStyleBackColor = True
         '
         'TabPage4
         '
+        Me.TabPage4.Controls.Add(Me.cbHeroAppearMod)
         Me.TabPage4.Controls.Add(Me.Label21)
-        Me.TabPage4.Controls.Add(Me.ComboBox11)
+        Me.TabPage4.Controls.Add(Me.cbSaveInCombat)
         Me.TabPage4.Controls.Add(Me.Label24)
         Me.TabPage4.Controls.Add(Me.GroupBox7)
-        Me.TabPage4.Controls.Add(Me.CheckBox34)
-        Me.TabPage4.Controls.Add(Me.ComboBox4)
+        Me.TabPage4.Controls.Add(Me.cbCorpseLine)
+        Me.TabPage4.Controls.Add(Me.cmbFastShotFix)
         Me.TabPage4.Controls.Add(Me.Label23)
-        Me.TabPage4.Controls.Add(Me.ComboBox5)
-        Me.TabPage4.Controls.Add(Me.CheckBox32)
-        Me.TabPage4.Controls.Add(Me.ComboBox7)
+        Me.TabPage4.Controls.Add(Me.cmbDamageFormula)
+        Me.TabPage4.Controls.Add(Me.cbObjCanSeeObj)
+        Me.TabPage4.Controls.Add(Me.cmbTimeLimit)
         Me.TabPage4.Controls.Add(Me.NumericUpDown6)
         Me.TabPage4.Controls.Add(Me.Label4)
         Me.TabPage4.Controls.Add(Me.Label13)
-        Me.TabPage4.Controls.Add(Me.CheckBox38)
-        Me.TabPage4.Controls.Add(Me.CheckBox10)
-        Me.TabPage4.Controls.Add(Me.ComboBox2)
+        Me.TabPage4.Controls.Add(Me.cbRemoveCriticalTime)
+        Me.TabPage4.Controls.Add(Me.cbControlCombat)
+        Me.TabPage4.Controls.Add(Me.cmbMotionScanner)
         Me.TabPage4.Controls.Add(Me.Label8)
         Me.TabPage4.Controls.Add(Me.Label14)
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
@@ -560,6 +566,19 @@ Partial Class MainForm
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Advanced"
         Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'cbHeroAppearMod
+        '
+        Me.cbHeroAppearMod.AutoSize = True
+        Me.cbHeroAppearMod.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbHeroAppearMod.Location = New System.Drawing.Point(149, 206)
+        Me.cbHeroAppearMod.Name = "cbHeroAppearMod"
+        Me.cbHeroAppearMod.Size = New System.Drawing.Size(134, 17)
+        Me.cbHeroAppearMod.TabIndex = 18
+        Me.cbHeroAppearMod.Text = "Hero Appearance Mod"
+        Me.ToolTip1.SetToolTip(Me.cbHeroAppearMod, "Using the hero appearance mod.")
+        Me.ToolTip2.SetToolTip(Me.cbHeroAppearMod, "Использовать мод кастомизации внешности героя.")
+        Me.cbHeroAppearMod.UseVisualStyleBackColor = True
         '
         'Label21
         '
@@ -572,16 +591,16 @@ Partial Class MainForm
         Me.ToolTip1.SetToolTip(Me.Label21, "Prevents you from saving in combat, to avoid a few bugs.")
         Me.ToolTip2.SetToolTip(Me.Label21, "Предотвращает сохранение в режиме боя, чтобы избежать нескольких ошибок.")
         '
-        'ComboBox11
+        'cbSaveInCombat
         '
-        Me.ComboBox11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox11.DropDownWidth = 200
-        Me.ComboBox11.FormattingEnabled = True
-        Me.ComboBox11.Items.AddRange(New Object() {"Allow Saving (default)", "Save only when full AP (recommended)", "Block All Saving"})
-        Me.ComboBox11.Location = New System.Drawing.Point(6, 162)
-        Me.ComboBox11.Name = "ComboBox11"
-        Me.ComboBox11.Size = New System.Drawing.Size(133, 21)
-        Me.ComboBox11.TabIndex = 16
+        Me.cbSaveInCombat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSaveInCombat.DropDownWidth = 200
+        Me.cbSaveInCombat.FormattingEnabled = True
+        Me.cbSaveInCombat.Items.AddRange(New Object() {"Allow Saving (default)", "Save only when full AP (recommended)", "Block All Saving"})
+        Me.cbSaveInCombat.Location = New System.Drawing.Point(6, 162)
+        Me.cbSaveInCombat.Name = "cbSaveInCombat"
+        Me.cbSaveInCombat.Size = New System.Drawing.Size(133, 21)
+        Me.cbSaveInCombat.TabIndex = 16
         '
         'Label24
         '
@@ -594,16 +613,34 @@ Partial Class MainForm
         '
         'GroupBox7
         '
+        Me.GroupBox7.Controls.Add(Me.cbCanSeeHear)
         Me.GroupBox7.Controls.Add(Me.Label22)
         Me.GroupBox7.Controls.Add(Me.NumericUpDown5)
-        Me.GroupBox7.Controls.Add(Me.CheckBox31)
-        Me.GroupBox7.Controls.Add(Me.CheckBox35)
+        Me.GroupBox7.Controls.Add(Me.cbDrugExploit)
+        Me.GroupBox7.Controls.Add(Me.cbPartySkills)
         Me.GroupBox7.Location = New System.Drawing.Point(5, 229)
         Me.GroupBox7.Name = "GroupBox7"
         Me.GroupBox7.Size = New System.Drawing.Size(278, 74)
         Me.GroupBox7.TabIndex = 4
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Crafty Mod"
+        '
+        'cbCanSeeHear
+        '
+        Me.cbCanSeeHear.AutoSize = True
+        Me.cbCanSeeHear.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbCanSeeHear.Checked = True
+        Me.cbCanSeeHear.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbCanSeeHear.Enabled = False
+        Me.cbCanSeeHear.Location = New System.Drawing.Point(154, 43)
+        Me.cbCanSeeHear.Name = "cbCanSeeHear"
+        Me.cbCanSeeHear.Size = New System.Drawing.Size(118, 17)
+        Me.cbCanSeeHear.TabIndex = 13
+        Me.cbCanSeeHear.Text = "Can See && Hear Fix"
+        Me.ToolTip1.SetToolTip(Me.cbCanSeeHear, "Additional checks on a blindness and direct visibility (experimental fix).")
+        Me.ToolTip2.SetToolTip(Me.cbCanSeeHear, "Дополнительная проверка на слепоту и прямую видимость (экспериментальное исправле" & _
+                "ние).")
+        Me.cbCanSeeHear.UseVisualStyleBackColor = True
         '
         'Label22
         '
@@ -627,64 +664,64 @@ Partial Class MainForm
         Me.ToolTip2.SetToolTip(Me.NumericUpDown5, "0=Нет штрафа, 8=Штраф поумалчанию")
         Me.ToolTip1.SetToolTip(Me.NumericUpDown5, "0=no penalty, 8=default penalty")
         '
-        'CheckBox31
+        'cbDrugExploit
         '
-        Me.CheckBox31.AutoSize = True
-        Me.CheckBox31.Checked = True
-        Me.CheckBox31.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox31.Enabled = False
-        Me.CheckBox31.Location = New System.Drawing.Point(6, 20)
-        Me.CheckBox31.Name = "CheckBox31"
-        Me.CheckBox31.Size = New System.Drawing.Size(99, 17)
-        Me.CheckBox31.TabIndex = 1
-        Me.CheckBox31.Text = "Drug Exploit Fix"
-        Me.ToolTip1.SetToolTip(Me.CheckBox31, "Turns off the effects of drug abuse to prevent skill, books and perk gain exploit" & _
+        Me.cbDrugExploit.AutoSize = True
+        Me.cbDrugExploit.Checked = True
+        Me.cbDrugExploit.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbDrugExploit.Enabled = False
+        Me.cbDrugExploit.Location = New System.Drawing.Point(6, 20)
+        Me.cbDrugExploit.Name = "cbDrugExploit"
+        Me.cbDrugExploit.Size = New System.Drawing.Size(99, 17)
+        Me.cbDrugExploit.TabIndex = 1
+        Me.cbDrugExploit.Text = "Drug Exploit Fix"
+        Me.ToolTip1.SetToolTip(Me.cbDrugExploit, "Turns off the effects of drug abuse to prevent skill, books and perk gain exploit" & _
                 "s.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox31, "Выключает последствия злоупотребления наркотиками для предотвращения усиления нав" & _
+        Me.ToolTip2.SetToolTip(Me.cbDrugExploit, "Выключает последствия злоупотребления наркотиками для предотвращения усиления нав" & _
                 "ыков, через чтение книг или получении перков.")
-        Me.CheckBox31.UseVisualStyleBackColor = True
+        Me.cbDrugExploit.UseVisualStyleBackColor = True
         '
-        'CheckBox35
+        'cbPartySkills
         '
-        Me.CheckBox35.AutoSize = True
-        Me.CheckBox35.Checked = True
-        Me.CheckBox35.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox35.Enabled = False
-        Me.CheckBox35.Location = New System.Drawing.Point(6, 43)
-        Me.CheckBox35.Name = "CheckBox35"
-        Me.CheckBox35.Size = New System.Drawing.Size(99, 17)
-        Me.CheckBox35.TabIndex = 4
-        Me.CheckBox35.Text = "Use Party Skills"
-        Me.ToolTip1.SetToolTip(Me.CheckBox35, "Always use party members with highest level of skills (first aid, doctor, lockpic" & _
+        Me.cbPartySkills.AutoSize = True
+        Me.cbPartySkills.Checked = True
+        Me.cbPartySkills.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbPartySkills.Enabled = False
+        Me.cbPartySkills.Location = New System.Drawing.Point(6, 43)
+        Me.cbPartySkills.Name = "cbPartySkills"
+        Me.cbPartySkills.Size = New System.Drawing.Size(99, 17)
+        Me.cbPartySkills.TabIndex = 4
+        Me.cbPartySkills.Text = "Use Party Skills"
+        Me.ToolTip1.SetToolTip(Me.cbPartySkills, "Always use party members with highest level of skills (first aid, doctor, lockpic" & _
                 "k, traps, science, repair).")
-        Me.CheckBox35.UseVisualStyleBackColor = True
+        Me.cbPartySkills.UseVisualStyleBackColor = True
         '
-        'CheckBox34
+        'cbCorpseLine
         '
-        Me.CheckBox34.AutoSize = True
-        Me.CheckBox34.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox34.Location = New System.Drawing.Point(178, 123)
-        Me.CheckBox34.Name = "CheckBox34"
-        Me.CheckBox34.Size = New System.Drawing.Size(105, 17)
-        Me.CheckBox34.TabIndex = 4
-        Me.CheckBox34.Text = "Corpse Line Fire "
-        Me.ToolTip1.SetToolTip(Me.CheckBox34, "Prevent corpses from blocking line of fire.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox34, "Предотвратить блокирование трупами от убитых НПС линии огня(Shoot).")
-        Me.CheckBox34.UseVisualStyleBackColor = True
+        Me.cbCorpseLine.AutoSize = True
+        Me.cbCorpseLine.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbCorpseLine.Location = New System.Drawing.Point(178, 123)
+        Me.cbCorpseLine.Name = "cbCorpseLine"
+        Me.cbCorpseLine.Size = New System.Drawing.Size(105, 17)
+        Me.cbCorpseLine.TabIndex = 4
+        Me.cbCorpseLine.Text = "Corpse Line Fire "
+        Me.ToolTip1.SetToolTip(Me.cbCorpseLine, "Prevent corpses from blocking line of fire.")
+        Me.ToolTip2.SetToolTip(Me.cbCorpseLine, "Предотвратить блокирование трупами от убитых НПС линии огня(Shoot).")
+        Me.cbCorpseLine.UseVisualStyleBackColor = True
         '
-        'ComboBox4
+        'cmbFastShotFix
         '
-        Me.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox4.DropDownWidth = 200
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Items.AddRange(New Object() {"Fallout 2 behaviour", "Called shots are enabled for HtH attacks", "Fallout 1 behaviour"})
-        Me.ComboBox4.Location = New System.Drawing.Point(145, 23)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(138, 21)
-        Me.ComboBox4.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.ComboBox4, "Two alternate fixes to the interaction between HtH attacks and the fast shot trai" & _
+        Me.cmbFastShotFix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbFastShotFix.DropDownWidth = 200
+        Me.cmbFastShotFix.FormattingEnabled = True
+        Me.cmbFastShotFix.Items.AddRange(New Object() {"Fallout 2 behaviour", "Called shots are enabled for HtH attacks", "Fallout 1 behaviour"})
+        Me.cmbFastShotFix.Location = New System.Drawing.Point(145, 23)
+        Me.cmbFastShotFix.Name = "cmbFastShotFix"
+        Me.cmbFastShotFix.Size = New System.Drawing.Size(138, 21)
+        Me.cmbFastShotFix.TabIndex = 3
+        Me.ToolTip1.SetToolTip(Me.cmbFastShotFix, "Two alternate fixes to the interaction between HtH attacks and the fast shot trai" & _
                 "t.")
-        Me.ToolTip2.SetToolTip(Me.ComboBox4, "1. Fallout 2 поведение." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2. Вызывается выстрелы, включено и для HTH атак. (Haenlo" & _
+        Me.ToolTip2.SetToolTip(Me.cmbFastShotFix, "1. Fallout 2 поведение." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2. Вызывается выстрелы, включено и для HTH атак. (Haenlo" & _
                 "mal's fix). " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3. Fallout 1 поведение. (-1 бонус AP для HTH атак).")
         '
         'Label23
@@ -701,46 +738,46 @@ Partial Class MainForm
         Me.ToolTip2.SetToolTip(Me.Label23, "НПС которые завершили свой боевой ход с оставшимися AP, попытаются найти способ п" & _
                 "отратить свои неизрасходованные AP.")
         '
-        'ComboBox5
+        'cmbDamageFormula
         '
-        Me.ComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox5.DropDownWidth = 200
-        Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Items.AddRange(New Object() {"Fallout default", "Glovz's Damage Fix", "Glovz's Damage Fix with Damage Multiplier", "Unknown (Not Used)", "Jim's Formula", "Haenlomal's Yet Another Ammo Mod"})
-        Me.ComboBox5.Location = New System.Drawing.Point(145, 63)
-        Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(138, 21)
-        Me.ComboBox5.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.ComboBox5, "Don't set this to anything other than default unless another mod you're using exp" & _
+        Me.cmbDamageFormula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbDamageFormula.DropDownWidth = 200
+        Me.cmbDamageFormula.FormattingEnabled = True
+        Me.cmbDamageFormula.Items.AddRange(New Object() {"Fallout default", "Glovz's Damage Fix", "Glovz's Damage Fix with Damage Multiplier", "(Not Used)", "Jim's Formula (only Sfall v3.3 - v3.6)", "Haenlomal's Yet Another Ammo Mod"})
+        Me.cmbDamageFormula.Location = New System.Drawing.Point(145, 63)
+        Me.cmbDamageFormula.Name = "cmbDamageFormula"
+        Me.cmbDamageFormula.Size = New System.Drawing.Size(138, 21)
+        Me.cmbDamageFormula.TabIndex = 3
+        Me.ToolTip1.SetToolTip(Me.cmbDamageFormula, "Don't set this to anything other than default unless another mod you're using exp" & _
                 "licitly tells you to!")
-        Me.ToolTip2.SetToolTip(Me.ComboBox5, "Не устанавливайте это ни к чему, кроме по умолчанию, если соответствующий мод не " & _
+        Me.ToolTip2.SetToolTip(Me.cmbDamageFormula, "Не устанавливайте это ни к чему, кроме по умолчанию, если соответствующий мод не " & _
                 "установлен!")
         '
-        'CheckBox32
+        'cbObjCanSeeObj
         '
-        Me.CheckBox32.AutoSize = True
-        Me.CheckBox32.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox32.Location = New System.Drawing.Point(157, 100)
-        Me.CheckBox32.Name = "CheckBox32"
-        Me.CheckBox32.Size = New System.Drawing.Size(126, 17)
-        Me.CheckBox32.TabIndex = 2
-        Me.CheckBox32.Text = "NPC See Thru Shoot"
-        Me.ToolTip1.SetToolTip(Me.CheckBox32, "Allow objects seeing through other objects with their ShootThru flag set.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox32, "Позволяет НПС видеть через прострелевыемые объекты (флаг Shoot Thru).")
-        Me.CheckBox32.UseVisualStyleBackColor = True
+        Me.cbObjCanSeeObj.AutoSize = True
+        Me.cbObjCanSeeObj.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbObjCanSeeObj.Location = New System.Drawing.Point(157, 100)
+        Me.cbObjCanSeeObj.Name = "cbObjCanSeeObj"
+        Me.cbObjCanSeeObj.Size = New System.Drawing.Size(126, 17)
+        Me.cbObjCanSeeObj.TabIndex = 2
+        Me.cbObjCanSeeObj.Text = "NPC See Thru Shoot"
+        Me.ToolTip1.SetToolTip(Me.cbObjCanSeeObj, "Allow objects seeing through other objects with their ShootThru flag set.")
+        Me.ToolTip2.SetToolTip(Me.cbObjCanSeeObj, "Позволяет НПС видеть через прострелевыемые объекты (флаг Shoot Thru).")
+        Me.cbObjCanSeeObj.UseVisualStyleBackColor = True
         '
-        'ComboBox7
+        'cmbTimeLimit
         '
-        Me.ComboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox7.DropDownWidth = 350
-        Me.ComboBox7.FormattingEnabled = True
-        Me.ComboBox7.Items.AddRange(New Object() {"You die the instant you leave arroyo.", "Remove time limit, and automatically reset date back to 2241 each time.", "Remove time limit, without resetting date. (Lock Time)", "Remove time limit, automatically reset date. (Return Сorrect Time)", "Disable (default)"})
-        Me.ComboBox7.Location = New System.Drawing.Point(6, 63)
-        Me.ComboBox7.Name = "ComboBox7"
-        Me.ComboBox7.Size = New System.Drawing.Size(133, 21)
-        Me.ComboBox7.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.ComboBox7, "Remove time limit in years.")
-        Me.ToolTip2.SetToolTip(Me.ComboBox7, resources.GetString("ComboBox7.ToolTip"))
+        Me.cmbTimeLimit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbTimeLimit.DropDownWidth = 350
+        Me.cmbTimeLimit.FormattingEnabled = True
+        Me.cmbTimeLimit.Items.AddRange(New Object() {"You die the instant you leave arroyo.", "Remove time limit, and automatically reset date back to 2241 each time.", "Remove time limit, without resetting date. (Lock Time)", "Remove time limit, automatically reset date. (Return Сorrect Time)", "Fallout default"})
+        Me.cmbTimeLimit.Location = New System.Drawing.Point(6, 63)
+        Me.cmbTimeLimit.Name = "cmbTimeLimit"
+        Me.cmbTimeLimit.Size = New System.Drawing.Size(133, 21)
+        Me.cmbTimeLimit.TabIndex = 3
+        Me.ToolTip1.SetToolTip(Me.cmbTimeLimit, "Remove time limit in years.")
+        Me.ToolTip2.SetToolTip(Me.cmbTimeLimit, resources.GetString("cmbTimeLimit.ToolTip"))
         '
         'NumericUpDown6
         '
@@ -776,44 +813,45 @@ Partial Class MainForm
                 "t.")
         Me.ToolTip2.SetToolTip(Me.Label13, "Альтернативные взаимодействия с НТН атак, и трэйта ""Быстрого Стрелка"".")
         '
-        'CheckBox38
+        'cbRemoveCriticalTime
         '
-        Me.CheckBox38.AutoSize = True
-        Me.CheckBox38.Location = New System.Drawing.Point(6, 100)
-        Me.CheckBox38.Name = "CheckBox38"
-        Me.CheckBox38.Size = New System.Drawing.Size(112, 17)
-        Me.CheckBox38.TabIndex = 10
-        Me.CheckBox38.Text = "Critical Time Limits"
-        Me.ToolTip1.SetToolTip(Me.CheckBox38, "Remove the limits that stop the player rolling critical successes/misses in the f" & _
+        Me.cbRemoveCriticalTime.AutoSize = True
+        Me.cbRemoveCriticalTime.Location = New System.Drawing.Point(6, 100)
+        Me.cbRemoveCriticalTime.Name = "cbRemoveCriticalTime"
+        Me.cbRemoveCriticalTime.Size = New System.Drawing.Size(112, 17)
+        Me.cbRemoveCriticalTime.TabIndex = 10
+        Me.cbRemoveCriticalTime.Text = "Critical Time Limits"
+        Me.ToolTip1.SetToolTip(Me.cbRemoveCriticalTime, "Remove the limits that stop the player rolling critical successes/misses in the f" & _
                 "irst few days of game time.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox38, "Убрать ограничение, позволяющее игроку получать критические успехи/промахи в перв" & _
+        Me.ToolTip2.SetToolTip(Me.cbRemoveCriticalTime, "Убрать ограничение, позволяющее игроку получать критические успехи/промахи в перв" & _
                 "ые несколько дней игрового времени.")
-        Me.CheckBox38.UseVisualStyleBackColor = True
+        Me.cbRemoveCriticalTime.UseVisualStyleBackColor = True
         '
-        'CheckBox10
+        'cbControlCombat
         '
-        Me.CheckBox10.AutoSize = True
-        Me.CheckBox10.Location = New System.Drawing.Point(6, 123)
-        Me.CheckBox10.Name = "CheckBox10"
-        Me.CheckBox10.Size = New System.Drawing.Size(125, 17)
-        Me.CheckBox10.TabIndex = 2
-        Me.CheckBox10.Text = "Party Combat Control"
-        Me.ToolTip1.SetToolTip(Me.CheckBox10, "Allows you to directly control all party members in combat.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox10, "Позволяет непосредственно контролировать все члены партии в бою.")
-        Me.CheckBox10.UseVisualStyleBackColor = True
+        Me.cbControlCombat.AutoSize = True
+        Me.cbControlCombat.Enabled = False
+        Me.cbControlCombat.Location = New System.Drawing.Point(6, 123)
+        Me.cbControlCombat.Name = "cbControlCombat"
+        Me.cbControlCombat.Size = New System.Drawing.Size(125, 17)
+        Me.cbControlCombat.TabIndex = 2
+        Me.cbControlCombat.Text = "Party Combat Control"
+        Me.ToolTip1.SetToolTip(Me.cbControlCombat, "Allows you to directly control all party members in combat.")
+        Me.ToolTip2.SetToolTip(Me.cbControlCombat, "Позволяет непосредственно контролировать все члены партии в бою.")
+        Me.cbControlCombat.UseVisualStyleBackColor = True
         '
-        'ComboBox2
+        'cmbMotionScanner
         '
-        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox2.DropDownWidth = 230
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Items.AddRange(New Object() {"Fallout 2 (default)", "Use on automap when motion sensor is in pack", "Doesn't require charges", "Use the item highlight feature"})
-        Me.ComboBox2.Location = New System.Drawing.Point(6, 23)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(133, 21)
-        Me.ComboBox2.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.ComboBox2, "Some bit flags to alter behaviour of the motion sensor.")
-        Me.ToolTip2.SetToolTip(Me.ComboBox2, resources.GetString("ComboBox2.ToolTip"))
+        Me.cmbMotionScanner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbMotionScanner.DropDownWidth = 230
+        Me.cmbMotionScanner.FormattingEnabled = True
+        Me.cmbMotionScanner.Items.AddRange(New Object() {"Fallout default", "Use on automap when motion sensor is in pack", "Doesn't require charges", "Use the item highlight feature"})
+        Me.cmbMotionScanner.Location = New System.Drawing.Point(6, 23)
+        Me.cmbMotionScanner.Name = "cmbMotionScanner"
+        Me.cmbMotionScanner.Size = New System.Drawing.Size(133, 21)
+        Me.cmbMotionScanner.TabIndex = 3
+        Me.ToolTip1.SetToolTip(Me.cmbMotionScanner, "Some bit flags to alter behaviour of the motion sensor.")
+        Me.ToolTip2.SetToolTip(Me.cmbMotionScanner, resources.GetString("cmbMotionScanner.ToolTip"))
         '
         'Label8
         '
@@ -843,10 +881,10 @@ Partial Class MainForm
         Me.TabPage2.Controls.Add(Me.GroupBox1)
         Me.TabPage2.Controls.Add(Me.NumericUpDown4)
         Me.TabPage2.Controls.Add(Me.NumericUpDown3)
-        Me.TabPage2.Controls.Add(Me.CheckBox15)
+        Me.TabPage2.Controls.Add(Me.cbGPUBlt)
         Me.TabPage2.Controls.Add(Me.CheckBox14)
         Me.TabPage2.Controls.Add(Me.Label3)
-        Me.TabPage2.Controls.Add(Me.ComboBox1)
+        Me.TabPage2.Controls.Add(Me.cmbMode)
         Me.TabPage2.Controls.Add(Me.Label16)
         Me.TabPage2.Controls.Add(Me.Label1)
         Me.TabPage2.Controls.Add(Me.Label2)
@@ -869,16 +907,16 @@ Partial Class MainForm
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.CheckBox30)
-        Me.GroupBox1.Controls.Add(Me.CheckBox28)
-        Me.GroupBox1.Controls.Add(Me.CheckBox27)
+        Me.GroupBox1.Controls.Add(Me.cbPipboyTimeAnim)
+        Me.GroupBox1.Controls.Add(Me.cbAmmoMetre)
+        Me.GroupBox1.Controls.Add(Me.cbIsGrayScale)
         Me.GroupBox1.Controls.Add(Me.NumericUpDown2)
         Me.GroupBox1.Controls.Add(Me.NumericUpDown1)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Controls.Add(Me.CheckBox18)
-        Me.GroupBox1.Controls.Add(Me.CheckBox17)
-        Me.GroupBox1.Controls.Add(Me.CheckBox16)
+        Me.GroupBox1.Controls.Add(Me.cbExplosionsEmitLight)
+        Me.GroupBox1.Controls.Add(Me.cbSpeedInterfaceCounter)
+        Me.GroupBox1.Controls.Add(Me.cbSkipOpeningMovies)
         Me.GroupBox1.Location = New System.Drawing.Point(6, 160)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(277, 143)
@@ -886,53 +924,53 @@ Partial Class MainForm
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Graphics"
         '
-        'CheckBox30
+        'cbPipboyTimeAnim
         '
-        Me.CheckBox30.AutoSize = True
-        Me.CheckBox30.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox30.Checked = True
-        Me.CheckBox30.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox30.Enabled = False
-        Me.CheckBox30.Location = New System.Drawing.Point(161, 19)
-        Me.CheckBox30.Name = "CheckBox30"
-        Me.CheckBox30.Size = New System.Drawing.Size(110, 17)
-        Me.CheckBox30.TabIndex = 9
-        Me.CheckBox30.Text = "Pipboy Time Anim"
-        Me.ToolTip2.SetToolTip(Me.CheckBox30, "Увеличить скрость анимации счетчика времени будильника в Pip-Boy'e.")
-        Me.CheckBox30.UseVisualStyleBackColor = True
+        Me.cbPipboyTimeAnim.AutoSize = True
+        Me.cbPipboyTimeAnim.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbPipboyTimeAnim.Checked = True
+        Me.cbPipboyTimeAnim.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbPipboyTimeAnim.Enabled = False
+        Me.cbPipboyTimeAnim.Location = New System.Drawing.Point(161, 19)
+        Me.cbPipboyTimeAnim.Name = "cbPipboyTimeAnim"
+        Me.cbPipboyTimeAnim.Size = New System.Drawing.Size(110, 17)
+        Me.cbPipboyTimeAnim.TabIndex = 9
+        Me.cbPipboyTimeAnim.Text = "Pipboy Time Anim"
+        Me.ToolTip2.SetToolTip(Me.cbPipboyTimeAnim, "Увеличить скрость анимации счетчика времени будильника в Pip-Boy'e.")
+        Me.cbPipboyTimeAnim.UseVisualStyleBackColor = True
         '
-        'CheckBox28
+        'cbAmmoMetre
         '
-        Me.CheckBox28.AutoSize = True
-        Me.CheckBox28.Checked = True
-        Me.CheckBox28.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox28.Enabled = False
-        Me.CheckBox28.Location = New System.Drawing.Point(6, 120)
-        Me.CheckBox28.Name = "CheckBox28"
-        Me.CheckBox28.Size = New System.Drawing.Size(130, 17)
-        Me.CheckBox28.TabIndex = 8
-        Me.CheckBox28.Text = "Alternate Ammo Metre"
-        Me.ToolTip1.SetToolTip(Me.CheckBox28, "Changes colour depending how much ammo remains in your current weapon. (Only for " & _
+        Me.cbAmmoMetre.AutoSize = True
+        Me.cbAmmoMetre.Checked = True
+        Me.cbAmmoMetre.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbAmmoMetre.Enabled = False
+        Me.cbAmmoMetre.Location = New System.Drawing.Point(6, 120)
+        Me.cbAmmoMetre.Name = "cbAmmoMetre"
+        Me.cbAmmoMetre.Size = New System.Drawing.Size(130, 17)
+        Me.cbAmmoMetre.TabIndex = 8
+        Me.cbAmmoMetre.Text = "Alternate Ammo Metre"
+        Me.ToolTip1.SetToolTip(Me.cbAmmoMetre, "Changes colour depending how much ammo remains in your current weapon. (Only for " & _
                 "HRP)")
-        Me.ToolTip2.SetToolTip(Me.CheckBox28, "Меняет цвет в зависимости от того, сколько патронов остается в вашем активном ору" & _
+        Me.ToolTip2.SetToolTip(Me.cbAmmoMetre, "Меняет цвет в зависимости от того, сколько патронов остается в вашем активном ору" & _
                 "жие. (Только для HRP)")
-        Me.CheckBox28.UseVisualStyleBackColor = True
+        Me.cbAmmoMetre.UseVisualStyleBackColor = True
         '
-        'CheckBox27
+        'cbIsGrayScale
         '
-        Me.CheckBox27.AutoSize = True
-        Me.CheckBox27.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox27.Checked = True
-        Me.CheckBox27.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.CheckBox27.Enabled = False
-        Me.CheckBox27.Location = New System.Drawing.Point(181, 120)
-        Me.CheckBox27.Name = "CheckBox27"
-        Me.CheckBox27.Size = New System.Drawing.Size(90, 17)
-        Me.CheckBox27.TabIndex = 7
-        Me.CheckBox27.Text = "Game in Gray"
-        Me.ToolTip1.SetToolTip(Me.CheckBox27, "Play the game in black and white.(Pixote's zany idea. Only for HRP)")
-        Me.ToolTip2.SetToolTip(Me.CheckBox27, "Рендер игры в серых оттенках. (by Pixote's. Только для HRP)")
-        Me.CheckBox27.UseVisualStyleBackColor = True
+        Me.cbIsGrayScale.AutoSize = True
+        Me.cbIsGrayScale.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbIsGrayScale.Checked = True
+        Me.cbIsGrayScale.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbIsGrayScale.Enabled = False
+        Me.cbIsGrayScale.Location = New System.Drawing.Point(181, 120)
+        Me.cbIsGrayScale.Name = "cbIsGrayScale"
+        Me.cbIsGrayScale.Size = New System.Drawing.Size(90, 17)
+        Me.cbIsGrayScale.TabIndex = 7
+        Me.cbIsGrayScale.Text = "Game in Gray"
+        Me.ToolTip1.SetToolTip(Me.cbIsGrayScale, "Play the game in black and white.(Pixote's zany idea. Only for HRP)")
+        Me.ToolTip2.SetToolTip(Me.cbIsGrayScale, "Рендер игры в серых оттенках. (by Pixote's. Только для HRP)")
+        Me.cbIsGrayScale.UseVisualStyleBackColor = True
         '
         'NumericUpDown2
         '
@@ -980,42 +1018,42 @@ Partial Class MainForm
         Me.ToolTip1.SetToolTip(Me.Label9, "Controls the speed of combat panel animation.")
         Me.ToolTip2.SetToolTip(Me.Label9, "Управляет скоростью анимации боевой панели.")
         '
-        'CheckBox18
+        'cbExplosionsEmitLight
         '
-        Me.CheckBox18.AutoSize = True
-        Me.CheckBox18.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox18.Location = New System.Drawing.Point(169, 42)
-        Me.CheckBox18.Name = "CheckBox18"
-        Me.CheckBox18.Size = New System.Drawing.Size(102, 17)
-        Me.CheckBox18.TabIndex = 3
-        Me.CheckBox18.Text = "Explosions Light"
-        Me.ToolTip1.SetToolTip(Me.CheckBox18, "Make explosions and projectiles emit light.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox18, "Сделать взрывы и снаряды испускающие свет.")
-        Me.CheckBox18.UseVisualStyleBackColor = True
+        Me.cbExplosionsEmitLight.AutoSize = True
+        Me.cbExplosionsEmitLight.Location = New System.Drawing.Point(6, 42)
+        Me.cbExplosionsEmitLight.Name = "cbExplosionsEmitLight"
+        Me.cbExplosionsEmitLight.Size = New System.Drawing.Size(102, 17)
+        Me.cbExplosionsEmitLight.TabIndex = 3
+        Me.cbExplosionsEmitLight.Text = "Explosions Light"
+        Me.ToolTip1.SetToolTip(Me.cbExplosionsEmitLight, "Make explosions and projectiles emit light.")
+        Me.ToolTip2.SetToolTip(Me.cbExplosionsEmitLight, "Сделать взрывы и снаряды испускающие свет.")
+        Me.cbExplosionsEmitLight.UseVisualStyleBackColor = True
         '
-        'CheckBox17
+        'cbSpeedInterfaceCounter
         '
-        Me.CheckBox17.AutoSize = True
-        Me.CheckBox17.Location = New System.Drawing.Point(6, 42)
-        Me.CheckBox17.Name = "CheckBox17"
-        Me.CheckBox17.Size = New System.Drawing.Size(142, 17)
-        Me.CheckBox17.TabIndex = 3
-        Me.CheckBox17.Text = "Speed Interface Counter"
-        Me.ToolTip1.SetToolTip(Me.CheckBox17, "Speed up the hp/ac counter animations.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox17, "Ускорить анимацию HP/AC счетчика.")
-        Me.CheckBox17.UseVisualStyleBackColor = True
+        Me.cbSpeedInterfaceCounter.AutoSize = True
+        Me.cbSpeedInterfaceCounter.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbSpeedInterfaceCounter.Location = New System.Drawing.Point(129, 42)
+        Me.cbSpeedInterfaceCounter.Name = "cbSpeedInterfaceCounter"
+        Me.cbSpeedInterfaceCounter.Size = New System.Drawing.Size(142, 17)
+        Me.cbSpeedInterfaceCounter.TabIndex = 3
+        Me.cbSpeedInterfaceCounter.Text = "Speed Interface Counter"
+        Me.ToolTip1.SetToolTip(Me.cbSpeedInterfaceCounter, "Speed up the hp/ac counter animations.")
+        Me.ToolTip2.SetToolTip(Me.cbSpeedInterfaceCounter, "Ускорить анимацию HP/AC счетчика.")
+        Me.cbSpeedInterfaceCounter.UseVisualStyleBackColor = True
         '
-        'CheckBox16
+        'cbSkipOpeningMovies
         '
-        Me.CheckBox16.AutoSize = True
-        Me.CheckBox16.Location = New System.Drawing.Point(6, 19)
-        Me.CheckBox16.Name = "CheckBox16"
-        Me.CheckBox16.Size = New System.Drawing.Size(127, 17)
-        Me.CheckBox16.TabIndex = 3
-        Me.CheckBox16.Text = "Skip Opening Movies"
-        Me.ToolTip1.SetToolTip(Me.CheckBox16, "Skip opening movies start game.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox16, "Пропустить вступительное видео при запуске игры.")
-        Me.CheckBox16.UseVisualStyleBackColor = True
+        Me.cbSkipOpeningMovies.AutoSize = True
+        Me.cbSkipOpeningMovies.Location = New System.Drawing.Point(6, 19)
+        Me.cbSkipOpeningMovies.Name = "cbSkipOpeningMovies"
+        Me.cbSkipOpeningMovies.Size = New System.Drawing.Size(127, 17)
+        Me.cbSkipOpeningMovies.TabIndex = 3
+        Me.cbSkipOpeningMovies.Text = "Skip Opening Movies"
+        Me.ToolTip1.SetToolTip(Me.cbSkipOpeningMovies, "Skip opening movies start game.")
+        Me.ToolTip2.SetToolTip(Me.cbSkipOpeningMovies, "Пропустить вступительное видео при запуске игры.")
+        Me.cbSkipOpeningMovies.UseVisualStyleBackColor = True
         '
         'NumericUpDown4
         '
@@ -1037,19 +1075,22 @@ Partial Class MainForm
         Me.NumericUpDown3.TabIndex = 6
         Me.NumericUpDown3.Value = New Decimal(New Integer() {480, 0, 0, 0})
         '
-        'CheckBox15
+        'cbGPUBlt
         '
-        Me.CheckBox15.AutoSize = True
-        Me.CheckBox15.Location = New System.Drawing.Point(6, 114)
-        Me.CheckBox15.Name = "CheckBox15"
-        Me.CheckBox15.Size = New System.Drawing.Size(83, 17)
-        Me.CheckBox15.TabIndex = 3
-        Me.CheckBox15.Text = "GPU Blitting"
-        Me.CheckBox15.UseVisualStyleBackColor = True
+        Me.cbGPUBlt.AutoSize = True
+        Me.cbGPUBlt.Location = New System.Drawing.Point(6, 114)
+        Me.cbGPUBlt.Name = "cbGPUBlt"
+        Me.cbGPUBlt.Size = New System.Drawing.Size(83, 17)
+        Me.cbGPUBlt.TabIndex = 3
+        Me.cbGPUBlt.Text = "GPU Blitting"
+        Me.cbGPUBlt.UseVisualStyleBackColor = True
         '
         'CheckBox14
         '
         Me.CheckBox14.AutoSize = True
+        Me.CheckBox14.Checked = True
+        Me.CheckBox14.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.CheckBox14.Enabled = False
         Me.CheckBox14.Location = New System.Drawing.Point(6, 137)
         Me.CheckBox14.Name = "CheckBox14"
         Me.CheckBox14.Size = New System.Drawing.Size(127, 17)
@@ -1070,16 +1111,16 @@ Partial Class MainForm
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "X"
         '
-        'ComboBox1
+        'cmbMode
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.DropDownWidth = 139
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Off", "DX9 Fullscreen", "DX9 Windowed"})
-        Me.ComboBox1.Location = New System.Drawing.Point(6, 20)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(139, 21)
-        Me.ComboBox1.TabIndex = 0
+        Me.cmbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbMode.DropDownWidth = 139
+        Me.cmbMode.FormattingEnabled = True
+        Me.cmbMode.Items.AddRange(New Object() {"Off", "DX9 Fullscreen", "DX9 Windowed"})
+        Me.cmbMode.Location = New System.Drawing.Point(6, 20)
+        Me.cmbMode.Name = "cmbMode"
+        Me.cmbMode.Size = New System.Drawing.Size(139, 21)
+        Me.cmbMode.TabIndex = 0
         '
         'Label16
         '
@@ -1110,8 +1151,7 @@ Partial Class MainForm
         '
         'TabPage3
         '
-        Me.TabPage3.Controls.Add(Me.Label15)
-        Me.TabPage3.Controls.Add(Me.ComboBox8)
+        Me.TabPage3.Controls.Add(Me.GroupBox5)
         Me.TabPage3.Controls.Add(Me.GroupBox4)
         Me.TabPage3.Controls.Add(Me.GroupBox3)
         Me.TabPage3.Controls.Add(Me.GroupBox2)
@@ -1122,35 +1162,60 @@ Partial Class MainForm
         Me.TabPage3.Text = "System"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
-        'Label15
+        'GroupBox5
         '
-        Me.Label15.Location = New System.Drawing.Point(218, 147)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(60, 37)
-        Me.Label15.TabIndex = 4
-        Me.Label15.Text = "Tips Language"
-        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.GroupBox5.Controls.Add(Me.Button5)
+        Me.GroupBox5.Controls.Add(Me.ComboBox8)
+        Me.GroupBox5.Controls.Add(Me.Label15)
+        Me.GroupBox5.Location = New System.Drawing.Point(188, 129)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(96, 87)
+        Me.GroupBox5.TabIndex = 5
+        Me.GroupBox5.TabStop = False
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(6, 57)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(84, 23)
+        Me.Button5.TabIndex = 4
+        Me.Button5.Text = "Open old ini"
+        Me.ToolTip1.SetToolTip(Me.Button5, "Merge setting from old ini file (changes will be applied only for those settings " & _
+                "that exist in the current ddraw.ini).")
+        Me.ToolTip2.SetToolTip(Me.Button5, "Применить настройки из старого ini-файла (изменения будут внесены только для тех " & _
+                "настроек которые существуют в текущем ddraw.ini).")
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'ComboBox8
         '
         Me.ComboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox8.FormattingEnabled = True
         Me.ComboBox8.Items.AddRange(New Object() {"RUS", "ENG"})
-        Me.ComboBox8.Location = New System.Drawing.Point(221, 187)
+        Me.ComboBox8.Location = New System.Drawing.Point(22, 29)
         Me.ComboBox8.Name = "ComboBox8"
         Me.ComboBox8.Size = New System.Drawing.Size(53, 21)
         Me.ComboBox8.TabIndex = 3
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(8, 12)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(78, 13)
+        Me.Label15.TabIndex = 4
+        Me.Label15.Text = "Tips Language"
+        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.Label18)
         Me.GroupBox4.Controls.Add(Me.Label17)
-        Me.GroupBox4.Controls.Add(Me.ComboBox10)
-        Me.GroupBox4.Controls.Add(Me.CheckBox24)
-        Me.GroupBox4.Controls.Add(Me.ComboBox9)
+        Me.GroupBox4.Controls.Add(Me.cmbXltTable)
+        Me.GroupBox4.Controls.Add(Me.cbReverseMouseButtons)
+        Me.GroupBox4.Controls.Add(Me.cmbXltKey)
         Me.GroupBox4.Location = New System.Drawing.Point(5, 129)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(196, 87)
+        Me.GroupBox4.Size = New System.Drawing.Size(177, 87)
         Me.GroupBox4.TabIndex = 2
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Input in Game"
@@ -1175,49 +1240,50 @@ Partial Class MainForm
         Me.Label17.Text = "Switch Language Key"
         Me.ToolTip2.SetToolTip(Me.Label17, "Клавиша переключения раскладки языка (English/Russan) при вводе. (Crafty Mod)")
         '
-        'ComboBox10
+        'cmbXltTable
         '
-        Me.ComboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox10.Enabled = False
-        Me.ComboBox10.FormattingEnabled = True
-        Me.ComboBox10.Items.AddRange(New Object() {"Win", "Dos"})
-        Me.ComboBox10.Location = New System.Drawing.Point(119, 34)
-        Me.ComboBox10.Name = "ComboBox10"
-        Me.ComboBox10.Size = New System.Drawing.Size(49, 21)
-        Me.ComboBox10.TabIndex = 2
+        Me.cmbXltTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbXltTable.Enabled = False
+        Me.cmbXltTable.FormattingEnabled = True
+        Me.cmbXltTable.Items.AddRange(New Object() {"Win", "Dos"})
+        Me.cmbXltTable.Location = New System.Drawing.Point(119, 34)
+        Me.cmbXltTable.Name = "cmbXltTable"
+        Me.cmbXltTable.Size = New System.Drawing.Size(49, 21)
+        Me.cmbXltTable.TabIndex = 2
         '
-        'CheckBox24
+        'cbReverseMouseButtons
         '
-        Me.CheckBox24.AutoSize = True
-        Me.CheckBox24.Location = New System.Drawing.Point(6, 61)
-        Me.CheckBox24.Name = "CheckBox24"
-        Me.CheckBox24.Size = New System.Drawing.Size(140, 17)
-        Me.CheckBox24.TabIndex = 0
-        Me.CheckBox24.Text = "Reverse Mouse Buttons"
-        Me.ToolTip1.SetToolTip(Me.CheckBox24, "Reverse the left and right mouse buttons.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox24, "Реверс кнопок мыши (с слева на право).")
-        Me.CheckBox24.UseVisualStyleBackColor = True
+        Me.cbReverseMouseButtons.AutoSize = True
+        Me.cbReverseMouseButtons.Location = New System.Drawing.Point(6, 61)
+        Me.cbReverseMouseButtons.Name = "cbReverseMouseButtons"
+        Me.cbReverseMouseButtons.Size = New System.Drawing.Size(140, 17)
+        Me.cbReverseMouseButtons.TabIndex = 0
+        Me.cbReverseMouseButtons.Text = "Reverse Mouse Buttons"
+        Me.ToolTip1.SetToolTip(Me.cbReverseMouseButtons, "Reverse the left and right mouse buttons.")
+        Me.ToolTip2.SetToolTip(Me.cbReverseMouseButtons, "Реверс кнопок мыши (с слева на право).")
+        Me.cbReverseMouseButtons.UseVisualStyleBackColor = True
         '
-        'ComboBox9
+        'cmbXltKey
         '
-        Me.ComboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox9.Enabled = False
-        Me.ComboBox9.FormattingEnabled = True
-        Me.ComboBox9.Items.AddRange(New Object() {"Num Lock", "Caps Lock", "Scroll Lock"})
-        Me.ComboBox9.Location = New System.Drawing.Point(6, 34)
-        Me.ComboBox9.Name = "ComboBox9"
-        Me.ComboBox9.Size = New System.Drawing.Size(102, 21)
-        Me.ComboBox9.TabIndex = 1
+        Me.cmbXltKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbXltKey.Enabled = False
+        Me.cmbXltKey.FormattingEnabled = True
+        Me.cmbXltKey.Items.AddRange(New Object() {"Num Lock", "Caps Lock", "Scroll Lock"})
+        Me.cmbXltKey.Location = New System.Drawing.Point(6, 34)
+        Me.cmbXltKey.Name = "cmbXltKey"
+        Me.cmbXltKey.Size = New System.Drawing.Size(102, 21)
+        Me.cmbXltKey.TabIndex = 1
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.GroupBox5)
+        Me.GroupBox3.Controls.Add(Me.cbAllowUnsafe)
+        Me.GroupBox3.Controls.Add(Me.cmbDebugLog)
         Me.GroupBox3.Controls.Add(Me.Button4)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
-        Me.GroupBox3.Controls.Add(Me.CheckBox22)
-        Me.GroupBox3.Controls.Add(Me.CheckBox21)
-        Me.GroupBox3.Controls.Add(Me.CheckBox20)
-        Me.GroupBox3.Controls.Add(Me.CheckBox19)
+        Me.GroupBox3.Controls.Add(Me.tbExtraCRC)
+        Me.GroupBox3.Controls.Add(Me.cbSingleCore)
+        Me.GroupBox3.Controls.Add(Me.cbProcessorIdle)
+        Me.GroupBox3.Controls.Add(Me.cbSkipSize)
+        Me.GroupBox3.Controls.Add(Me.cbDebugMode)
         Me.GroupBox3.Location = New System.Drawing.Point(5, 3)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(279, 118)
@@ -1225,24 +1291,31 @@ Partial Class MainForm
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "System"
         '
-        'GroupBox5
+        'cbAllowUnsafe
         '
-        Me.GroupBox5.Controls.Add(Me.Button5)
-        Me.GroupBox5.Location = New System.Drawing.Point(149, 68)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(130, 52)
-        Me.GroupBox5.TabIndex = 5
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Merge setting from ini"
+        Me.cbAllowUnsafe.AutoSize = True
+        Me.cbAllowUnsafe.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbAllowUnsafe.Location = New System.Drawing.Point(141, 45)
+        Me.cbAllowUnsafe.Name = "cbAllowUnsafe"
+        Me.cbAllowUnsafe.Size = New System.Drawing.Size(132, 17)
+        Me.cbAllowUnsafe.TabIndex = 5
+        Me.cbAllowUnsafe.Text = "Allow Unsafe Scripting"
+        Me.ToolTip1.SetToolTip(Me.cbAllowUnsafe, "Allow the use of unsafe scripting functions (required for some mods).")
+        Me.ToolTip2.SetToolTip(Me.cbAllowUnsafe, "Позволить использовать небезопасные функции скриптинга (требуется для некоторых м" & _
+                "одов).")
+        Me.cbAllowUnsafe.UseVisualStyleBackColor = True
         '
-        'Button5
+        'cmbDebugLog
         '
-        Me.Button5.Location = New System.Drawing.Point(29, 19)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 4
-        Me.Button5.Text = "Open"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.cmbDebugLog.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbDebugLog.DropDownWidth = 175
+        Me.cmbDebugLog.FormattingEnabled = True
+        Me.cmbDebugLog.Items.AddRange(New Object() {"Output debug info to game window", "Output debug info to debug.log file", "Both mode (only Crafty)"})
+        Me.cmbDebugLog.Location = New System.Drawing.Point(141, 89)
+        Me.cmbDebugLog.Name = "cmbDebugLog"
+        Me.cmbDebugLog.Size = New System.Drawing.Size(132, 21)
+        Me.cmbDebugLog.TabIndex = 4
+        Me.ToolTip2.SetToolTip(Me.cmbDebugLog, "Создавать файл debug.log с отладочной информацией.")
         '
         'Button4
         '
@@ -1253,64 +1326,64 @@ Partial Class MainForm
         Me.Button4.Text = "Get CRC"
         Me.Button4.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'tbExtraCRC
         '
-        Me.TextBox1.Location = New System.Drawing.Point(6, 19)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(204, 20)
-        Me.TextBox1.TabIndex = 1
-        Me.ToolTip2.SetToolTip(Me.TextBox1, "Вы можете переопределить здесь CRC. В случае если Sfall выдает ошибку о неправиль" & _
+        Me.tbExtraCRC.Location = New System.Drawing.Point(6, 19)
+        Me.tbExtraCRC.Name = "tbExtraCRC"
+        Me.tbExtraCRC.Size = New System.Drawing.Size(204, 20)
+        Me.tbExtraCRC.TabIndex = 1
+        Me.ToolTip2.SetToolTip(Me.tbExtraCRC, "Вы можете переопределить здесь CRC. В случае если Sfall выдает ошибку о неправиль" & _
                 "ном CRC.")
-        Me.ToolTip1.SetToolTip(Me.TextBox1, "You can override the CRC that sfall looks for here.")
+        Me.ToolTip1.SetToolTip(Me.tbExtraCRC, "You can override the CRC that sfall looks for here.")
         '
-        'CheckBox22
+        'cbSingleCore
         '
-        Me.CheckBox22.AutoSize = True
-        Me.CheckBox22.Location = New System.Drawing.Point(6, 91)
-        Me.CheckBox22.Name = "CheckBox22"
-        Me.CheckBox22.Size = New System.Drawing.Size(102, 17)
-        Me.CheckBox22.TabIndex = 0
-        Me.CheckBox22.Text = "Use Single Core"
-        Me.ToolTip1.SetToolTip(Me.CheckBox22, "Force fallout not to use multiple processor cores even if they are available.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox22, "Не использовать несколько процессорных ядер, даже если они доступны.")
-        Me.CheckBox22.UseVisualStyleBackColor = True
+        Me.cbSingleCore.AutoSize = True
+        Me.cbSingleCore.Location = New System.Drawing.Point(6, 91)
+        Me.cbSingleCore.Name = "cbSingleCore"
+        Me.cbSingleCore.Size = New System.Drawing.Size(102, 17)
+        Me.cbSingleCore.TabIndex = 0
+        Me.cbSingleCore.Text = "Use Single Core"
+        Me.ToolTip1.SetToolTip(Me.cbSingleCore, "Force fallout not to use multiple processor cores even if they are available.")
+        Me.ToolTip2.SetToolTip(Me.cbSingleCore, "Не использовать несколько процессорных ядер, даже если они доступны.")
+        Me.cbSingleCore.UseVisualStyleBackColor = True
         '
-        'CheckBox21
+        'cbProcessorIdle
         '
-        Me.CheckBox21.AutoSize = True
-        Me.CheckBox21.Location = New System.Drawing.Point(6, 68)
-        Me.CheckBox21.Name = "CheckBox21"
-        Me.CheckBox21.Size = New System.Drawing.Size(93, 17)
-        Me.CheckBox21.TabIndex = 0
-        Me.CheckBox21.Text = "Processor Idle"
-        Me.ToolTip1.SetToolTip(Me.CheckBox21, "Set to prevent 100% cpu use.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox21, "Установите для предотвращения 100% использования CPU.")
-        Me.CheckBox21.UseVisualStyleBackColor = True
+        Me.cbProcessorIdle.AutoSize = True
+        Me.cbProcessorIdle.Location = New System.Drawing.Point(6, 68)
+        Me.cbProcessorIdle.Name = "cbProcessorIdle"
+        Me.cbProcessorIdle.Size = New System.Drawing.Size(93, 17)
+        Me.cbProcessorIdle.TabIndex = 0
+        Me.cbProcessorIdle.Text = "Processor Idle"
+        Me.ToolTip1.SetToolTip(Me.cbProcessorIdle, "Set to prevent 100% cpu use.")
+        Me.ToolTip2.SetToolTip(Me.cbProcessorIdle, "Установите для предотвращения 100% использования CPU.")
+        Me.cbProcessorIdle.UseVisualStyleBackColor = True
         '
-        'CheckBox20
+        'cbSkipSize
         '
-        Me.CheckBox20.AutoSize = True
-        Me.CheckBox20.Location = New System.Drawing.Point(6, 45)
-        Me.CheckBox20.Name = "CheckBox20"
-        Me.CheckBox20.Size = New System.Drawing.Size(70, 17)
-        Me.CheckBox20.TabIndex = 0
-        Me.CheckBox20.Text = "Skip Size"
-        Me.ToolTip1.SetToolTip(Me.CheckBox20, "Skip the executable file size check.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox20, "Не проверять исполняемый файл на правильный размер.")
-        Me.CheckBox20.UseVisualStyleBackColor = True
+        Me.cbSkipSize.AutoSize = True
+        Me.cbSkipSize.Location = New System.Drawing.Point(6, 45)
+        Me.cbSkipSize.Name = "cbSkipSize"
+        Me.cbSkipSize.Size = New System.Drawing.Size(70, 17)
+        Me.cbSkipSize.TabIndex = 0
+        Me.cbSkipSize.Text = "Skip Size"
+        Me.ToolTip1.SetToolTip(Me.cbSkipSize, "Skip the executable file size check.")
+        Me.ToolTip2.SetToolTip(Me.cbSkipSize, "Не проверять исполняемый файл на правильный размер.")
+        Me.cbSkipSize.UseVisualStyleBackColor = True
         '
-        'CheckBox19
+        'cbDebugMode
         '
-        Me.CheckBox19.AutoSize = True
-        Me.CheckBox19.Location = New System.Drawing.Point(160, 46)
-        Me.CheckBox19.Name = "CheckBox19"
-        Me.CheckBox19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.CheckBox19.Size = New System.Drawing.Size(113, 17)
-        Me.CheckBox19.TabIndex = 0
-        Me.CheckBox19.Text = "Create Debug Log"
-        Me.ToolTip1.SetToolTip(Me.CheckBox19, "Enable debugging output to create a debug.log file.")
-        Me.ToolTip2.SetToolTip(Me.CheckBox19, "Создавать файл debug.log с отладочной информацией.")
-        Me.CheckBox19.UseVisualStyleBackColor = True
+        Me.cbDebugMode.AutoSize = True
+        Me.cbDebugMode.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbDebugMode.Location = New System.Drawing.Point(185, 68)
+        Me.cbDebugMode.Name = "cbDebugMode"
+        Me.cbDebugMode.Size = New System.Drawing.Size(88, 17)
+        Me.cbDebugMode.TabIndex = 0
+        Me.cbDebugMode.Text = "Debug Mode"
+        Me.ToolTip1.SetToolTip(Me.cbDebugMode, "Enable debugging output log.")
+        Me.ToolTip2.SetToolTip(Me.cbDebugMode, "Включить режим для вывода журнала отладки.")
+        Me.cbDebugMode.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
@@ -1328,17 +1401,17 @@ Partial Class MainForm
         '
         Me.Label7.AutoSize = True
         Me.Label7.ForeColor = System.Drawing.SystemColors.MenuHighlight
-        Me.Label7.Location = New System.Drawing.Point(26, 38)
+        Me.Label7.Location = New System.Drawing.Point(30, 38)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(226, 13)
         Me.Label7.TabIndex = 2
-        Me.Label7.Text = "Release ver. 18/12/2016 by Fakels (Mr.Stalin)"
+        Me.Label7.Text = "Release ver. 23/12/2017 by Fakels (Mr.Stalin)"
         '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.LinkLabel1.Location = New System.Drawing.Point(79, 61)
+        Me.LinkLabel1.Location = New System.Drawing.Point(77, 60)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(125, 16)
         Me.LinkLabel1.TabIndex = 1
@@ -1487,11 +1560,12 @@ Partial Class MainForm
         CType(Me.NumericUpDown4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.TabPage5.ResumeLayout(False)
@@ -1505,40 +1579,40 @@ Partial Class MainForm
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbMode As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
-    Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbMotionScanner As System.Windows.Forms.ComboBox
+    Friend WithEvents cbExtraSaveSlots As System.Windows.Forms.CheckBox
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
-    Friend WithEvents CheckBox4 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
-    Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBox5 As System.Windows.Forms.ComboBox
-    Friend WithEvents CheckBox9 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox10 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox8 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox7 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox6 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox5 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbScrollingQuestsList As System.Windows.Forms.CheckBox
+    Friend WithEvents cbDontTurnOffSneak As System.Windows.Forms.CheckBox
+    Friend WithEvents cbDisplayKarma As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbReloadReserve As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbDamageFormula As System.Windows.Forms.ComboBox
+    Friend WithEvents cbAutoReloadWeapon As System.Windows.Forms.CheckBox
+    Friend WithEvents cbControlCombat As System.Windows.Forms.CheckBox
+    Friend WithEvents cbEquipArmor As System.Windows.Forms.CheckBox
+    Friend WithEvents cbFreeWeight As System.Windows.Forms.CheckBox
+    Friend WithEvents cbStackEmptyWeapons As System.Windows.Forms.CheckBox
+    Friend WithEvents cbMusicInDialogue As System.Windows.Forms.CheckBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents CheckBox12 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox11 As System.Windows.Forms.CheckBox
-    Friend WithEvents ComboBox6 As System.Windows.Forms.ComboBox
-    Friend WithEvents CheckBox13 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox15 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbHighlightContainers As System.Windows.Forms.CheckBox
+    Friend WithEvents cbItemHighlightsKey As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbQuickSave As System.Windows.Forms.ComboBox
+    Friend WithEvents cbSpeedMultiInit As System.Windows.Forms.CheckBox
+    Friend WithEvents cbGPUBlt As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox14 As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents CheckBox18 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox17 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox16 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbExplosionsEmitLight As System.Windows.Forms.CheckBox
+    Friend WithEvents cbSpeedInterfaceCounter As System.Windows.Forms.CheckBox
+    Friend WithEvents cbSkipOpeningMovies As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
@@ -1548,58 +1622,62 @@ Partial Class MainForm
     Friend WithEvents NumericUpDown4 As System.Windows.Forms.NumericUpDown
     Friend WithEvents NumericUpDown3 As System.Windows.Forms.NumericUpDown
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents CheckBox20 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox19 As System.Windows.Forms.CheckBox
-    Friend WithEvents ComboBox4 As System.Windows.Forms.ComboBox
+    Friend WithEvents tbExtraCRC As System.Windows.Forms.TextBox
+    Friend WithEvents cbSkipSize As System.Windows.Forms.CheckBox
+    Friend WithEvents cbDebugMode As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbFastShotFix As System.Windows.Forms.ComboBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents CheckBox22 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox21 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbSingleCore As System.Windows.Forms.CheckBox
+    Friend WithEvents cbProcessorIdle As System.Windows.Forms.CheckBox
     Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents ComboBox7 As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbTimeLimit As System.Windows.Forms.ComboBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents CheckBox23 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbWeaponAmmoCost As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents CheckBox24 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox25 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbReverseMouseButtons As System.Windows.Forms.CheckBox
+    Friend WithEvents cbReloadWeapon As System.Windows.Forms.CheckBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents ComboBox8 As System.Windows.Forms.ComboBox
-    Friend WithEvents CheckBox26 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbBonusDamage As System.Windows.Forms.CheckBox
     Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents CheckBox27 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox28 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbIsGrayScale As System.Windows.Forms.CheckBox
+    Friend WithEvents cbAmmoMetre As System.Windows.Forms.CheckBox
     Friend WithEvents ToolTip2 As System.Windows.Forms.ToolTip
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
-    Friend WithEvents CheckBox29 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox30 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbInstanWeaponEquip As System.Windows.Forms.CheckBox
+    Friend WithEvents cbPipboyTimeAnim As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox10 As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBox9 As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbXltTable As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbXltKey As System.Windows.Forms.ComboBox
     Friend WithEvents Label20 As System.Windows.Forms.Label
-    Friend WithEvents CheckBox36 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox34 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox32 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox31 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox38 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbCanSellGeiger As System.Windows.Forms.CheckBox
+    Friend WithEvents cbCorpseLine As System.Windows.Forms.CheckBox
+    Friend WithEvents cbObjCanSeeObj As System.Windows.Forms.CheckBox
+    Friend WithEvents cbDrugExploit As System.Windows.Forms.CheckBox
+    Friend WithEvents cbRemoveCriticalTime As System.Windows.Forms.CheckBox
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents NumericUpDown5 As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label24 As System.Windows.Forms.Label
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents NumericUpDown6 As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label21 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox11 As System.Windows.Forms.ComboBox
-    Friend WithEvents CheckBox35 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox37 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbSaveInCombat As System.Windows.Forms.ComboBox
+    Friend WithEvents cbPartySkills As System.Windows.Forms.CheckBox
+    Friend WithEvents cbNumbersInDialogue As System.Windows.Forms.CheckBox
     Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents cbAllowUnsafe As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbDebugLog As System.Windows.Forms.ComboBox
+    Friend WithEvents cbCanSeeHear As System.Windows.Forms.CheckBox
+    Friend WithEvents cbHeroAppearMod As System.Windows.Forms.CheckBox
 
 End Class
