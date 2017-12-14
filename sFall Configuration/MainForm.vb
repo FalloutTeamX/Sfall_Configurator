@@ -190,6 +190,7 @@ Public Class MainForm
         End If
 
         cbReverseMouseButtons.Checked = CBool(GetIni_Param("ReverseMouseButtons"))
+        numMouseSensitivity.Value = CDec(GetIni_Param("MouseSensitivity"))
 
         'Advanced
         cbObjCanSeeObj.Checked = CBool(GetIni_Param("ObjCanSeeObj_ShootThru_Fix"))
@@ -555,14 +556,12 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub ResolutionChanged(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown3.ValueChanged, NumericUpDown4.ValueChanged
-        If FormReady Then
+    Private Sub ResolutionChanged(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown3.Leave, NumericUpDown4.Leave
             SetIni_ParamValue("GraphicsHeight", NumericUpDown3.Value)
             SetIni_ParamValue("GraphicsWidth", NumericUpDown4.Value)
 
             SetIni_ParamValue(F2res_ini, "SCR_HEIGHT", NumericUpDown3.Value)
             SetIni_ParamValue(F2res_ini, "SCR_WIDTH", NumericUpDown4.Value)
-        End If
     End Sub
 
     Private Sub CheckBox14_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles CheckBox14.CheckedChanged
@@ -605,12 +604,12 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub DialogPanelAnimDelay(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown1.ValueChanged
-        If FormReady Then SetIni_ParamValue("DialogPanelAnimDelay", NumericUpDown1.Value)
+    Private Sub DialogPanelAnimDelay(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown1.Leave
+        SetIni_ParamValue("DialogPanelAnimDelay", NumericUpDown1.Value)
     End Sub
 
-    Private Sub CombatPanelAnimDelay(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown2.ValueChanged
-        If FormReady Then SetIni_ParamValue("CombatPanelAnimDelay", NumericUpDown2.Value)
+    Private Sub CombatPanelAnimDelay(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown2.Leave
+        SetIni_ParamValue("CombatPanelAnimDelay", NumericUpDown2.Value)
     End Sub
 
     Private Sub DebugMode(ByVal sender As Object, ByVal e As EventArgs) Handles cbDebugMode.CheckedChanged
@@ -698,6 +697,10 @@ Public Class MainForm
         End If
     End Sub
 
+    Private Sub numMouseSensitivity_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numMouseSensitivity.Leave
+        SetIni_ParamValue("MouseSensitivity", numMouseSensitivity.Value)
+    End Sub
+
     Private Sub ComboBox8_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ComboBox8.SelectedIndexChanged
         If ComboBox8.SelectedIndex Then
             ToolTip2.Active = False
@@ -722,6 +725,7 @@ Public Class MainForm
             Dim res() As String = str.Split("X")
             NumericUpDown4.Value = res(0).Trim
             NumericUpDown3.Value = res(1).Trim
+            ResolutionChanged(Nothing, Nothing)
         End If
     End Sub
 
@@ -833,8 +837,8 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub NPCsTryToSpendExtraAP(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown6.ValueChanged
-        If FormReady Then SetIni_ParamValue("NPCsTryToSpendExtraAP", NumericUpDown6.Value)
+    Private Sub NPCsTryToSpendExtraAP(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown6.Leave
+        SetIni_ParamValue("NPCsTryToSpendExtraAP", NumericUpDown6.Value)
     End Sub
 
     Private Sub DrugExploit(ByVal sender As Object, ByVal e As EventArgs) Handles cbDrugExploit.CheckedChanged
@@ -845,8 +849,8 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub RiflescopePenalty(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown5.ValueChanged
-        If FormReady Then SetIni_ParamValue("RiflescopePenalty", NumericUpDown5.Value)
+    Private Sub RiflescopePenalty(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown5.Leave
+        SetIni_ParamValue("RiflescopePenalty", NumericUpDown5.Value)
     End Sub
 
     Private Sub CanSeeHear(ByVal sender As Object, ByVal e As EventArgs) Handles cbCanSeeHear.CheckedChanged
@@ -886,20 +890,22 @@ Public Class MainForm
 
     Private Sub Button4_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button4.Click
         Dim game_exe As String = GetIni_Param("sFallConfigatorGameExe")
+
         If game_exe <> Nothing AndAlso File.Exists(App_Path & "\" & game_exe) Then
-            Check_CRC(game_exe)
-        Else
-            If File.Exists(App_Path & "\fallout2.exe") Then
-                Check_CRC("fallout2.exe")
-            Else
-                MsgBox("Required file fallout2.exe", , "Select Game Exe")
-                OpenFileDialog1.Filter = "Exe files|*.exe"
-                OpenFileDialog1.InitialDirectory = App_Path
-                If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
-                SetGameExe_Ini(OpenFileDialog1.SafeFileName)
-                Check_CRC(OpenFileDialog1.SafeFileName)
-            End If
+            GoTo CHECK
         End If
+
+        game_exe = "fallout2.exe" 'default exe
+        If Not (File.Exists(App_Path & "\" & game_exe)) Then
+            MsgBox("An executable game file is required.", , "Select Game Exe")
+            OpenFileDialog1.Filter = "Exe files|*.exe"
+            OpenFileDialog1.InitialDirectory = App_Path
+            If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
+            game_exe = OpenFileDialog1.SafeFileName
+            SetGameExe_Ini(game_exe)
+        End If
+CHECK:
+        Check_CRC(game_exe)
     End Sub
 
     Private Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button2.Click
@@ -957,23 +963,7 @@ EXITAPP:
     End Sub
 
     Private Sub ListView1_MouseDoubleClick(ByVal sender As Object, ByVal e As MouseEventArgs) Handles ListView1.MouseDoubleClick
-        Dim promt() As String = {"Введите описание для ", "Input description for "}
-
-        Dim indx As Byte = CByte(ToolTip1.Active)
-        If indx > 1 Then indx = 1
-
-        Dim Name As String = ListView1.FocusedItem.Text 'ListView1.FocusedItem.SubItems(1).Text
-        Dim desc As String = InputBox(promt(indx) & Name, , ListView1.Items(ListView1.FocusedItem.Index).SubItems(1).Text) '
-
-        If desc <> Nothing AndAlso desc <> ListView1.FocusedItem.SubItems(1).Text Then
-            ListView1.FocusedItem.SubItems(1).Text = desc
-            Dim desc_dat() As String = {Name, desc}
-            File.WriteAllLines(App_Path & "\desc.id", desc_dat)
-            Shell(App_Path & "\dat.unp d " & Name & " desc.id", AppWinStyle.Hide, True, 1000)
-            Shell(App_Path & "\dat.unp a " & Name & " desc.id", AppWinStyle.Hide, True, 1000)
-            File.Delete(App_Path & "\desc.id")
-        End If
-
+        InputDesc()
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(ByVal sender As Object, ByVal e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked

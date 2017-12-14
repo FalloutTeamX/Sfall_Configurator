@@ -10,28 +10,50 @@ Module M_Module
     Friend App_Path As String = Application.StartupPath
 
     Friend Sub DatDesc()
-        Dim n As Integer
+        Dim path As String = App_Path & "\dat.unp"
 
-        File.WriteAllBytes(App_Path & "\dat.unp", My.Resources.dat2)
-        File.SetAttributes(App_Path & "\dat.unp", FileAttributes.Hidden)
+        File.Delete(path)
+        File.WriteAllBytes(path, My.Resources.dat2)
+        File.SetAttributes(path, FileAttributes.Hidden)
 
-        Dim ListDat() As String = Directory.GetFiles(App_Path, "*.dat", SearchOption.TopDirectoryOnly)
-        For Each dat In ListDat
-            Dim z As Integer = dat.LastIndexOf("\") + 1
-            dat = dat.Substring(z, dat.Length - z)
-            'If dat.ToLower <> "master.dat" And dat <> "critter.dat" Then
-            Shell(App_Path & "\dat.unp x " & dat & " desc.id", AppWinStyle.Hide, True)
-            Dim desc() As String = File.ReadAllLines(App_Path & "\desc.id")
-            MainForm.ListView1.Items.Add(dat)
-            If desc(1) = Nothing Then
-                MainForm.ListView1.Items(n).SubItems.Add("<unknown>") '& desc(1)
-            Else
-                MainForm.ListView1.Items(n).SubItems.Add(desc(1))
+        For Each datFile In Directory.GetFiles(App_Path, "*.dat", SearchOption.TopDirectoryOnly)
+            Dim z As Integer = datFile.LastIndexOf("\") + 1
+            datFile = datFile.Substring(z)
+
+            Shell(App_Path & "\dat.unp x " & datFile & " desc.id", AppWinStyle.Hide, True, 1000)
+
+            Dim descID As String() = Nothing
+            path = App_Path & "\desc.id"
+            If File.Exists(path) Then
+                descID = File.ReadAllLines(path)
             End If
-            File.Delete(App_Path & "\desc.id")
-            n += 1
-            'End If
+            If descID Is Nothing Then
+                MainForm.ListView1.Items.Add(New ListViewItem(New String() {datFile, "<no description>"}))
+            Else
+                MainForm.ListView1.Items.Add(New ListViewItem(descID))
+            End If
+            File.Delete(path)
         Next
+    End Sub
+
+    Friend Sub InputDesc()
+        Dim promt As String() = {"Введите описание для ", "Input description for "}
+
+        Dim indx As Byte = CByte(MainForm.ToolTip1.Active)
+        If indx > 1 Then indx = 1
+
+        Dim Name As String = MainForm.ListView1.FocusedItem.Text
+        Dim desc As String = InputBox(promt(indx) & Name, , MainForm.ListView1.Items(
+                                      MainForm.ListView1.FocusedItem.Index).SubItems(1).Text)
+
+        If desc <> String.Empty AndAlso desc <> MainForm.ListView1.FocusedItem.SubItems(1).Text Then
+            MainForm.ListView1.FocusedItem.SubItems(1).Text = desc
+            Dim desc_dat As String() = {Name, desc}
+            File.WriteAllLines(App_Path & "\desc.id", desc_dat)
+            Shell(App_Path & "\dat.unp d " & Name & " desc.id", AppWinStyle.Hide, True, 1000)
+            Shell(App_Path & "\dat.unp a " & Name & " desc.id", AppWinStyle.Hide, True, 1000)
+            File.Delete(App_Path & "\desc.id")
+        End If
     End Sub
 
     Friend Sub Save_ini()
@@ -209,10 +231,12 @@ Module M_Module
         Dim n As Integer = GetIni_Section_Line("[Debugging]")
         If n = -1 Then Exit Sub
 
-        Dim val As Byte = CByte(MainForm.tbExtraCRC.Enabled _
+        Dim val As Byte = (MainForm.tbExtraCRC.Enabled _
                           OrElse MainForm.cbSkipSize.Checked _
                           OrElse MainForm.cbDebugMode.Checked _
                           OrElse MainForm.cbAllowUnsafe.Checked)
+
+        If val > 1 Then val = 1
 
         For n = n + 1 To Ddraw_ini.Count - 1
             If GetIni_NameParam(Ddraw_ini(n)) = "Enable" Then

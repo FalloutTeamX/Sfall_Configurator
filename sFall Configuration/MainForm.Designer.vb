@@ -103,6 +103,8 @@ Partial Class MainForm
         Me.ComboBox8 = New System.Windows.Forms.ComboBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.numMouseSensitivity = New System.Windows.Forms.NumericUpDown()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.cmbXltTable = New System.Windows.Forms.ComboBox()
@@ -147,6 +149,7 @@ Partial Class MainForm
         Me.TabPage3.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        CType(Me.numMouseSensitivity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TabPage5.SuspendLayout()
@@ -980,6 +983,7 @@ Partial Class MainForm
         Me.NumericUpDown2.Name = "NumericUpDown2"
         Me.NumericUpDown2.Size = New System.Drawing.Size(49, 20)
         Me.NumericUpDown2.TabIndex = 6
+        Me.NumericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.ToolTip2.SetToolTip(Me.NumericUpDown2, "ниже - быстрее")
         Me.ToolTip1.SetToolTip(Me.NumericUpDown2, "lower - faster ")
         '
@@ -991,6 +995,7 @@ Partial Class MainForm
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(49, 20)
         Me.NumericUpDown1.TabIndex = 6
+        Me.NumericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.ToolTip2.SetToolTip(Me.NumericUpDown1, "ниже - быстрее")
         Me.ToolTip1.SetToolTip(Me.NumericUpDown1, "lower - faster")
         '
@@ -1063,6 +1068,7 @@ Partial Class MainForm
         Me.NumericUpDown4.Name = "NumericUpDown4"
         Me.NumericUpDown4.Size = New System.Drawing.Size(57, 20)
         Me.NumericUpDown4.TabIndex = 6
+        Me.NumericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.NumericUpDown4.Value = New Decimal(New Integer() {640, 0, 0, 0})
         '
         'NumericUpDown3
@@ -1073,6 +1079,7 @@ Partial Class MainForm
         Me.NumericUpDown3.Name = "NumericUpDown3"
         Me.NumericUpDown3.Size = New System.Drawing.Size(57, 20)
         Me.NumericUpDown3.TabIndex = 6
+        Me.NumericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.NumericUpDown3.Value = New Decimal(New Integer() {480, 0, 0, 0})
         '
         'cbGPUBlt
@@ -1169,13 +1176,13 @@ Partial Class MainForm
         Me.GroupBox5.Controls.Add(Me.Label15)
         Me.GroupBox5.Location = New System.Drawing.Point(188, 129)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(96, 87)
+        Me.GroupBox5.Size = New System.Drawing.Size(96, 99)
         Me.GroupBox5.TabIndex = 5
         Me.GroupBox5.TabStop = False
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(6, 57)
+        Me.Button5.Location = New System.Drawing.Point(6, 69)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(84, 23)
         Me.Button5.TabIndex = 4
@@ -1208,6 +1215,8 @@ Partial Class MainForm
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.Label12)
+        Me.GroupBox4.Controls.Add(Me.numMouseSensitivity)
         Me.GroupBox4.Controls.Add(Me.Label18)
         Me.GroupBox4.Controls.Add(Me.Label17)
         Me.GroupBox4.Controls.Add(Me.cmbXltTable)
@@ -1215,15 +1224,39 @@ Partial Class MainForm
         Me.GroupBox4.Controls.Add(Me.cmbXltKey)
         Me.GroupBox4.Location = New System.Drawing.Point(5, 129)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(177, 87)
+        Me.GroupBox4.Size = New System.Drawing.Size(177, 99)
         Me.GroupBox4.TabIndex = 2
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Input in Game"
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(10, 59)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(106, 13)
+        Me.Label12.TabIndex = 6
+        Me.Label12.Text = "Mouse Sensitivity - %"
+        '
+        'numMouseSensitivity
+        '
+        Me.numMouseSensitivity.Increment = New Decimal(New Integer() {5, 0, 0, 0})
+        Me.numMouseSensitivity.Location = New System.Drawing.Point(119, 56)
+        Me.numMouseSensitivity.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.numMouseSensitivity.Minimum = New Decimal(New Integer() {1000, 0, 0, -2147483648})
+        Me.numMouseSensitivity.Name = "numMouseSensitivity"
+        Me.numMouseSensitivity.Size = New System.Drawing.Size(49, 20)
+        Me.numMouseSensitivity.TabIndex = 5
+        Me.numMouseSensitivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ToolTip2.SetToolTip(Me.numMouseSensitivity, "Регулирует чувствительность мыши в процентах от нормального (Отрицательные значен" & _
+                "ия инвертируют оси мыши).")
+        Me.ToolTip1.SetToolTip(Me.numMouseSensitivity, "Adjusts mouse sensitivity to some percentage of normal. (Negative values are vali" & _
+                "d, if you want your mouse axis reversed for some reason)")
+        '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(116, 18)
+        Me.Label18.Location = New System.Drawing.Point(116, 14)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(52, 13)
         Me.Label18.TabIndex = 4
@@ -1233,7 +1266,7 @@ Partial Class MainForm
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(3, 18)
+        Me.Label17.Location = New System.Drawing.Point(3, 14)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(111, 13)
         Me.Label17.TabIndex = 3
@@ -1246,7 +1279,7 @@ Partial Class MainForm
         Me.cmbXltTable.Enabled = False
         Me.cmbXltTable.FormattingEnabled = True
         Me.cmbXltTable.Items.AddRange(New Object() {"Win", "Dos"})
-        Me.cmbXltTable.Location = New System.Drawing.Point(119, 34)
+        Me.cmbXltTable.Location = New System.Drawing.Point(119, 30)
         Me.cmbXltTable.Name = "cmbXltTable"
         Me.cmbXltTable.Size = New System.Drawing.Size(49, 21)
         Me.cmbXltTable.TabIndex = 2
@@ -1254,7 +1287,7 @@ Partial Class MainForm
         'cbReverseMouseButtons
         '
         Me.cbReverseMouseButtons.AutoSize = True
-        Me.cbReverseMouseButtons.Location = New System.Drawing.Point(6, 61)
+        Me.cbReverseMouseButtons.Location = New System.Drawing.Point(9, 78)
         Me.cbReverseMouseButtons.Name = "cbReverseMouseButtons"
         Me.cbReverseMouseButtons.Size = New System.Drawing.Size(140, 17)
         Me.cbReverseMouseButtons.TabIndex = 0
@@ -1269,7 +1302,7 @@ Partial Class MainForm
         Me.cmbXltKey.Enabled = False
         Me.cmbXltKey.FormattingEnabled = True
         Me.cmbXltKey.Items.AddRange(New Object() {"Num Lock", "Caps Lock", "Scroll Lock"})
-        Me.cmbXltKey.Location = New System.Drawing.Point(6, 34)
+        Me.cmbXltKey.Location = New System.Drawing.Point(6, 30)
         Me.cmbXltKey.Name = "cmbXltKey"
         Me.cmbXltKey.Size = New System.Drawing.Size(102, 21)
         Me.cmbXltKey.TabIndex = 1
@@ -1315,7 +1348,8 @@ Partial Class MainForm
         Me.cmbDebugLog.Name = "cmbDebugLog"
         Me.cmbDebugLog.Size = New System.Drawing.Size(132, 21)
         Me.cmbDebugLog.TabIndex = 4
-        Me.ToolTip2.SetToolTip(Me.cmbDebugLog, "Создавать файл debug.log с отладочной информацией.")
+        Me.ToolTip1.SetToolTip(Me.cmbDebugLog, "Mode for output debugging log.")
+        Me.ToolTip2.SetToolTip(Me.cmbDebugLog, "Режим для вывода журнала отладки.")
         '
         'Button4
         '
@@ -1381,8 +1415,8 @@ Partial Class MainForm
         Me.cbDebugMode.Size = New System.Drawing.Size(88, 17)
         Me.cbDebugMode.TabIndex = 0
         Me.cbDebugMode.Text = "Debug Mode"
-        Me.ToolTip1.SetToolTip(Me.cbDebugMode, "Enable debugging output log.")
-        Me.ToolTip2.SetToolTip(Me.cbDebugMode, "Включить режим для вывода журнала отладки.")
+        Me.ToolTip1.SetToolTip(Me.cbDebugMode, "Enable debugging mode.")
+        Me.ToolTip2.SetToolTip(Me.cbDebugMode, "Включить режим отладки.")
         Me.cbDebugMode.UseVisualStyleBackColor = True
         '
         'GroupBox2
@@ -1390,28 +1424,28 @@ Partial Class MainForm
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.LinkLabel1)
         Me.GroupBox2.Controls.Add(Me.Label11)
-        Me.GroupBox2.Location = New System.Drawing.Point(5, 222)
+        Me.GroupBox2.Location = New System.Drawing.Point(5, 234)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(279, 84)
+        Me.GroupBox2.Size = New System.Drawing.Size(279, 71)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "О программке"
+        Me.GroupBox2.Text = "Info"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.ForeColor = System.Drawing.SystemColors.MenuHighlight
-        Me.Label7.Location = New System.Drawing.Point(30, 38)
+        Me.Label7.Location = New System.Drawing.Point(35, 32)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(226, 13)
+        Me.Label7.Size = New System.Drawing.Size(205, 13)
         Me.Label7.TabIndex = 2
-        Me.Label7.Text = "Release ver. 23/12/2017 by Fakels (Mr.Stalin)"
+        Me.Label7.Text = "Release 14/12/2017 by Fakels (Mr.Stalin)"
         '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.LinkLabel1.Location = New System.Drawing.Point(77, 60)
+        Me.LinkLabel1.Location = New System.Drawing.Point(78, 50)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(125, 16)
         Me.LinkLabel1.TabIndex = 1
@@ -1422,7 +1456,7 @@ Partial Class MainForm
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label11.Location = New System.Drawing.Point(22, 16)
+        Me.Label11.Location = New System.Drawing.Point(18, 15)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(240, 13)
         Me.Label11.TabIndex = 0
@@ -1564,6 +1598,7 @@ Partial Class MainForm
         Me.GroupBox5.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        CType(Me.numMouseSensitivity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -1679,5 +1714,7 @@ Partial Class MainForm
     Friend WithEvents cmbDebugLog As System.Windows.Forms.ComboBox
     Friend WithEvents cbCanSeeHear As System.Windows.Forms.CheckBox
     Friend WithEvents cbHeroAppearMod As System.Windows.Forms.CheckBox
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents numMouseSensitivity As System.Windows.Forms.NumericUpDown
 
 End Class
