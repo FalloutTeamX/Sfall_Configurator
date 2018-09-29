@@ -9,6 +9,19 @@ Module M_Module
 
     Friend App_Path As String = Application.StartupPath
 
+    Friend f2_cfg As List(Of String) = New List(Of String)
+    Friend f2_cfgFile As String = "\fallout2.cfg"
+    Friend f2cfgIsPatch = False
+
+    Private debugSection() As String = {
+            "[debug]",
+            "mode=environment",
+            "output_map_data_info=0",
+            "show_load_info=0",
+            "show_script_messages=1",
+            "show_tile_num=0" & vbNewLine
+    }
+
     Friend Sub DatDesc()
         Dim path As String = App_Path & "\dat.unp"
 
@@ -60,12 +73,21 @@ Module M_Module
         File.WriteAllLines(App_Path & "\ddraw.ini", Ddraw_ini.ToArray, Encoding.Default)
         If F2res_ini IsNot Nothing Then File.WriteAllLines(App_Path & "\f2_res.ini", F2res_ini, Encoding.Default)
         If mods_ini IsNot Nothing Then File.WriteAllLines(App_Path & "\sfall-mods.ini", mods_ini, Encoding.Default)
+        If f2cfgIsPatch Then File.WriteAllLines(App_Path & f2_cfgFile, f2_cfg.ToArray, Encoding.Default)
     End Sub
 
     Friend Sub Set_ListBoxRes()
-        Dim indx As Integer = MainForm.ListBox1.Items.IndexOf(CStr(MainForm.NumericUpDown4.Value) + " X " _
-                                                            + CStr(MainForm.NumericUpDown3.Value))
-        MainForm.ListBox1.SelectedIndex = indx
+        Dim index As Integer = -1
+        Dim res As String = MainForm.NumericUpDown4.Value.ToString + " X " + MainForm.NumericUpDown3.Value.ToString
+        For i As Integer = 0 To MainForm.ListBox1.Items.Count - 1
+            If MainForm.ListBox1.Items(i).ToString.Contains(res) Then
+                index = i
+                Exit For
+            End If
+        Next
+        If index <> -1 Then
+            MainForm.ListBox1.SelectedIndex = index
+        End If
     End Sub
 
     Friend Sub Check_Exe()
@@ -144,6 +166,7 @@ Module M_Module
             Return Nothing
         End If
 
+        param = param.ToLower
         For n As Integer = 0 To UBound(iniData)
             If GetIni_NameParam(iniData(n)) = param Then
                 Return GetIni_ValueParam(iniData(n))
@@ -154,6 +177,7 @@ Module M_Module
     End Function
 
     Friend Function GetIni_Param(ByVal param As String) As String
+        param = param.ToLower
         For Each line As String In Ddraw_ini
             If GetIni_NameParam(line) = param Then
                 Return GetIni_ValueParam(line)
@@ -166,7 +190,7 @@ Module M_Module
         Dim m As Integer = InStr(2, str, "=")
         If m = 0 Then Return Nothing
         'возвращаем
-        Return str.Substring(0, m - 1)
+        Return str.Substring(0, m - 1).ToLower
     End Function
 
     Friend Function GetIni_ValueParam(ByVal str As String) As String
@@ -181,6 +205,7 @@ Module M_Module
             Exit Sub
         End If
 
+        param = param.ToLower
         For n As Integer = 0 To UBound(iniData)
             If GetIni_NameParam(iniData(n)) = param Then
                 Dim m As Integer = iniData(n).IndexOf("=", 2)
@@ -193,6 +218,7 @@ Module M_Module
     End Sub
 
     Friend Sub SetIni_ParamValue(ByVal param As String, ByVal value As String)
+        param = param.ToLower
         For n As Integer = 0 To Ddraw_ini.Count - 1
             If GetIni_NameParam(Ddraw_ini(n)) = param Then
                 Set_Value(n, value)
@@ -209,6 +235,7 @@ Module M_Module
     End Sub
 
     Friend Function GetIni_Param_Line(ByVal param As String) As Integer
+        param = param.ToLower
         For n As Integer = 0 To Ddraw_ini.Count - 1
             If GetIni_NameParam(Ddraw_ini(n)) = param Then
                 Return n
@@ -217,9 +244,14 @@ Module M_Module
         Return -1
     End Function
 
-    Friend Function GetIni_Section_Line(ByVal section As String) As Integer
-        For n As Integer = 0 To Ddraw_ini.Count - 1
-            If Ddraw_ini(n) = section Then
+    Friend Function Get_Section_Line(ByVal section As String) As Integer
+        Return GetIni_Section_Line(section, Ddraw_ini)
+    End Function
+
+    Friend Function GetIni_Section_Line(ByVal section As String, ByRef ini As List(Of String)) As Integer
+        section = section.ToLower()
+        For n As Integer = 0 To ini.Count - 1
+            If ini(n).ToLower = section Then
                 Return n
             End If
         Next
@@ -228,7 +260,7 @@ Module M_Module
 
     'for sfall v3.7+
     Friend Sub EnableDebug()
-        Dim n As Integer = GetIni_Section_Line("[Debugging]")
+        Dim n As Integer = Get_Section_Line("[Debugging]")
         If n = -1 Then Exit Sub
 
         Dim val As Byte = (MainForm.tbExtraCRC.Enabled _
@@ -239,10 +271,23 @@ Module M_Module
         If val > 1 Then val = 1
 
         For n = n + 1 To Ddraw_ini.Count - 1
-            If GetIni_NameParam(Ddraw_ini(n)) = "Enable" Then
+            If GetIni_NameParam(Ddraw_ini(n)) = "enable" Then
                 Ddraw_ini(n) = "Enable=" + CStr(val)
             End If
         Next
     End Sub
 
+    Friend Sub SetDebugSection()
+        Dim cfgFile As String = GetIni_Param("ConfigFile")
+        If cfgFile <> Nothing Then
+            f2_cfgFile = "\" & cfgFile
+        End If
+        If File.Exists(App_Path & f2_cfgFile) = False Then Exit Sub
+
+        f2_cfg = File.ReadAllLines(App_Path & f2_cfgFile, Encoding.Default).ToList
+        If GetIni_Section_Line("[Debug]", f2_cfg) = -1 Then
+            f2_cfg.InsertRange(0, debugSection)
+            f2cfgIsPatch = True
+        End If
+    End Sub
 End Module

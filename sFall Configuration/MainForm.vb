@@ -31,14 +31,19 @@ Public Class MainForm
         End If
 
         ListBox1.Items.AddRange(Resolution.GetResolution)
-
         Initialization()
-        FormReady = True
+    End Sub
 
+    Private Sub MainForm_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
+        FormReady = True
+    End Sub
+
+    Private Sub MainForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Set_ListBoxRes()
     End Sub
 
     Private Sub Initialization()
-        Dim valueBool As Boolean, valueStr As String, str() As String
+        Dim valueStr As String, str() As String
 
         If Ddraw_ini.Count = 0 Then
             DatDesc()
@@ -51,11 +56,17 @@ Public Class MainForm
             ComboBox8.SelectedIndex = 0
         End If
 
-        On Error Resume Next
+        'On Error Resume Next
 
         cbDisplayKarma.Checked = CBool(GetIni_Param("DisplayKarmaChanges"))
         cbScrollingQuestsList.Checked = CBool(GetIni_Param("UseScrollingQuestsList"))
-        cbStackEmptyWeapons.Checked = CBool(GetIni_Param("StackEmptyWeapons"))
+
+        valueStr = GetIni_Param("StackEmptyWeapons")
+        If valueStr <> Nothing Then
+            cbStackEmptyWeapons.Enabled = True
+            cbStackEmptyWeapons.CheckState = CheckState.Unchecked
+            cbStackEmptyWeapons.Checked = CBool(valueStr)
+        End If
 
         valueStr = GetIni_Param("ToggleItemHighlightsKey")
         If valueStr = Nothing Then
@@ -74,9 +85,11 @@ Public Class MainForm
             cbBonusDamage.Checked = CBool(valueStr)
         End If
         '
-        valueStr = GetIni_Param("ControlCombat")
+        valueStr = GetIni_Param(mods_ini, "Mode")
         If valueStr = Nothing Then
-            valueStr = GetIni_Param(mods_ini, "Mode")
+            valueStr = GetIni_Param("ControlCombat")
+        ElseIf GetIni_Param(mods_ini, "DisplayName") <> Nothing Then
+            nudShowNameBar.Enabled = True
         End If
         If valueStr <> Nothing Then
             cbControlCombat.Enabled = True
@@ -84,9 +97,9 @@ Public Class MainForm
         End If
         '
         Dim chBool As Boolean
-        Dim n As Integer = GetIni_Section_Line("[Speed]")
+        Dim n As Integer = Get_Section_Line("[Speed]")
         For n = n + 1 To Ddraw_ini.Count - 1
-            If GetIni_NameParam(Ddraw_ini(n)) = "Enable" Then
+            If GetIni_NameParam(Ddraw_ini(n)) = "enable" Then
                 chBool = CBool(GetIni_ValueParam(Ddraw_ini(n)))
                 Exit For
             End If
@@ -94,8 +107,14 @@ Public Class MainForm
         If GetIni_Param("SpeedMultiInitial") = "200" And chBool Then cbSpeedMultiInit.Checked = True
         '
         cbWeaponAmmoCost.Checked = CBool(GetIni_Param("CheckWeaponAmmoCost"))
-        cbReloadWeapon.Checked = CBool(GetIni_Param("ReloadWeaponKey"))
         cbExtraSaveSlots.Checked = CBool(GetIni_Param("ExtraSaveSlots"))
+
+        valueStr = GetIni_Param("ReloadWeaponKey")
+        If valueStr <> Nothing Then
+            cbReloadWeapon.Enabled = True
+            cbReloadWeapon.CheckState = CheckState.Unchecked
+            cbReloadWeapon.Checked = CBool(valueStr)
+        End If
 
         valueStr = GetIni_Param("MotionScannerFlags")
         If valueStr = "4" Then
@@ -135,7 +154,6 @@ Public Class MainForm
 
         NumericUpDown4.Value = GetIni_Param("GraphicsWidth")
         NumericUpDown3.Value = GetIni_Param("GraphicsHeight")
-        Set_ListBoxRes()
         cbGPUBlt.Checked = CBool(GetIni_Param("GPUBlt"))
 
         'CheckBox14.Checked = CBool(GetIni_Param("Use32BitHeadGraphics"))
@@ -337,9 +355,104 @@ Public Class MainForm
             NumericUpDown5.Enabled = True
             NumericUpDown5.Value = valueStr
         End If
+        valueStr = GetIni_Param("OpenAndPassUnlockedDoors")
+        If valueStr <> Nothing Then
+            cbOpenAndPassUnlockedDoors.Enabled = True
+            cbOpenAndPassUnlockedDoors.CheckState = CheckState.Unchecked
+            cbOpenAndPassUnlockedDoors.Checked = CBool(valueStr)
+        End If
+
+        'for v4
+        valueStr = GetIni_Param("FullItemDescInBarter")
+        If valueStr <> Nothing Then
+            cbFullItemDescInBarter.Enabled = True
+            cbFullItemDescInBarter.CheckState = CheckState.Unchecked
+            cbFullItemDescInBarter.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("DisplayElectricalResist")
+        If valueStr <> Nothing Then
+            cbDisplayElectricalDmgStat.Enabled = True
+            cbDisplayElectricalDmgStat.CheckState = CheckState.Unchecked
+            cbDisplayElectricalDmgStat.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("DisplaySecondWeaponRange")
+        If valueStr <> Nothing Then
+            cbDisplayWeaponRange.Enabled = True
+            cbDisplayWeaponRange.CheckState = CheckState.Unchecked
+            cbDisplayWeaponRange.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("PartyMemberTakeOffItem")
+        If valueStr <> Nothing Then
+            cbPartyMemberTakeOffItem.Enabled = True
+            cbPartyMemberTakeOffItem.CheckState = CheckState.Unchecked
+            cbPartyMemberTakeOffItem.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("KeepWeaponSelectMode")
+        If valueStr <> Nothing Then
+            cbKeepWeaponSelectMode.Enabled = True
+            cbKeepWeaponSelectMode.CheckState = CheckState.Unchecked
+            cbKeepWeaponSelectMode.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("ItemCounterDefaultMax")
+        If valueStr <> Nothing Then
+            cbItemCounterDefaultMax.Enabled = True
+            cbItemCounterDefaultMax.CheckState = CheckState.Unchecked
+            cbItemCounterDefaultMax.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("TakeBetterWeapons")
+        If valueStr <> Nothing Then
+            cbTakeBetterWeapons.Enabled = True
+            cbTakeBetterWeapons.CheckState = CheckState.Unchecked
+            cbTakeBetterWeapons.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("CheckShotOnMove")
+        If valueStr <> Nothing Then
+            cbCheckShotOnMove.Enabled = True
+            cbCheckShotOnMove.CheckState = CheckState.Unchecked
+            cbCheckShotOnMove.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("ItemPickUpFix")
+        If valueStr <> Nothing Then
+            cbItemPickUpFix.Enabled = True
+            cbItemPickUpFix.CheckState = CheckState.Unchecked
+            cbItemPickUpFix.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("SkipLoadingGameSetting")
+        If valueStr <> Nothing Then
+            cbSkipLoadingGameSetting.Enabled = True
+            cbSkipLoadingGameSetting.CheckState = CheckState.Unchecked
+            cbSkipLoadingGameSetting.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("UseScrollWheel")
+        If valueStr <> Nothing Then
+            cbUseScrollWheel.Enabled = True
+            cbUseScrollWheel.CheckState = CheckState.Unchecked
+            cbUseScrollWheel.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("ItemFastMoveKey")
+        If valueStr <> Nothing Then
+            cbItemFastMoveKey.Enabled = True
+            cbItemFastMoveKey.CheckState = CheckState.Unchecked
+            If valueStr.StartsWith("0x") Then
+                valueStr = "&H" & valueStr.Remove(0, 2)
+            End If
+            If Val(valueStr) > 0 Then
+                cbItemFastMoveKey.Checked = True
+            End If
+        End If
+        valueStr = GetIni_Param("AutoQuickSavePage")
+        If valueStr <> Nothing Then
+            If cmbQuickSave.SelectedIndex > 0 Then cmbQuickSavePage.Enabled = cbExtraSaveSlots.Checked
+            cmbQuickSavePage.Text = valueStr
+        End If
+        valueStr = GetIni_Param(mods_ini, "DisplayName")
+        If valueStr <> Nothing Then
+            nudShowNameBar.Enabled = True
+            nudShowNameBar.Value = valueStr
+        End If
 
         'for HRP
-        If F2res_ini.Length > 1 Then
+        If F2res_ini IsNot Nothing Then
             cbIsGrayScale.Enabled = True
             cbIsGrayScale.CheckState = CheckState.Unchecked
             cbIsGrayScale.Checked = CBool(GetIni_Param(F2res_ini, "IS_GRAY_SCALE"))
@@ -351,6 +464,7 @@ Public Class MainForm
 
     Private Sub cbReloadWeapon_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbReloadWeapon.CheckedChanged
         If FormReady Then
+            cbReloadWeapon.ForeColor = Color.MediumVioletRed
             Value = cbReloadWeapon.Checked
             If Value > 0 Then Value = 17 'DIK_W
             SetIni_ParamValue("ReloadWeaponKey", Value)
@@ -359,6 +473,7 @@ Public Class MainForm
 
     Private Sub cbWeaponAmmoCost_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbWeaponAmmoCost.CheckedChanged
         If FormReady Then
+            cbWeaponAmmoCost.ForeColor = Color.MediumVioletRed
             Value = cbWeaponAmmoCost.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("CheckWeaponAmmoCost", Value)
@@ -367,6 +482,7 @@ Public Class MainForm
 
     Private Sub cbDisplayKarma_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbDisplayKarma.CheckedChanged
         If FormReady Then
+            cbDisplayKarma.ForeColor = Color.MediumVioletRed
             Value = cbDisplayKarma.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("DisplayKarmaChanges", Value)
@@ -375,6 +491,7 @@ Public Class MainForm
 
     Private Sub cbScrollingQuestsList_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbScrollingQuestsList.CheckedChanged
         If FormReady Then
+            cbScrollingQuestsList.ForeColor = Color.MediumVioletRed
             Value = cbScrollingQuestsList.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("UseScrollingQuestsList", Value)
@@ -383,6 +500,7 @@ Public Class MainForm
 
     Private Sub cbDontTurnOffSneak_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbDontTurnOffSneak.CheckedChanged
         If FormReady Then
+            cbDontTurnOffSneak.ForeColor = Color.MediumVioletRed
             Value = cbDontTurnOffSneak.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("DontTurnOffSneakIfYouRun", Value)
@@ -391,6 +509,7 @@ Public Class MainForm
 
     Private Sub cbFreeWeight_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbFreeWeight.CheckedChanged
         If FormReady Then
+            cbFreeWeight.ForeColor = Color.MediumVioletRed
             Value = cbFreeWeight.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("FreeWeight", Value)
@@ -399,6 +518,7 @@ Public Class MainForm
 
     Private Sub cbEquipArmor_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbEquipArmor.CheckedChanged
         If FormReady Then
+            cbEquipArmor.ForeColor = Color.MediumVioletRed
             Value = cbEquipArmor.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("EquipArmor", Value)
@@ -407,6 +527,7 @@ Public Class MainForm
 
     Private Sub cbStackEmptyWeapons_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbStackEmptyWeapons.CheckedChanged
         If FormReady Then
+            cbStackEmptyWeapons.ForeColor = Color.MediumVioletRed
             Value = cbStackEmptyWeapons.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("StackEmptyWeapons", Value)
@@ -415,6 +536,7 @@ Public Class MainForm
 
     Private Sub cbAutoReloadWeapon_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbAutoReloadWeapon.CheckedChanged
         If FormReady Then
+            cbAutoReloadWeapon.ForeColor = Color.MediumVioletRed
             Value = cbAutoReloadWeapon.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("AutoReloadWeapon", Value)
@@ -423,6 +545,7 @@ Public Class MainForm
 
     Private Sub cbItemHighlightsKey_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbItemHighlightsKey.CheckedChanged
         If FormReady Then
+            cbItemHighlightsKey.ForeColor = Color.MediumVioletRed
             Value = cbItemHighlightsKey.Checked
             If Value > 0 Then Value = 42 'shift key
             SetIni_ParamValue("ToggleItemHighlightsKey", Value)
@@ -433,6 +556,7 @@ Public Class MainForm
 
     Private Sub cbHighlightContainers_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbHighlightContainers.CheckedChanged
         If FormReady Then
+            cbHighlightContainers.ForeColor = Color.MediumVioletRed
             Value = cbHighlightContainers.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("HighlightContainers", Value)
@@ -445,6 +569,7 @@ Public Class MainForm
 
     Private Sub cbBonusDamage_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbBonusDamage.CheckedChanged
         If FormReady Then
+            cbBonusDamage.ForeColor = Color.MediumVioletRed
             Value = cbBonusDamage.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("DisplayBonusDamage", Value)
@@ -453,6 +578,7 @@ Public Class MainForm
 
     Private Sub cbMusicInDialogue_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbMusicInDialogue.CheckedChanged
         If FormReady Then
+            cbMusicInDialogue.ForeColor = Color.MediumVioletRed
             Value = cbMusicInDialogue.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("EnableMusicInDialogue", Value)
@@ -461,6 +587,7 @@ Public Class MainForm
 
     Private Sub cbControlCombat_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbControlCombat.CheckedChanged
         If FormReady Then
+            cbControlCombat.ForeColor = Color.MediumVioletRed
             Value = cbControlCombat.Checked
             If Value > 1 Then Value = 2 'Set to control all party members
             SetIni_ParamValue("ControlCombat", Value)
@@ -471,12 +598,13 @@ Public Class MainForm
 
     Private Sub cbSpeedMultiInit_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbSpeedMultiInit.CheckedChanged
         If FormReady Then
+            cbSpeedMultiInit.ForeColor = Color.MediumVioletRed
             Value = cbSpeedMultiInit.Checked
             If Value > 1 Then Value = 200 Else Value = 100
-            Dim n As Integer = GetIni_Section_Line("[Speed]")
+            Dim n As Integer = Get_Section_Line("[Speed]")
             If n = -1 Then Exit Sub
             For n = n + 1 To Ddraw_ini.Count - 1
-                If GetIni_NameParam(Ddraw_ini(n)) = "Enable" Then Ddraw_ini(n) = "Enable=1"
+                If GetIni_NameParam(Ddraw_ini(n)) = "enable" Then Ddraw_ini(n) = "Enable=1"
             Next
             'SetIni_ParamValue("Enable", 1)
             SetIni_ParamValue("SpeedMultiInitial", Value)
@@ -485,6 +613,8 @@ Public Class MainForm
 
     Private Sub ExtraSaveSlots(ByVal sender As Object, ByVal e As EventArgs) Handles cbExtraSaveSlots.CheckedChanged
         If FormReady Then
+            cbExtraSaveSlots.ForeColor = Color.MediumVioletRed
+            If cmbQuickSave.SelectedIndex > 0 AndAlso cmbQuickSavePage.Text.Length > 0 Then cmbQuickSavePage.Enabled = cbExtraSaveSlots.Checked
             Value = cbExtraSaveSlots.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("ExtraSaveSlots", Value)
@@ -493,6 +623,7 @@ Public Class MainForm
 
     Private Sub QuickSave(ByVal sender As Object, ByVal e As EventArgs) Handles cmbQuickSave.SelectedIndexChanged
         If FormReady Then
+            If cbExtraSaveSlots.Checked AndAlso cmbQuickSavePage.Text.Length > 0 Then cmbQuickSavePage.Enabled = (cmbQuickSave.SelectedIndex > 0)
             SetIni_ParamValue("AutoQuickSave", cmbQuickSave.SelectedIndex)
         End If
     End Sub
@@ -574,6 +705,7 @@ Public Class MainForm
 
     Private Sub GPUBlt(ByVal sender As Object, ByVal e As EventArgs) Handles cbGPUBlt.CheckedChanged
         If FormReady Then
+            cbGPUBlt.ForeColor = Color.MediumVioletRed
             Value = cbGPUBlt.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("GPUBlt", Value)
@@ -582,6 +714,7 @@ Public Class MainForm
 
     Private Sub SkipOpeningMovies(ByVal sender As Object, ByVal e As EventArgs) Handles cbSkipOpeningMovies.CheckedChanged
         If FormReady Then
+            cbSkipOpeningMovies.ForeColor = Color.MediumVioletRed
             Value = cbSkipOpeningMovies.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("SkipOpeningMovies", Value)
@@ -590,6 +723,7 @@ Public Class MainForm
 
     Private Sub SpeedInterfaceCounter(ByVal sender As Object, ByVal e As EventArgs) Handles cbSpeedInterfaceCounter.CheckedChanged
         If FormReady Then
+            cbSpeedInterfaceCounter.ForeColor = Color.MediumVioletRed
             Value = cbSpeedInterfaceCounter.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("SpeedInterfaceCounterAnims", Value)
@@ -598,6 +732,7 @@ Public Class MainForm
 
     Private Sub ExplosionsEmitLight(ByVal sender As Object, ByVal e As EventArgs) Handles cbExplosionsEmitLight.CheckedChanged
         If FormReady Then
+            cbExplosionsEmitLight.ForeColor = Color.MediumVioletRed
             Value = cbExplosionsEmitLight.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("ExplosionsEmitLight", Value)
@@ -617,6 +752,7 @@ Public Class MainForm
             cmbDebugLog.Enabled = cbDebugMode.Checked
             If cbDebugMode.Checked Then
                 SetIni_ParamValue("DebugMode", cmbDebugLog.SelectedIndex + 1)
+                SetDebugSection()
             Else
                 SetIni_ParamValue("DebugMode", 0)
             End If
@@ -632,6 +768,7 @@ Public Class MainForm
 
     Private Sub SkipSize(ByVal sender As Object, ByVal e As EventArgs) Handles cbSkipSize.CheckedChanged
         If FormReady Then
+            cbSkipSize.ForeColor = Color.MediumVioletRed
             Value = cbSkipSize.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("SkipSizeCheck", Value)
@@ -641,6 +778,7 @@ Public Class MainForm
 
     Private Sub AllowUnsafe(ByVal sender As Object, ByVal e As EventArgs) Handles cbAllowUnsafe.CheckedChanged
         If FormReady Then
+            cbAllowUnsafe.ForeColor = Color.MediumVioletRed
             Value = cbAllowUnsafe.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("AllowUnsafeScripting", Value)
@@ -650,12 +788,14 @@ Public Class MainForm
 
     Private Sub ProcessorIdle(ByVal sender As Object, ByVal e As EventArgs) Handles cbProcessorIdle.CheckedChanged
         If FormReady Then
+            cbProcessorIdle.ForeColor = Color.MediumVioletRed
             If cbProcessorIdle.Checked = 0 Then SetIni_ParamValue("ProcessorIdle", -1) Else SetIni_ParamValue("ProcessorIdle", 1)
         End If
     End Sub
 
     Private Sub SingleCore(ByVal sender As Object, ByVal e As EventArgs) Handles cbSingleCore.CheckedChanged
         If FormReady Then
+            cbSingleCore.ForeColor = Color.MediumVioletRed
             Value = cbSingleCore.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("SingleCore", Value)
@@ -691,6 +831,7 @@ Public Class MainForm
 
     Private Sub ReverseMouseButtons(ByVal sender As Object, ByVal e As EventArgs) Handles cbReverseMouseButtons.CheckedChanged
         If FormReady Then
+            cbReverseMouseButtons.ForeColor = Color.MediumVioletRed
             Value = cbReverseMouseButtons.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("ReverseMouseButtons", Value)
@@ -731,6 +872,7 @@ Public Class MainForm
 
     Private Sub IsGrayScale(ByVal sender As Object, ByVal e As EventArgs) Handles cbIsGrayScale.CheckedChanged
         If FormReady Then
+            cbIsGrayScale.ForeColor = Color.MediumVioletRed
             Value = cbIsGrayScale.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue(F2res_ini, "IS_GRAY_SCALE", Value)
@@ -739,6 +881,7 @@ Public Class MainForm
 
     Private Sub AmmoMetre(ByVal sender As Object, ByVal e As EventArgs) Handles cbAmmoMetre.CheckedChanged
         If FormReady Then
+            cbAmmoMetre.ForeColor = Color.MediumVioletRed
             Value = cbAmmoMetre.Checked
             If Value > 1 Then Value = 2
             SetIni_ParamValue(F2res_ini, "ALTERNATE_AMMO_METRE", Value)
@@ -747,6 +890,7 @@ Public Class MainForm
 
     Private Sub InstanWeaponEquip(ByVal sender As Object, ByVal e As EventArgs) Handles cbInstanWeaponEquip.CheckedChanged
         If FormReady Then
+            cbInstanWeaponEquip.ForeColor = Color.MediumVioletRed
             Value = cbInstanWeaponEquip.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("InstantWeaponEquip", Value)
@@ -756,6 +900,7 @@ Public Class MainForm
 
     Private Sub PipboyTimeAnim(ByVal sender As Object, ByVal e As EventArgs) Handles cbPipboyTimeAnim.CheckedChanged
         If FormReady Then
+            cbPipboyTimeAnim.ForeColor = Color.MediumVioletRed
             If cbPipboyTimeAnim.Checked = True Then
                 SetIni_ParamValue("PipboyTimeAnimDelay", 10)
             Else
@@ -787,6 +932,7 @@ Public Class MainForm
 
     Private Sub CanSellGeiger(ByVal sender As Object, ByVal e As EventArgs) Handles cbCanSellGeiger.CheckedChanged
         If FormReady Then
+            cbCanSellGeiger.ForeColor = Color.MediumVioletRed
             Value = cbCanSellGeiger.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("CanSellUsedGeiger", Value)
@@ -795,6 +941,7 @@ Public Class MainForm
 
     Private Sub RemoveCriticalTime(ByVal sender As Object, ByVal e As EventArgs) Handles cbRemoveCriticalTime.CheckedChanged
         If FormReady Then
+            cbRemoveCriticalTime.ForeColor = Color.MediumVioletRed
             Value = cbRemoveCriticalTime.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("RemoveCriticalTimelimits", Value)
@@ -803,6 +950,7 @@ Public Class MainForm
 
     Private Sub NumbersInDialogue(ByVal sender As Object, ByVal e As EventArgs) Handles cbNumbersInDialogue.CheckedChanged
         If FormReady Then
+            cbNumbersInDialogue.ForeColor = Color.MediumVioletRed
             Value = cbNumbersInDialogue.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("NumbersInDialogue", Value)
@@ -811,6 +959,7 @@ Public Class MainForm
 
     Private Sub CorpseLine(ByVal sender As Object, ByVal e As EventArgs) Handles cbCorpseLine.CheckedChanged
         If FormReady Then
+            cbCorpseLine.ForeColor = Color.MediumVioletRed
             Value = cbCorpseLine.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("CorpseLineOfFireFix", Value)
@@ -819,6 +968,7 @@ Public Class MainForm
 
     Private Sub PartySkills(ByVal sender As Object, ByVal e As EventArgs) Handles cbPartySkills.CheckedChanged
         If FormReady Then
+            cbPartySkills.ForeColor = Color.MediumVioletRed
             Value = cbPartySkills.Checked
             If Value >= 1 Then Value = 2
             SetIni_ParamValue("UsePartySkills", Value)
@@ -831,6 +981,7 @@ Public Class MainForm
 
     Private Sub ObjCanSeeObj(ByVal sender As Object, ByVal e As EventArgs) Handles cbObjCanSeeObj.CheckedChanged
         If FormReady Then
+            cbObjCanSeeObj.ForeColor = Color.MediumVioletRed
             Value = cbObjCanSeeObj.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("ObjCanSeeObj_ShootThru_Fix", Value)
@@ -843,6 +994,7 @@ Public Class MainForm
 
     Private Sub DrugExploit(ByVal sender As Object, ByVal e As EventArgs) Handles cbDrugExploit.CheckedChanged
         If FormReady Then
+            cbDrugExploit.ForeColor = Color.MediumVioletRed
             Value = cbDrugExploit.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("DrugExploitFix", Value)
@@ -855,6 +1007,7 @@ Public Class MainForm
 
     Private Sub CanSeeHear(ByVal sender As Object, ByVal e As EventArgs) Handles cbCanSeeHear.CheckedChanged
         If FormReady Then
+            cbCanSeeHear.ForeColor = Color.MediumVioletRed
             Value = cbCanSeeHear.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("CanSeeAndHearFix", Value)
@@ -863,6 +1016,7 @@ Public Class MainForm
 
     Private Sub HeroAppearMod(ByVal sender As Object, ByVal e As EventArgs) Handles cbHeroAppearMod.CheckedChanged
         If FormReady Then
+            cbHeroAppearMod.ForeColor = Color.MediumVioletRed
             Value = cbHeroAppearMod.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("EnableHeroAppearanceMod", Value)
@@ -974,4 +1128,128 @@ EXITAPP:
         File.Delete(App_Path & "\dat.unp")
     End Sub
 
+    Private Sub FullItemDescInBarter(ByVal sender As Object, ByVal e As EventArgs) Handles cbFullItemDescInBarter.CheckedChanged
+        If FormReady Then
+            cbFullItemDescInBarter.ForeColor = Color.MediumVioletRed
+            Value = cbFullItemDescInBarter.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("FullItemDescInBarter", Value)
+        End If
+    End Sub
+
+    Private Sub DisplayElectricalDmgStat(ByVal sender As Object, ByVal e As EventArgs) Handles cbDisplayElectricalDmgStat.CheckedChanged
+        If FormReady Then
+            cbDisplayElectricalDmgStat.ForeColor = Color.MediumVioletRed
+            Value = cbDisplayElectricalDmgStat.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("DisplayElectricalResist", Value)
+        End If
+    End Sub
+
+    Private Sub DisplayWeaponRange(ByVal sender As Object, ByVal e As EventArgs) Handles cbDisplayWeaponRange.CheckedChanged
+        If FormReady Then
+            cbDisplayWeaponRange.ForeColor = Color.MediumVioletRed
+            Value = cbDisplayWeaponRange.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("DisplaySecondWeaponRange", Value)
+        End If
+    End Sub
+
+    Private Sub PartyMemberTakeOffItem(ByVal sender As Object, ByVal e As EventArgs) Handles cbPartyMemberTakeOffItem.CheckedChanged
+        If FormReady Then
+            cbPartyMemberTakeOffItem.ForeColor = Color.MediumVioletRed
+            Value = cbPartyMemberTakeOffItem.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("PartyMemberTakeOffItem", Value)
+        End If
+    End Sub
+
+    Private Sub KeepWeaponSelectMode(ByVal sender As Object, ByVal e As EventArgs) Handles cbKeepWeaponSelectMode.CheckedChanged
+        If FormReady Then
+            cbKeepWeaponSelectMode.ForeColor = Color.MediumVioletRed
+            Value = cbKeepWeaponSelectMode.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("KeepWeaponSelectMode", Value)
+        End If
+    End Sub
+
+    Private Sub ItemCounterDefaultMax(ByVal sender As Object, ByVal e As EventArgs) Handles cbItemCounterDefaultMax.CheckedChanged
+        If FormReady Then
+            cbItemCounterDefaultMax.ForeColor = Color.MediumVioletRed
+            Value = cbItemCounterDefaultMax.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("ItemCounterDefaultMax", Value)
+        End If
+    End Sub
+
+    Private Sub ItemFastMoveKey(ByVal sender As Object, ByVal e As EventArgs) Handles cbItemFastMoveKey.CheckedChanged
+        If FormReady Then
+            cbItemFastMoveKey.ForeColor = Color.MediumVioletRed
+            Value = cbItemFastMoveKey.Checked
+            If Value > 1 Then Value = 29 'Ctrl Key
+            SetIni_ParamValue("ItemFastMoveKey", Value)
+        End If
+    End Sub
+
+    Private Sub TakeBetterWeapons(ByVal sender As Object, ByVal e As EventArgs) Handles cbTakeBetterWeapons.CheckedChanged
+        If FormReady Then
+            cbTakeBetterWeapons.ForeColor = Color.MediumVioletRed
+            Value = cbTakeBetterWeapons.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("TakeBetterWeapons", Value)
+        End If
+    End Sub
+
+    Private Sub CheckShotOnMove(ByVal sender As Object, ByVal e As EventArgs) Handles cbCheckShotOnMove.CheckedChanged
+        If FormReady Then
+            cbCheckShotOnMove.ForeColor = Color.MediumVioletRed
+            Value = cbCheckShotOnMove.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("CheckShotOnMove", Value)
+        End If
+    End Sub
+
+    Private Sub ItemPickUpFix(ByVal sender As Object, ByVal e As EventArgs) Handles cbItemPickUpFix.CheckedChanged
+        If FormReady Then
+            cbItemPickUpFix.ForeColor = Color.MediumVioletRed
+            Value = cbItemPickUpFix.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("ItemPickUpFix", Value)
+        End If
+    End Sub
+
+    Private Sub SkipLoadingGameSetting(ByVal sender As Object, ByVal e As EventArgs) Handles cbSkipLoadingGameSetting.CheckedChanged
+        If FormReady Then
+            cbSkipLoadingGameSetting.ForeColor = Color.MediumVioletRed
+            Value = cbSkipLoadingGameSetting.Checked
+            If Value > 1 Then Value = 2
+            SetIni_ParamValue("SkipLoadingGameSetting", Value)
+        End If
+    End Sub
+
+    Private Sub UseScrollWheel(ByVal sender As Object, ByVal e As EventArgs) Handles cbUseScrollWheel.CheckedChanged
+        If FormReady Then
+            cbUseScrollWheel.ForeColor = Color.MediumVioletRed
+            Value = cbUseScrollWheel.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("UseScrollWheel", Value)
+        End If
+    End Sub
+
+    Private Sub QuickSavePage(ByVal sender As Object, ByVal e As EventArgs) Handles cmbQuickSavePage.SelectedIndexChanged, cmbQuickSavePage.TextUpdate
+        If FormReady Then SetIni_ParamValue("AutoQuickSavePage", cmbQuickSavePage.Text)
+    End Sub
+
+    Private Sub ShowNameBar(ByVal sender As Object, ByVal e As EventArgs) Handles nudShowNameBar.ValueChanged
+        If FormReady Then SetIni_ParamValue(mods_ini, "DisplayName", nudShowNameBar.Value)
+    End Sub
+
+    Private Sub OpenAndPassUnlockedDoors(ByVal sender As Object, ByVal e As EventArgs) Handles cbOpenAndPassUnlockedDoors.CheckedChanged
+        If FormReady Then
+            cbOpenAndPassUnlockedDoors.ForeColor = Color.MediumVioletRed
+            Value = cbOpenAndPassUnlockedDoors.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("OpenAndPassUnlockedDoors", Value)
+        End If
+    End Sub
 End Class

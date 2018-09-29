@@ -60,7 +60,7 @@ Friend Class Resolution
             If DevM.dmPelsWidth >= 640 And DevM.dmDisplayFrequency = 60 And DevM.dmBitsPerPel = 32 And DevM.dmDefaultSource = 0 Then
                 Res.Add(CStr(DevM.dmPelsWidth) & " X " & CStr(DevM.dmPelsHeight))
 #If DEBUG Then
-                DebugRes(DevM)
+                'DebugRes(DevM)
 #End If
             End If
             dMode += 1
