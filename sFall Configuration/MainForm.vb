@@ -56,7 +56,7 @@ Public Class MainForm
             ComboBox8.SelectedIndex = 0
         End If
 
-        'On Error Resume Next
+        On Error Resume Next
 
         cbDisplayKarma.Checked = CBool(GetIni_Param("DisplayKarmaChanges"))
         cbScrollingQuestsList.Checked = CBool(GetIni_Param("UseScrollingQuestsList"))
@@ -99,14 +99,19 @@ Public Class MainForm
         Dim chBool As Boolean
         Dim n As Integer = Get_Section_Line("[Speed]")
         For n = n + 1 To Ddraw_ini.Count - 1
-            If GetIni_NameParam(Ddraw_ini(n)) = "enable" Then
+            If GetIni_NameParam(Ddraw_ini(n)).ToLower = "enable" Then
                 chBool = CBool(GetIni_ValueParam(Ddraw_ini(n)))
                 Exit For
             End If
         Next
         If GetIni_Param("SpeedMultiInitial") = "200" And chBool Then cbSpeedMultiInit.Checked = True
         '
-        cbWeaponAmmoCost.Checked = CBool(GetIni_Param("CheckWeaponAmmoCost"))
+        valueStr = GetIni_Param("CheckWeaponAmmoCost")
+        If valueStr <> Nothing Then
+            cbWeaponAmmoCost.Enabled = True
+            cbWeaponAmmoCost.CheckState = CheckState.Unchecked
+            cbWeaponAmmoCost.Checked = CBool(valueStr)
+        End If
         cbExtraSaveSlots.Checked = CBool(GetIni_Param("ExtraSaveSlots"))
 
         valueStr = GetIni_Param("ReloadWeaponKey")
@@ -1098,7 +1103,7 @@ EXITAPP:
         Dim Ddraw_old() As String = File.ReadAllLines(OpenFileDialog1.FileName, Encoding.Default)
         For Each line As String In Ddraw_old
             strprm = GetIni_NameParam(line)
-            If strprm <> Nothing Then
+            If strprm <> String.Empty Then
                 strval = GetIni_ValueParam(line)
                 If strval <> Nothing Then
                     If GetIni_Param(strprm) <> Nothing Then

@@ -29,8 +29,8 @@ Partial Class MainForm
         Me.Button6 = New System.Windows.Forms.Button()
         Me.cbInstanWeaponEquip = New System.Windows.Forms.CheckBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.cbHeroAppearMod = New System.Windows.Forms.CheckBox()
         Me.Label20 = New System.Windows.Forms.Label()
+        Me.cbSpeedMultiInit = New System.Windows.Forms.CheckBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.cbAutoReloadWeapon = New System.Windows.Forms.CheckBox()
         Me.cbFreeWeight = New System.Windows.Forms.CheckBox()
@@ -63,6 +63,7 @@ Partial Class MainForm
         Me.nudShowNameBar = New System.Windows.Forms.NumericUpDown()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
+        Me.cbHeroAppearMod = New System.Windows.Forms.CheckBox()
         Me.cbSaveInCombat = New System.Windows.Forms.ComboBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.cbWeaponAmmoCost = New System.Windows.Forms.CheckBox()
@@ -132,7 +133,6 @@ Partial Class MainForm
         Me.cmbDebugLog = New System.Windows.Forms.ComboBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.tbExtraCRC = New System.Windows.Forms.TextBox()
-        Me.cbSpeedMultiInit = New System.Windows.Forms.CheckBox()
         Me.cbSkipLoadingGameSetting = New System.Windows.Forms.CheckBox()
         Me.cbSingleCore = New System.Windows.Forms.CheckBox()
         Me.cbProcessorIdle = New System.Windows.Forms.CheckBox()
@@ -197,8 +197,8 @@ Partial Class MainForm
         Me.TabPage1.Controls.Add(Me.Button6)
         Me.TabPage1.Controls.Add(Me.cbInstanWeaponEquip)
         Me.TabPage1.Controls.Add(Me.Label19)
-        Me.TabPage1.Controls.Add(Me.cbHeroAppearMod)
         Me.TabPage1.Controls.Add(Me.Label20)
+        Me.TabPage1.Controls.Add(Me.cbSpeedMultiInit)
         Me.TabPage1.Controls.Add(Me.GroupBox6)
         Me.TabPage1.Controls.Add(Me.cbBonusDamage)
         Me.TabPage1.Controls.Add(Me.cbPartyMemberTakeOffItem)
@@ -266,20 +266,6 @@ Partial Class MainForm
         Me.Label19.TabIndex = 5
         Me.Label19.Text = "Page"
         '
-        'cbHeroAppearMod
-        '
-        Me.cbHeroAppearMod.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbHeroAppearMod.AutoSize = True
-        Me.cbHeroAppearMod.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cbHeroAppearMod.Location = New System.Drawing.Point(161, 187)
-        Me.cbHeroAppearMod.Name = "cbHeroAppearMod"
-        Me.cbHeroAppearMod.Size = New System.Drawing.Size(134, 17)
-        Me.cbHeroAppearMod.TabIndex = 18
-        Me.cbHeroAppearMod.Text = "Hero Appearance Mod"
-        Me.ToolTip2.SetToolTip(Me.cbHeroAppearMod, "Использовать мод кастомизации внешности героя.")
-        Me.ToolTip1.SetToolTip(Me.cbHeroAppearMod, "Using the hero appearance mod.")
-        Me.cbHeroAppearMod.UseVisualStyleBackColor = True
-        '
         'Label20
         '
         Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -289,6 +275,20 @@ Partial Class MainForm
         Me.Label20.Size = New System.Drawing.Size(25, 13)
         Me.Label20.TabIndex = 5
         Me.Label20.Text = "Slot"
+        '
+        'cbSpeedMultiInit
+        '
+        Me.cbSpeedMultiInit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbSpeedMultiInit.AutoSize = True
+        Me.cbSpeedMultiInit.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbSpeedMultiInit.Location = New System.Drawing.Point(193, 187)
+        Me.cbSpeedMultiInit.Name = "cbSpeedMultiInit"
+        Me.cbSpeedMultiInit.Size = New System.Drawing.Size(102, 17)
+        Me.cbSpeedMultiInit.TabIndex = 2
+        Me.cbSpeedMultiInit.Text = "Game Speed x2"
+        Me.ToolTip2.SetToolTip(Me.cbSpeedMultiInit, "Увеличить скорость игры в два раза. (действует на всю анимацию в игре)")
+        Me.ToolTip1.SetToolTip(Me.cbSpeedMultiInit, "Increases game speed.")
+        Me.cbSpeedMultiInit.UseVisualStyleBackColor = True
         '
         'GroupBox6
         '
@@ -440,9 +440,8 @@ Partial Class MainForm
         Me.cbDontTurnOffSneak.TabIndex = 2
         Me.cbDontTurnOffSneak.Text = "Dont Turn Off Sneak"
         Me.ToolTip2.SetToolTip(Me.cbDontTurnOffSneak, "Не отключать активное умение ""Скрытность"" при беге игрока. Полезно при настройки " & _
-                "в игре ""Бег всегда"". (Только для версии Sfall от Crafty)")
-        Me.ToolTip1.SetToolTip(Me.cbDontTurnOffSneak, "Do not disable the skill to ""Sneak"" when running. (Only for sFall Crafty version)" & _
-                "")
+                "в игре ""Бег всегда"".")
+        Me.ToolTip1.SetToolTip(Me.cbDontTurnOffSneak, "Do not disable the skill to ""Sneak"" when running.")
         Me.cbDontTurnOffSneak.UseVisualStyleBackColor = True
         '
         'Label5
@@ -750,6 +749,7 @@ Partial Class MainForm
         Me.TabPage4.Controls.Add(Me.nudShowNameBar)
         Me.TabPage4.Controls.Add(Me.Label25)
         Me.TabPage4.Controls.Add(Me.Label21)
+        Me.TabPage4.Controls.Add(Me.cbHeroAppearMod)
         Me.TabPage4.Controls.Add(Me.cbSaveInCombat)
         Me.TabPage4.Controls.Add(Me.Label24)
         Me.TabPage4.Controls.Add(Me.cbWeaponAmmoCost)
@@ -811,6 +811,20 @@ Partial Class MainForm
         Me.ToolTip2.SetToolTip(Me.Label21, "Предотвращает сохранение в режиме боя, чтобы избежать нескольких ошибок.")
         Me.ToolTip1.SetToolTip(Me.Label21, "Prevents you from saving in combat, to avoid a few bugs.")
         '
+        'cbHeroAppearMod
+        '
+        Me.cbHeroAppearMod.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbHeroAppearMod.AutoSize = True
+        Me.cbHeroAppearMod.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbHeroAppearMod.Location = New System.Drawing.Point(162, 279)
+        Me.cbHeroAppearMod.Name = "cbHeroAppearMod"
+        Me.cbHeroAppearMod.Size = New System.Drawing.Size(134, 17)
+        Me.cbHeroAppearMod.TabIndex = 18
+        Me.cbHeroAppearMod.Text = "Hero Appearance Mod"
+        Me.ToolTip2.SetToolTip(Me.cbHeroAppearMod, "Использовать мод кастомизации внешности героя.")
+        Me.ToolTip1.SetToolTip(Me.cbHeroAppearMod, "Using the hero appearance mod.")
+        Me.cbHeroAppearMod.UseVisualStyleBackColor = True
+        '
         'cbSaveInCombat
         '
         Me.cbSaveInCombat.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -837,6 +851,9 @@ Partial Class MainForm
         'cbWeaponAmmoCost
         '
         Me.cbWeaponAmmoCost.AutoSize = True
+        Me.cbWeaponAmmoCost.Checked = True
+        Me.cbWeaponAmmoCost.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbWeaponAmmoCost.Enabled = False
         Me.cbWeaponAmmoCost.Location = New System.Drawing.Point(6, 123)
         Me.cbWeaponAmmoCost.Name = "cbWeaponAmmoCost"
         Me.cbWeaponAmmoCost.Size = New System.Drawing.Size(133, 17)
@@ -1691,7 +1708,6 @@ Partial Class MainForm
         Me.GroupBox3.Controls.Add(Me.cmbDebugLog)
         Me.GroupBox3.Controls.Add(Me.Button4)
         Me.GroupBox3.Controls.Add(Me.tbExtraCRC)
-        Me.GroupBox3.Controls.Add(Me.cbSpeedMultiInit)
         Me.GroupBox3.Controls.Add(Me.cbSkipLoadingGameSetting)
         Me.GroupBox3.Controls.Add(Me.cbSingleCore)
         Me.GroupBox3.Controls.Add(Me.cbProcessorIdle)
@@ -1726,7 +1742,7 @@ Partial Class MainForm
         Me.cmbDebugLog.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbDebugLog.DropDownWidth = 175
         Me.cmbDebugLog.FormattingEnabled = True
-        Me.cmbDebugLog.Items.AddRange(New Object() {"Output debug info to game window", "Output debug info to debug.log file", "Both mode (only Crafty)"})
+        Me.cmbDebugLog.Items.AddRange(New Object() {"Output debug info to game window", "Output debug info to debug.log file", "Both mode"})
         Me.cmbDebugLog.Location = New System.Drawing.Point(154, 89)
         Me.cmbDebugLog.Name = "cmbDebugLog"
         Me.cmbDebugLog.Size = New System.Drawing.Size(132, 21)
@@ -1756,20 +1772,6 @@ Partial Class MainForm
         Me.ToolTip2.SetToolTip(Me.tbExtraCRC, "Вы можете переопределить здесь CRC. В случае если Sfall выдает ошибку о неправиль" & _
                 "ном CRC.")
         Me.ToolTip1.SetToolTip(Me.tbExtraCRC, "You can override the CRC that sfall looks for here.")
-        '
-        'cbSpeedMultiInit
-        '
-        Me.cbSpeedMultiInit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbSpeedMultiInit.AutoSize = True
-        Me.cbSpeedMultiInit.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cbSpeedMultiInit.Location = New System.Drawing.Point(184, 116)
-        Me.cbSpeedMultiInit.Name = "cbSpeedMultiInit"
-        Me.cbSpeedMultiInit.Size = New System.Drawing.Size(102, 17)
-        Me.cbSpeedMultiInit.TabIndex = 2
-        Me.cbSpeedMultiInit.Text = "Game Speed x2"
-        Me.ToolTip2.SetToolTip(Me.cbSpeedMultiInit, "Увеличить скорость игры в два раза. (действует на всю анимацию в игре)")
-        Me.ToolTip1.SetToolTip(Me.cbSpeedMultiInit, "Increases game speed.")
-        Me.cbSpeedMultiInit.UseVisualStyleBackColor = True
         '
         'cbSkipLoadingGameSetting
         '
@@ -1859,7 +1861,7 @@ Partial Class MainForm
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(205, 13)
         Me.Label7.TabIndex = 2
-        Me.Label7.Text = "Release 29/09/2018 by Fakels (Mr.Stalin)"
+        Me.Label7.Text = "Release 20/03/2019 by Fakels (Mr.Stalin)"
         '
         'LinkLabel1
         '
