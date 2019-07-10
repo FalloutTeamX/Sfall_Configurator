@@ -24,12 +24,14 @@ Module M_Module
 
     Friend Sub DatDesc()
         Dim path As String = App_Path & "\dat.unp"
+        Dim datFiles() As String = Directory.GetFiles(App_Path, "*.dat", SearchOption.TopDirectoryOnly)
+        If datFiles.Length Then
+            File.Delete(path)
+            File.WriteAllBytes(path, My.Resources.dat2)
+            File.SetAttributes(path, FileAttributes.Hidden)
+        End If
 
-        File.Delete(path)
-        File.WriteAllBytes(path, My.Resources.dat2)
-        File.SetAttributes(path, FileAttributes.Hidden)
-
-        For Each datFile In Directory.GetFiles(App_Path, "*.dat", SearchOption.TopDirectoryOnly)
+        For Each datFile In datFiles
             Dim z As Integer = datFile.LastIndexOf("\") + 1
             datFile = datFile.Substring(z)
 
@@ -66,6 +68,7 @@ Module M_Module
             Shell(App_Path & "\dat.unp d " & Name & " desc.id", AppWinStyle.Hide, True, 1000)
             Shell(App_Path & "\dat.unp a " & Name & " desc.id", AppWinStyle.Hide, True, 1000)
             File.Delete(App_Path & "\desc.id")
+            Shell(App_Path & "\dat.unp k " & Name, AppWinStyle.Hide, True, 1000)
         End If
     End Sub
 

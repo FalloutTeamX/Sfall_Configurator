@@ -35,21 +35,20 @@ Public Class MainForm
     End Sub
 
     Private Sub MainForm_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
+        If Ddraw_ini.Count = 0 Then
+            DatDesc()
+            MsgBox("File ddraw.ini not found.")
+        End If
         FormReady = True
     End Sub
 
     Private Sub MainForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Set_ListBoxRes()
+        If ListBox1.Items.Count Then Set_ListBoxRes()
     End Sub
 
     Private Sub Initialization()
         Dim valueStr As String, str() As String
 
-        If Ddraw_ini.Count = 0 Then
-            DatDesc()
-            MsgBox("File ddraw.ini not found.")
-            Exit Sub
-        End If
         If GetIni_Param("sFallConfigurator") = "ENG" Then
             ComboBox8.SelectedIndex = 1
         Else
@@ -88,8 +87,8 @@ Public Class MainForm
         valueStr = GetIni_Param(mods_ini, "Mode")
         If valueStr = Nothing Then
             valueStr = GetIni_Param("ControlCombat")
-        ElseIf GetIni_Param(mods_ini, "DisplayName") <> Nothing Then
-            nudShowNameBar.Enabled = True
+            'ElseIf GetIni_Param(mods_ini, "DisplayName") <> Nothing Then
+            '    nudShowNameBar.Enabled = True
         End If
         If valueStr <> Nothing Then
             cbControlCombat.Enabled = True
@@ -161,7 +160,7 @@ Public Class MainForm
         NumericUpDown3.Value = GetIni_Param("GraphicsHeight")
         cbGPUBlt.Checked = CBool(GetIni_Param("GPUBlt"))
 
-        'CheckBox14.Checked = CBool(GetIni_Param("Use32BitHeadGraphics"))
+        CheckBox14.Checked = CBool(GetIni_Param("Use32BitHeadGraphics"))
 
         cbSkipOpeningMovies.Checked = CBool(GetIni_Param("SkipOpeningMovies"))
         cbSpeedInterfaceCounter.Checked = CBool(GetIni_Param("SpeedInterfaceCounterAnims"))
@@ -307,9 +306,6 @@ Public Class MainForm
         End Select
 
         valueStr = GetIni_Param("InstantWeaponEquip")
-        If valueStr = Nothing Then
-            valueStr = GetIni_Param("InstanWeaponEquip") 'old param
-        End If
         If valueStr <> Nothing Then
             cbInstanWeaponEquip.Enabled = True
             cbInstanWeaponEquip.CheckState = CheckState.Unchecked
@@ -392,17 +388,11 @@ Public Class MainForm
             cbPartyMemberTakeOffItem.CheckState = CheckState.Unchecked
             cbPartyMemberTakeOffItem.Checked = CBool(valueStr)
         End If
-        valueStr = GetIni_Param("KeepWeaponSelectMode")
+        valueStr = GetIni_Param("DisablePunchKnockback")
         If valueStr <> Nothing Then
-            cbKeepWeaponSelectMode.Enabled = True
-            cbKeepWeaponSelectMode.CheckState = CheckState.Unchecked
-            cbKeepWeaponSelectMode.Checked = CBool(valueStr)
-        End If
-        valueStr = GetIni_Param("ItemCounterDefaultMax")
-        If valueStr <> Nothing Then
-            cbItemCounterDefaultMax.Enabled = True
-            cbItemCounterDefaultMax.CheckState = CheckState.Unchecked
-            cbItemCounterDefaultMax.Checked = CBool(valueStr)
+            cbPunchKnockback.Enabled = True
+            cbPunchKnockback.CheckState = CheckState.Unchecked
+            cbPunchKnockback.Checked = CBool(valueStr)
         End If
         valueStr = GetIni_Param("TakeBetterWeapons")
         If valueStr <> Nothing Then
@@ -410,11 +400,17 @@ Public Class MainForm
             cbTakeBetterWeapons.CheckState = CheckState.Unchecked
             cbTakeBetterWeapons.Checked = CBool(valueStr)
         End If
-        valueStr = GetIni_Param("CheckShotOnMove")
+        valueStr = GetIni_Param("SmartBehavior")
         If valueStr <> Nothing Then
-            cbCheckShotOnMove.Enabled = True
-            cbCheckShotOnMove.CheckState = CheckState.Unchecked
-            cbCheckShotOnMove.Checked = CBool(valueStr)
+            cbAISmartBehavior.Enabled = True
+            cbAISmartBehavior.CheckState = CheckState.Unchecked
+            cbAISmartBehavior.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("TryToFindTargets")
+        If valueStr <> Nothing Then
+            cbTryFindTarget.Enabled = True
+            cbTryFindTarget.CheckState = CheckState.Unchecked
+            cbTryFindTarget.Checked = CBool(valueStr)
         End If
         valueStr = GetIni_Param("ItemPickUpFix")
         If valueStr <> Nothing Then
@@ -445,15 +441,34 @@ Public Class MainForm
                 cbItemFastMoveKey.Checked = True
             End If
         End If
+        valueStr = GetIni_Param("FastMoveFromContainer")
+        If valueStr <> Nothing Then
+            cbFastMoveContainer.Enabled = True
+            cbFastMoveContainer.CheckState = CheckState.Unchecked
+            cbFastMoveContainer.Checked = CBool(valueStr)
+        End If
         valueStr = GetIni_Param("AutoQuickSavePage")
         If valueStr <> Nothing Then
             If cmbQuickSave.SelectedIndex > 0 Then cmbQuickSavePage.Enabled = cbExtraSaveSlots.Checked
             cmbQuickSavePage.Text = valueStr
         End If
-        valueStr = GetIni_Param(mods_ini, "DisplayName")
+        valueStr = GetIni_Param("WorldMapFontPatch")
         If valueStr <> Nothing Then
-            nudShowNameBar.Enabled = True
-            nudShowNameBar.Value = valueStr
+            cbWorldmapFontFix.Enabled = True
+            cbWorldmapFontFix.CheckState = CheckState.Unchecked
+            cbWorldmapFontFix.Checked = CBool(valueStr)
+        End If
+        valueStr = GetIni_Param("ExpandWorldMap")
+        If valueStr <> Nothing Then
+            cmbExpWorldmap.SelectedIndex = CInt(valueStr)
+        Else
+            cmbExpWorldmap.Enabled = False
+        End If
+        valueStr = GetIni_Param("ActionPointsBar")
+        If valueStr <> Nothing Then
+            cbActionPointsBar.Enabled = True
+            cbActionPointsBar.CheckState = CheckState.Unchecked
+            cbActionPointsBar.Checked = CBool(valueStr)
         End If
 
         'for HRP
@@ -605,7 +620,7 @@ Public Class MainForm
         If FormReady Then
             cbSpeedMultiInit.ForeColor = Color.MediumVioletRed
             Value = cbSpeedMultiInit.Checked
-            If Value > 1 Then Value = 200 Else Value = 100
+            If Value > 1 Then Value = 150 Else Value = 100
             Dim n As Integer = Get_Section_Line("[Speed]")
             If n = -1 Then Exit Sub
             For n = n + 1 To Ddraw_ini.Count - 1
@@ -693,19 +708,19 @@ Public Class MainForm
     End Sub
 
     Private Sub ResolutionChanged(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown3.Leave, NumericUpDown4.Leave
-            SetIni_ParamValue("GraphicsHeight", NumericUpDown3.Value)
-            SetIni_ParamValue("GraphicsWidth", NumericUpDown4.Value)
+        SetIni_ParamValue("GraphicsHeight", NumericUpDown3.Value)
+        SetIni_ParamValue("GraphicsWidth", NumericUpDown4.Value)
 
-            SetIni_ParamValue(F2res_ini, "SCR_HEIGHT", NumericUpDown3.Value)
-            SetIni_ParamValue(F2res_ini, "SCR_WIDTH", NumericUpDown4.Value)
+        SetIni_ParamValue(F2res_ini, "SCR_HEIGHT", NumericUpDown3.Value)
+        SetIni_ParamValue(F2res_ini, "SCR_WIDTH", NumericUpDown4.Value)
     End Sub
 
     Private Sub CheckBox14_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles CheckBox14.CheckedChanged
-        'If FormReady Then
-        '    Value = CheckBox14.Checked
-        '    If Value > 1 Then Value = 1
-        '    SetIni_ParamValue("Use32BitHeadGraphics", Value)
-        'End If
+        If FormReady Then
+            Value = CheckBox14.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("Use32BitHeadGraphics", Value)
+        End If
     End Sub
 
     Private Sub GPUBlt(ByVal sender As Object, ByVal e As EventArgs) Handles cbGPUBlt.CheckedChanged
@@ -1048,23 +1063,11 @@ Public Class MainForm
     End Sub
 
     Private Sub Button4_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button4.Click
-        Dim game_exe As String = GetIni_Param("sFallConfigatorGameExe")
-
-        If game_exe <> Nothing AndAlso File.Exists(App_Path & "\" & game_exe) Then
-            GoTo CHECK
-        End If
-
-        game_exe = "fallout2.exe" 'default exe
-        If Not (File.Exists(App_Path & "\" & game_exe)) Then
-            MsgBox("An executable game file is required.", , "Select Game Exe")
-            OpenFileDialog1.Filter = "Exe files|*.exe"
-            OpenFileDialog1.InitialDirectory = App_Path
-            If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
-            game_exe = OpenFileDialog1.SafeFileName
-            SetGameExe_Ini(game_exe)
-        End If
-CHECK:
-        Check_CRC(game_exe)
+        OpenFileDialog1.Filter = "Exe files|*.exe"
+        OpenFileDialog1.InitialDirectory = App_Path
+        OpenFileDialog1.FileName = "fallout2.exe" 'default exe
+        If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
+        Check_CRC(OpenFileDialog1.SafeFileName)
     End Sub
 
     Private Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button2.Click
@@ -1169,24 +1172,6 @@ EXITAPP:
         End If
     End Sub
 
-    Private Sub KeepWeaponSelectMode(ByVal sender As Object, ByVal e As EventArgs) Handles cbKeepWeaponSelectMode.CheckedChanged
-        If FormReady Then
-            cbKeepWeaponSelectMode.ForeColor = Color.MediumVioletRed
-            Value = cbKeepWeaponSelectMode.Checked
-            If Value > 1 Then Value = 1
-            SetIni_ParamValue("KeepWeaponSelectMode", Value)
-        End If
-    End Sub
-
-    Private Sub ItemCounterDefaultMax(ByVal sender As Object, ByVal e As EventArgs) Handles cbItemCounterDefaultMax.CheckedChanged
-        If FormReady Then
-            cbItemCounterDefaultMax.ForeColor = Color.MediumVioletRed
-            Value = cbItemCounterDefaultMax.Checked
-            If Value > 1 Then Value = 1
-            SetIni_ParamValue("ItemCounterDefaultMax", Value)
-        End If
-    End Sub
-
     Private Sub ItemFastMoveKey(ByVal sender As Object, ByVal e As EventArgs) Handles cbItemFastMoveKey.CheckedChanged
         If FormReady Then
             cbItemFastMoveKey.ForeColor = Color.MediumVioletRed
@@ -1205,12 +1190,12 @@ EXITAPP:
         End If
     End Sub
 
-    Private Sub CheckShotOnMove(ByVal sender As Object, ByVal e As EventArgs) Handles cbCheckShotOnMove.CheckedChanged
+    Private Sub AISmartBehavior(ByVal sender As Object, ByVal e As EventArgs) Handles cbAISmartBehavior.CheckedChanged
         If FormReady Then
-            cbCheckShotOnMove.ForeColor = Color.MediumVioletRed
-            Value = cbCheckShotOnMove.Checked
+            cbAISmartBehavior.ForeColor = Color.MediumVioletRed
+            Value = cbAISmartBehavior.Checked
             If Value > 1 Then Value = 1
-            SetIni_ParamValue("CheckShotOnMove", Value)
+            SetIni_ParamValue("SmartBehavior", Value)
         End If
     End Sub
 
@@ -1229,6 +1214,16 @@ EXITAPP:
             Value = cbSkipLoadingGameSetting.Checked
             If Value > 1 Then Value = 2
             SetIni_ParamValue("SkipLoadingGameSetting", Value)
+            SetIni_ParamValue("SkipLoadingGameSettings", Value)
+        End If
+    End Sub
+
+    Private Sub cbTryFindTarget_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbTryFindTarget.CheckedChanged
+        If FormReady Then
+            cbTryFindTarget.ForeColor = Color.MediumVioletRed
+            Value = cbTryFindTarget.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("TryToFindTargets", Value)
         End If
     End Sub
 
@@ -1245,16 +1240,62 @@ EXITAPP:
         If FormReady Then SetIni_ParamValue("AutoQuickSavePage", cmbQuickSavePage.Text)
     End Sub
 
-    Private Sub ShowNameBar(ByVal sender As Object, ByVal e As EventArgs) Handles nudShowNameBar.ValueChanged
-        If FormReady Then SetIni_ParamValue(mods_ini, "DisplayName", nudShowNameBar.Value)
-    End Sub
-
     Private Sub OpenAndPassUnlockedDoors(ByVal sender As Object, ByVal e As EventArgs) Handles cbOpenAndPassUnlockedDoors.CheckedChanged
         If FormReady Then
             cbOpenAndPassUnlockedDoors.ForeColor = Color.MediumVioletRed
             Value = cbOpenAndPassUnlockedDoors.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("OpenAndPassUnlockedDoors", Value)
+        End If
+    End Sub
+
+    Private Sub bReloadSetKey_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bReloadSetKey.Click
+
+    End Sub
+
+    Private Sub bItemFastMoveSetKey_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bItemFastMoveSetKey.Click
+
+    End Sub
+
+    Private Sub cbPunchKnockback_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbPunchKnockback.CheckedChanged
+        If FormReady Then
+            cbPunchKnockback.ForeColor = Color.MediumVioletRed
+            Value = cbPunchKnockback.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("DisablePunchKnockback", Value)
+        End If
+    End Sub
+
+    Private Sub cbWorldmapFontFix_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbWorldmapFontFix.CheckedChanged
+        If FormReady Then
+            cbWorldmapFontFix.ForeColor = Color.MediumVioletRed
+            Value = cbWorldmapFontFix.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("WorldMapFontPatch", Value)
+        End If
+    End Sub
+
+    Private Sub cbFastMoveContainer_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbFastMoveContainer.CheckedChanged
+        If FormReady Then
+            cbFastMoveContainer.ForeColor = Color.MediumVioletRed
+            Value = cbFastMoveContainer.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("FastMoveFromContainer", Value)
+        End If
+    End Sub
+
+    Private Sub cmbExpWorldmap_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbExpWorldmap.SelectedIndexChanged
+        If FormReady Then
+            SetIni_ParamValue("ExpandWorldMap", cmbExpWorldmap.SelectedIndex)
+        End If
+    End Sub
+
+    Private Sub cbActionPointsBar_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbActionPointsBar.CheckedChanged
+        If FormReady Then
+            cbActionPointsBar.ForeColor = Color.MediumVioletRed
+            Value = cbActionPointsBar.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("ActionPointsBar", Value)
         End If
     End Sub
 End Class
