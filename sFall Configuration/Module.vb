@@ -297,4 +297,30 @@ Module M_Module
             f2cfgIsPatch = True
         End If
     End Sub
+
+    Friend Sub Merge(ByVal iniPath As String)
+        Dim strprm, strval As String
+        Dim lineprm As Integer
+
+        If File.Exists(iniPath) = False Then Exit Sub
+        Dim fromINI() As String = File.ReadAllLines(iniPath, Encoding.Default)
+
+        For Each line As String In fromINI
+            strprm = GetIni_NameParam(line)
+            If strprm <> String.Empty Then
+                strval = GetIni_ValueParam(line)
+                If strval <> Nothing Then
+                    If GetIni_Param(strprm) <> Nothing Then
+                        SetIni_ParamValue(strprm, strval)
+                    Else
+                        lineprm = GetIni_Param_Line(";" & strprm)
+                        If lineprm <> -1 Then
+                            Ddraw_ini(lineprm) = strprm & "=" & strval
+                        End If
+                    End If
+                End If
+            End If
+        Next
+    End Sub
+
 End Module

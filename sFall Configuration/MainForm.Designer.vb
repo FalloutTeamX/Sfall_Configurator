@@ -1543,7 +1543,7 @@ Partial Class MainForm
         Me.cmbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbMode.DropDownWidth = 139
         Me.cmbMode.FormattingEnabled = True
-        Me.cmbMode.Items.AddRange(New Object() {"Off", "DX9 Fullscreen", "DX9 Windowed"})
+        Me.cmbMode.Items.AddRange(New Object() {"Off", "DX9 Fullscreen", "DX9 Windowed", "DX9 Full-Windowed"})
         Me.cmbMode.Location = New System.Drawing.Point(6, 20)
         Me.cmbMode.Name = "cmbMode"
         Me.cmbMode.Size = New System.Drawing.Size(139, 21)

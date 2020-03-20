@@ -8,6 +8,16 @@ Public Class MainForm
 
     Public Sub New()
 
+        Dim arguments As String() = System.Environment.GetCommandLineArgs()
+        For Each Arg As String In arguments
+            If (Arg.StartsWith("-merge ")) Then
+                Ddraw_ini = File.ReadAllLines(App_Path & "\ddraw.ini", Encoding.Default).ToList
+                Merge(App_Path & "\" & Arg.Substring(7))
+                Application.Exit()
+                System.Environment.Exit(0)
+            End If
+        Next
+
         InitializeComponent()
         Me.Text &= My.Application.Info.Version.ToString
 
@@ -158,7 +168,7 @@ Public Class MainForm
 
         NumericUpDown4.Value = GetIni_Param("GraphicsWidth")
         NumericUpDown3.Value = GetIni_Param("GraphicsHeight")
-        cbGPUBlt.Checked = CBool(GetIni_Param("GPUBlt"))
+        cbGPUBlt.Checked = (GetIni_Param("GPUBlt") = "2")
 
         CheckBox14.Checked = CBool(GetIni_Param("Use32BitHeadGraphics"))
 
@@ -727,7 +737,7 @@ Public Class MainForm
         If FormReady Then
             cbGPUBlt.ForeColor = Color.MediumVioletRed
             Value = cbGPUBlt.Checked
-            If Value > 1 Then Value = 1
+            If Value >= 1 Then Value = 2
             SetIni_ParamValue("GPUBlt", Value)
         End If
     End Sub
@@ -1096,30 +1106,11 @@ EXITAPP:
     End Sub
 
     Private Sub Button5_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button5.Click
-        Dim strprm, strval As String
-        Dim lineprm As Integer
-
         OpenFileDialog1.Filter = "Ini files|*.ini"
         OpenFileDialog1.InitialDirectory = App_Path
         If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
 
-        Dim Ddraw_old() As String = File.ReadAllLines(OpenFileDialog1.FileName, Encoding.Default)
-        For Each line As String In Ddraw_old
-            strprm = GetIni_NameParam(line)
-            If strprm <> String.Empty Then
-                strval = GetIni_ValueParam(line)
-                If strval <> Nothing Then
-                    If GetIni_Param(strprm) <> Nothing Then
-                        SetIni_ParamValue(strprm, strval)
-                    Else
-                        lineprm = GetIni_Param_Line(";" & strprm)
-                        If lineprm <> -1 Then
-                            Ddraw_ini(lineprm) = strprm & "=" & strval
-                        End If
-                    End If
-                End If
-            End If
-        Next
+        Merge(OpenFileDialog1.FileName)
         Initialization()
         MsgBox("Done!")
     End Sub
