@@ -26,13 +26,15 @@ Partial Class MainForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.cmbSpeedMultiInit = New System.Windows.Forms.ComboBox()
         Me.bReloadSetKey = New System.Windows.Forms.Button()
         Me.bItemFastMoveSetKey = New System.Windows.Forms.Button()
         Me.cbInstanWeaponEquip = New System.Windows.Forms.CheckBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.cbCanSellGeiger = New System.Windows.Forms.CheckBox()
-        Me.cbSpeedMultiInit = New System.Windows.Forms.CheckBox()
+        Me.cbActiveGeigerMsgs = New System.Windows.Forms.CheckBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.cbAutoReloadWeapon = New System.Windows.Forms.CheckBox()
         Me.cbFreeWeight = New System.Windows.Forms.CheckBox()
@@ -197,13 +199,15 @@ Partial Class MainForm
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label25)
+        Me.TabPage1.Controls.Add(Me.cmbSpeedMultiInit)
         Me.TabPage1.Controls.Add(Me.bReloadSetKey)
         Me.TabPage1.Controls.Add(Me.bItemFastMoveSetKey)
         Me.TabPage1.Controls.Add(Me.cbInstanWeaponEquip)
         Me.TabPage1.Controls.Add(Me.Label19)
         Me.TabPage1.Controls.Add(Me.Label20)
         Me.TabPage1.Controls.Add(Me.cbCanSellGeiger)
-        Me.TabPage1.Controls.Add(Me.cbSpeedMultiInit)
+        Me.TabPage1.Controls.Add(Me.cbActiveGeigerMsgs)
         Me.TabPage1.Controls.Add(Me.GroupBox6)
         Me.TabPage1.Controls.Add(Me.cbBonusDamage)
         Me.TabPage1.Controls.Add(Me.cbPartyMemberTakeOffItem)
@@ -235,10 +239,34 @@ Partial Class MainForm
         Me.TabPage1.Text = "Base Options"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'Label25
+        '
+        Me.Label25.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(229, 149)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(72, 13)
+        Me.Label25.TabIndex = 23
+        Me.Label25.Text = "Game Speed "
+        '
+        'cmbSpeedMultiInit
+        '
+        Me.cmbSpeedMultiInit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmbSpeedMultiInit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbSpeedMultiInit.Enabled = False
+        Me.cmbSpeedMultiInit.FormattingEnabled = True
+        Me.cmbSpeedMultiInit.Items.AddRange(New Object() {"Normal", "x1.2", "x1.5", "x2.0"})
+        Me.cmbSpeedMultiInit.Location = New System.Drawing.Point(232, 165)
+        Me.cmbSpeedMultiInit.Name = "cmbSpeedMultiInit"
+        Me.cmbSpeedMultiInit.Size = New System.Drawing.Size(63, 21)
+        Me.cmbSpeedMultiInit.TabIndex = 22
+        Me.ToolTip1.SetToolTip(Me.cmbSpeedMultiInit, "Increases game speed.")
+        Me.ToolTip2.SetToolTip(Me.cmbSpeedMultiInit, "Увеличивает скорость игры." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Это также будет действовать на анимацию в игре.")
+        '
         'bReloadSetKey
         '
         Me.bReloadSetKey.Enabled = False
-        Me.bReloadSetKey.Location = New System.Drawing.Point(129, 190)
+        Me.bReloadSetKey.Location = New System.Drawing.Point(129, 167)
         Me.bReloadSetKey.Name = "bReloadSetKey"
         Me.bReloadSetKey.Size = New System.Drawing.Size(18, 18)
         Me.bReloadSetKey.TabIndex = 20
@@ -248,7 +276,7 @@ Partial Class MainForm
         'bItemFastMoveSetKey
         '
         Me.bItemFastMoveSetKey.Enabled = False
-        Me.bItemFastMoveSetKey.Location = New System.Drawing.Point(129, 164)
+        Me.bItemFastMoveSetKey.Location = New System.Drawing.Point(129, 190)
         Me.bItemFastMoveSetKey.Name = "bItemFastMoveSetKey"
         Me.bItemFastMoveSetKey.Size = New System.Drawing.Size(18, 18)
         Me.bItemFastMoveSetKey.TabIndex = 19
@@ -307,20 +335,20 @@ Partial Class MainForm
         Me.ToolTip1.SetToolTip(Me.cbCanSellGeiger, "Enable sale of earlier used Geiger Counter/Stealth Boy.")
         Me.cbCanSellGeiger.UseVisualStyleBackColor = True
         '
-        'cbSpeedMultiInit
+        'cbActiveGeigerMsgs
         '
-        Me.cbSpeedMultiInit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbSpeedMultiInit.AutoSize = True
-        Me.cbSpeedMultiInit.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cbSpeedMultiInit.Location = New System.Drawing.Point(184, 187)
-        Me.cbSpeedMultiInit.Name = "cbSpeedMultiInit"
-        Me.cbSpeedMultiInit.Size = New System.Drawing.Size(111, 17)
-        Me.cbSpeedMultiInit.TabIndex = 2
-        Me.cbSpeedMultiInit.Text = "Game Speed x1.5"
-        Me.ToolTip2.SetToolTip(Me.cbSpeedMultiInit, "Увеличить скорость игры в полтора раза." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Это также действует на всю анимацию в иг" & _
-                "ре.")
-        Me.ToolTip1.SetToolTip(Me.cbSpeedMultiInit, "Increases game speed.")
-        Me.cbSpeedMultiInit.UseVisualStyleBackColor = True
+        Me.cbActiveGeigerMsgs.AutoSize = True
+        Me.cbActiveGeigerMsgs.Checked = True
+        Me.cbActiveGeigerMsgs.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbActiveGeigerMsgs.Enabled = False
+        Me.cbActiveGeigerMsgs.Location = New System.Drawing.Point(6, 142)
+        Me.cbActiveGeigerMsgs.Name = "cbActiveGeigerMsgs"
+        Me.cbActiveGeigerMsgs.Size = New System.Drawing.Size(149, 17)
+        Me.cbActiveGeigerMsgs.TabIndex = 2
+        Me.cbActiveGeigerMsgs.Text = "Geiger Radiaton Message"
+        Me.ToolTip2.SetToolTip(Me.cbActiveGeigerMsgs, "Отображать сообщения включенного счетчика Гейгера при получении радиации.")
+        Me.ToolTip1.SetToolTip(Me.cbActiveGeigerMsgs, "Display messages of the active Geiger counter when receiving radiation.")
+        Me.cbActiveGeigerMsgs.UseVisualStyleBackColor = True
         '
         'GroupBox6
         '
@@ -710,7 +738,7 @@ Partial Class MainForm
         Me.cbItemFastMoveKey.CheckState = System.Windows.Forms.CheckState.Indeterminate
         Me.cbItemFastMoveKey.Enabled = False
         Me.cbItemFastMoveKey.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cbItemFastMoveKey.Location = New System.Drawing.Point(6, 164)
+        Me.cbItemFastMoveKey.Location = New System.Drawing.Point(6, 190)
         Me.cbItemFastMoveKey.Name = "cbItemFastMoveKey"
         Me.cbItemFastMoveKey.Size = New System.Drawing.Size(120, 17)
         Me.cbItemFastMoveKey.TabIndex = 2
@@ -727,7 +755,7 @@ Partial Class MainForm
         Me.cbReloadWeapon.Checked = True
         Me.cbReloadWeapon.CheckState = System.Windows.Forms.CheckState.Indeterminate
         Me.cbReloadWeapon.Enabled = False
-        Me.cbReloadWeapon.Location = New System.Drawing.Point(6, 190)
+        Me.cbReloadWeapon.Location = New System.Drawing.Point(6, 167)
         Me.cbReloadWeapon.Name = "cbReloadWeapon"
         Me.cbReloadWeapon.Size = New System.Drawing.Size(125, 17)
         Me.cbReloadWeapon.TabIndex = 2
@@ -745,11 +773,11 @@ Partial Class MainForm
         Me.cbFastMoveContainer.CheckState = System.Windows.Forms.CheckState.Indeterminate
         Me.cbFastMoveContainer.Enabled = False
         Me.cbFastMoveContainer.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cbFastMoveContainer.Location = New System.Drawing.Point(159, 164)
+        Me.cbFastMoveContainer.Location = New System.Drawing.Point(171, 192)
         Me.cbFastMoveContainer.Name = "cbFastMoveContainer"
-        Me.cbFastMoveContainer.Size = New System.Drawing.Size(136, 17)
+        Me.cbFastMoveContainer.Size = New System.Drawing.Size(124, 17)
         Me.cbFastMoveContainer.TabIndex = 21
-        Me.cbFastMoveContainer.Text = "Fast Move fr. Container"
+        Me.cbFastMoveContainer.Text = "Fast Move Container"
         Me.ToolTip2.SetToolTip(Me.cbFastMoveContainer, resources.GetString("cbFastMoveContainer.ToolTip"))
         Me.cbFastMoveContainer.UseVisualStyleBackColor = True
         '
@@ -984,6 +1012,9 @@ Partial Class MainForm
         Me.cbCorpseLine.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbCorpseLine.AutoSize = True
         Me.cbCorpseLine.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cbCorpseLine.Checked = True
+        Me.cbCorpseLine.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbCorpseLine.Enabled = False
         Me.cbCorpseLine.Location = New System.Drawing.Point(178, 279)
         Me.cbCorpseLine.Name = "cbCorpseLine"
         Me.cbCorpseLine.Size = New System.Drawing.Size(118, 17)
@@ -1543,7 +1574,7 @@ Partial Class MainForm
         Me.cmbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbMode.DropDownWidth = 139
         Me.cmbMode.FormattingEnabled = True
-        Me.cmbMode.Items.AddRange(New Object() {"Off", "DX9 Fullscreen", "DX9 Windowed", "DX9 Full-Windowed"})
+        Me.cmbMode.Items.AddRange(New Object() {"Off", "DX9 Fullscreen", "DX9 Windowed", "DX9 Full desktop windowed"})
         Me.cmbMode.Location = New System.Drawing.Point(6, 20)
         Me.cmbMode.Name = "cmbMode"
         Me.cmbMode.Size = New System.Drawing.Size(139, 21)
@@ -2137,7 +2168,7 @@ Partial Class MainForm
     Friend WithEvents cbHighlightContainers As System.Windows.Forms.CheckBox
     Friend WithEvents cbItemHighlightsKey As System.Windows.Forms.CheckBox
     Friend WithEvents cmbQuickSave As System.Windows.Forms.ComboBox
-    Friend WithEvents cbSpeedMultiInit As System.Windows.Forms.CheckBox
+    Friend WithEvents cbActiveGeigerMsgs As System.Windows.Forms.CheckBox
     Friend WithEvents cbGPUBlt As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox14 As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -2238,5 +2269,7 @@ Partial Class MainForm
     Friend WithEvents cbWorldmapFontFix As System.Windows.Forms.CheckBox
     Friend WithEvents cbFastMoveContainer As System.Windows.Forms.CheckBox
     Friend WithEvents cbActionPointsBar As System.Windows.Forms.CheckBox
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents cmbSpeedMultiInit As System.Windows.Forms.ComboBox
 
 End Class

@@ -9,6 +9,8 @@ Module M_Module
 
     Friend App_Path As String = Application.StartupPath
 
+    Friend sfallModsFile As String = "\sfall-mods.ini"
+
     Friend f2_cfg As List(Of String) = New List(Of String)
     Friend f2_cfgFile As String = "\fallout2.cfg"
     Friend f2cfgIsPatch = False
@@ -16,10 +18,10 @@ Module M_Module
     Private debugSection() As String = {
             "[debug]",
             "mode=environment",
-            "output_map_data_info=0",
-            "show_load_info=0",
+            "output_map_data_info=1",
+            "show_load_info=1",
             "show_script_messages=1",
-            "show_tile_num=0" & vbNewLine
+            "show_tile_num=1" & vbNewLine
     }
 
     Friend Sub DatDesc()
@@ -75,7 +77,7 @@ Module M_Module
     Friend Sub Save_ini()
         File.WriteAllLines(App_Path & "\ddraw.ini", Ddraw_ini.ToArray, Encoding.Default)
         If F2res_ini IsNot Nothing Then File.WriteAllLines(App_Path & "\f2_res.ini", F2res_ini, Encoding.Default)
-        If mods_ini IsNot Nothing Then File.WriteAllLines(App_Path & "\sfall-mods.ini", mods_ini, Encoding.Default)
+        If mods_ini IsNot Nothing Then File.WriteAllLines(App_Path & sfallModsFile, mods_ini, Encoding.Default)
         If f2cfgIsPatch Then File.WriteAllLines(App_Path & f2_cfgFile, f2_cfg.ToArray, Encoding.Default)
     End Sub
 
@@ -171,7 +173,7 @@ Module M_Module
 
         param = param.ToLower
         For n As Integer = 0 To UBound(iniData)
-            If GetIni_NameParam(iniData(n)).ToLower = param Then
+            If GetIni_NameParam(iniData(n)) = param Then
                 Return GetIni_ValueParam(iniData(n))
             End If
         Next
@@ -182,7 +184,7 @@ Module M_Module
     Friend Function GetIni_Param(ByVal param As String) As String
         param = param.ToLower
         For Each line As String In Ddraw_ini
-            If GetIni_NameParam(line).ToLower = param Then
+            If GetIni_NameParam(line) = param Then
                 Return GetIni_ValueParam(line)
             End If
         Next
@@ -193,7 +195,7 @@ Module M_Module
         Dim m As Integer = InStr(2, str, "=")
         If m = 0 Then Return String.Empty
         'возвращаем
-        Return str.Substring(0, m - 1)
+        Return str.Substring(0, m - 1).ToLower()
     End Function
 
     Friend Function GetIni_ValueParam(ByVal str As String) As String
@@ -210,7 +212,7 @@ Module M_Module
 
         param = param.ToLower
         For n As Integer = 0 To UBound(iniData)
-            If GetIni_NameParam(iniData(n)).ToLower = param Then
+            If GetIni_NameParam(iniData(n)) = param Then
                 Dim m As Integer = iniData(n).IndexOf("=", 2)
                 If m <= 0 Then Exit Sub
                 'записываем
@@ -223,7 +225,7 @@ Module M_Module
     Friend Sub SetIni_ParamValue(ByVal param As String, ByVal value As String)
         param = param.ToLower
         For n As Integer = 0 To Ddraw_ini.Count - 1
-            If GetIni_NameParam(Ddraw_ini(n)).ToLower = param Then
+            If GetIni_NameParam(Ddraw_ini(n)) = param Then
                 Set_Value(n, value)
                 Exit Sub
             End If
@@ -244,7 +246,7 @@ Module M_Module
     Friend Function GetIni_Param_Line(ByVal param As String) As Integer
         param = param.ToLower
         For n As Integer = 0 To Ddraw_ini.Count - 1
-            If GetIni_NameParam(Ddraw_ini(n)).ToLower = param Then
+            If GetIni_NameParam(Ddraw_ini(n)) = param Then
                 Return n
             End If
         Next
@@ -266,23 +268,23 @@ Module M_Module
     End Function
 
     'for sfall v3.7+
-    Friend Sub EnableDebug()
-        Dim n As Integer = Get_Section_Line("[Debugging]")
-        If n = -1 Then Exit Sub
+    'Friend Sub EnableDebug()
+    '    Dim n As Integer = Get_Section_Line("[Debugging]")
+    '    If n = -1 Then Exit Sub
 
-        Dim val As Byte = (MainForm.tbExtraCRC.Enabled _
-                          OrElse MainForm.cbSkipSize.Checked _
-                          OrElse MainForm.cbDebugMode.Checked _
-                          OrElse MainForm.cbAllowUnsafe.Checked)
+    '    Dim val As Byte = (MainForm.tbExtraCRC.Enabled _
+    '                      OrElse MainForm.cbSkipSize.Checked _
+    '                      OrElse MainForm.cbDebugMode.Checked _
+    '                      OrElse MainForm.cbAllowUnsafe.Checked)
 
-        If val > 1 Then val = 1
+    '    If val > 1 Then val = 1
 
-        For n = n + 1 To Ddraw_ini.Count - 1
-            If GetIni_NameParam(Ddraw_ini(n)).ToLower = "enable" Then
-                Ddraw_ini(n) = "Enable=" + CStr(val)
-            End If
-        Next
-    End Sub
+    '    For n = n + 1 To Ddraw_ini.Count - 1
+    '        If GetIni_NameParam(Ddraw_ini(n)) = "enable" Then
+    '            Ddraw_ini(n) = "Enable=" + CStr(val)
+    '        End If
+    '    Next
+    'End Sub
 
     Friend Sub SetDebugSection()
         Dim cfgFile As String = GetIni_Param("ConfigFile")
@@ -321,6 +323,13 @@ Module M_Module
                 End If
             End If
         Next
+
+        Dim valueStr As String = GetIni_Param(fromINI, "ModifiedIni")
+        If valueStr IsNot Nothing Then
+            Dim n As Integer = Get_Section_Line("[Main]") + 1
+            Ddraw_ini.Insert(n, "ModifiedIni=" & valueStr)
+            Ddraw_ini.Insert(n + 1, "")
+        End If
     End Sub
 
 End Module

@@ -11,8 +11,14 @@ Public Class MainForm
         Dim arguments As String() = System.Environment.GetCommandLineArgs()
         For Each Arg As String In arguments
             If (Arg.StartsWith("-merge ")) Then
-                Ddraw_ini = File.ReadAllLines(App_Path & "\ddraw.ini", Encoding.Default).ToList
-                Merge(App_Path & "\" & Arg.Substring(7))
+                Dim bakIni As String = App_Path & "\" & Arg.Substring(7)
+                If File.Exists(bakIni) Then
+                    Ddraw_ini = File.ReadAllLines(App_Path & "\ddraw.ini", Encoding.Default).ToList
+                    Merge(bakIni)
+                    File.WriteAllLines(App_Path & "\ddraw.ini", Ddraw_ini.ToArray, Encoding.Default)
+                    File.Delete(bakIni)
+                    MessageBox.Show("All parameters from the old ddraw.ini were successfully transferred to the new ini-config.", "sFall Configurator")
+                End If
                 Application.Exit()
                 System.Environment.Exit(0)
             End If
@@ -36,8 +42,14 @@ Public Class MainForm
         If File.Exists(App_Path & "\f2_res.ini") Then
             F2res_ini = File.ReadAllLines(App_Path & "\f2_res.ini", Encoding.Default)
         End If
-        If File.Exists(App_Path & "\sfall-mods.ini") Then
-            mods_ini = File.ReadAllLines(App_Path & "\sfall-mods.ini", Encoding.Default)
+
+        Dim path = GetIni_Param("IniConfigFolder")
+        If path <> Nothing Then
+            path = path.Replace("/", "").Trim()
+            sfallModsFile = "\" & path.Trim("\") & sfallModsFile
+        End If
+        If File.Exists(App_Path & sfallModsFile) Then
+            mods_ini = File.ReadAllLines(App_Path & sfallModsFile, Encoding.Default)
         End If
 
         ListBox1.Items.AddRange(Resolution.GetResolution)
@@ -105,15 +117,27 @@ Public Class MainForm
             cbControlCombat.Checked = CBool(valueStr)
         End If
         '
-        Dim chBool As Boolean
         Dim n As Integer = Get_Section_Line("[Speed]")
-        For n = n + 1 To Ddraw_ini.Count - 1
-            If GetIni_NameParam(Ddraw_ini(n)).ToLower = "enable" Then
-                chBool = CBool(GetIni_ValueParam(Ddraw_ini(n)))
-                Exit For
+        If n <> -1 Then
+            valueStr = GetIni_Param("SpeedMultiInitial")
+            If valueStr <> Nothing Then
+                cmbSpeedMultiInit.Enabled = True
+                Select Case valueStr
+                    Case "100"
+                        cmbSpeedMultiInit.SelectedIndex = 0
+                    Case "120"
+                        cmbSpeedMultiInit.SelectedIndex = 1
+                    Case "150"
+                        cmbSpeedMultiInit.SelectedIndex = 2
+                    Case "200"
+                        cmbSpeedMultiInit.SelectedIndex = 3
+                    Case Else
+                        cmbSpeedMultiInit.Tag = valueStr
+                        cmbSpeedMultiInit.Items.Add("x" & (Integer.Parse(valueStr) / 100).ToString & ".0")
+                        cmbSpeedMultiInit.SelectedIndex = 4
+                End Select
             End If
-        Next
-        If GetIni_Param("SpeedMultiInitial") = "200" And chBool Then cbSpeedMultiInit.Checked = True
+        End If
         '
         valueStr = GetIni_Param("CheckWeaponAmmoCost")
         If valueStr <> Nothing Then
@@ -226,7 +250,14 @@ Public Class MainForm
 
         'Advanced
         cbObjCanSeeObj.Checked = CBool(GetIni_Param("ObjCanSeeObj_ShootThru_Fix"))
-        cbCorpseLine.Checked = CBool(GetIni_Param("CorpseLineOfFireFix"))
+
+        valueStr = GetIni_Param("CorpseLineOfFireFix")
+        If (valueStr <> Nothing) Then
+            cbCorpseLine.Enabled = True
+            cbCorpseLine.CheckState = CheckState.Unchecked
+            cbCorpseLine.Checked = CBool(valueStr)
+        End If
+
         cbRemoveCriticalTime.Checked = CBool(GetIni_Param("RemoveCriticalTimelimits"))
         cbSaveInCombat.SelectedIndex = GetIni_Param("SaveInCombatFix")
         NumericUpDown6.Value = GetIni_Param("NPCsTryToSpendExtraAP")
@@ -234,7 +265,7 @@ Public Class MainForm
         '
         valueStr = GetIni_Param("HighlightContainers")
         If valueStr = Nothing Then
-            valueStr = GetIni_Param("TurnHighlightContainers") 'Crafty 
+            valueStr = GetIni_Param("TurnHighlightContainers") 'Crafty
             If valueStr = Nothing Then
                 valueStr = GetIni_Param(mods_ini, "Containers")
             End If
@@ -275,12 +306,18 @@ Public Class MainForm
             cbMusicInDialogue.CheckState = CheckState.Unchecked
             cbMusicInDialogue.Checked = CBool(valueStr)
         End If
-        valueStr = GetIni_Param("UsePartySkills")
+
+        valueStr = GetIni_Param(mods_ini, "UsePartySkills")
+        If valueStr = Nothing Then
+            valueStr = GetIni_Param("UsePartySkills") 'Crafty
+            cbPartySkills.Tag = 1
+        End If
         If valueStr <> Nothing Then
             cbPartySkills.Enabled = True
             cbPartySkills.CheckState = CheckState.Unchecked
             cbPartySkills.Checked = CBool(valueStr)
         End If
+
         valueStr = GetIni_Param("NumbersInDialogue")
         If valueStr <> Nothing Then
             cbNumbersInDialogue.Enabled = True
@@ -474,11 +511,19 @@ Public Class MainForm
         Else
             cmbExpWorldmap.Enabled = False
         End If
+
         valueStr = GetIni_Param("ActionPointsBar")
         If valueStr <> Nothing Then
             cbActionPointsBar.Enabled = True
             cbActionPointsBar.CheckState = CheckState.Unchecked
             cbActionPointsBar.Checked = CBool(valueStr)
+        End If
+
+        valueStr = GetIni_Param("ActiveGeigerMsgs")
+        If valueStr <> Nothing Then
+            cbActiveGeigerMsgs.Enabled = True
+            cbActiveGeigerMsgs.CheckState = CheckState.Unchecked
+            cbActiveGeigerMsgs.Checked = CBool(valueStr)
         End If
 
         'for HRP
@@ -626,18 +671,46 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub cbSpeedMultiInit_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbSpeedMultiInit.CheckedChanged
+    Private Sub cbActiveGeigerMsgs_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbActiveGeigerMsgs.CheckedChanged
         If FormReady Then
-            cbSpeedMultiInit.ForeColor = Color.MediumVioletRed
-            Value = cbSpeedMultiInit.Checked
-            If Value > 1 Then Value = 150 Else Value = 100
+            cbActiveGeigerMsgs.ForeColor = Color.MediumVioletRed
+            Value = cbActiveGeigerMsgs.Checked
+            If Value > 1 Then Value = 1
+            SetIni_ParamValue("ActiveGeigerMsgs", Value)
+        End If
+    End Sub
+
+    Private Sub cmbSpeedMultiInit_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbSpeedMultiInit.SelectedIndexChanged
+        If FormReady Then
             Dim n As Integer = Get_Section_Line("[Speed]")
             If n = -1 Then Exit Sub
+
+            Dim speedValue As String
+            Select Case cmbSpeedMultiInit.SelectedIndex
+                Case 0
+                    speedValue = "100"
+                Case 1
+                    speedValue = "120"
+                Case 2
+                    speedValue = "150"
+                Case 3
+                    speedValue = "200"
+                Case Else
+                    speedValue = cmbSpeedMultiInit.Tag
+            End Select
+
+            SetIni_ParamValue("SpeedMultiInitial", speedValue)
+
             For n = n + 1 To Ddraw_ini.Count - 1
-                If GetIni_NameParam(Ddraw_ini(n)) = "enable" Then Ddraw_ini(n) = "Enable=1"
+                If GetIni_NameParam(Ddraw_ini(n)) = "enable" Then
+                    If (cmbSpeedMultiInit.SelectedIndex > 0) Then
+                        Ddraw_ini(n) = "Enable=1"
+                    Else
+                        Ddraw_ini(n) = "Enable=0"
+                    End If
+                    Exit For
+                End If
             Next
-            'SetIni_ParamValue("Enable", 1)
-            SetIni_ParamValue("SpeedMultiInitial", Value)
         End If
     End Sub
 
@@ -786,7 +859,7 @@ Public Class MainForm
             Else
                 SetIni_ParamValue("DebugMode", 0)
             End If
-            EnableDebug()
+            'EnableDebug()
         End If
     End Sub
 
@@ -802,7 +875,7 @@ Public Class MainForm
             Value = cbSkipSize.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("SkipSizeCheck", Value)
-            EnableDebug()
+            'EnableDebug()
         End If
     End Sub
 
@@ -812,7 +885,7 @@ Public Class MainForm
             Value = cbAllowUnsafe.Checked
             If Value > 1 Then Value = 1
             SetIni_ParamValue("AllowUnsafeScripting", Value)
-            EnableDebug()
+            'EnableDebug()
         End If
     End Sub
 
@@ -856,7 +929,7 @@ Public Class MainForm
                 tbExtraCRC.Enabled = True
             End If
         End If
-        EnableDebug()
+        'EnableDebug()
     End Sub
 
     Private Sub ReverseMouseButtons(ByVal sender As Object, ByVal e As EventArgs) Handles cbReverseMouseButtons.CheckedChanged
@@ -1000,8 +1073,13 @@ Public Class MainForm
         If FormReady Then
             cbPartySkills.ForeColor = Color.MediumVioletRed
             Value = cbPartySkills.Checked
-            If Value >= 1 Then Value = 2
-            SetIni_ParamValue("UsePartySkills", Value)
+            If cbPartySkills.Tag IsNot Nothing Then
+                If Value >= 1 Then Value = 2
+                SetIni_ParamValue("UsePartySkills", Value)
+            Else
+                If Value >= 1 Then Value = 1
+                SetIni_ParamValue(mods_ini, "UsePartySkills", Value)
+            End If
         End If
     End Sub
 
