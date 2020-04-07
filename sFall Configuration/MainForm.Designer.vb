@@ -1882,9 +1882,9 @@ Partial Class MainForm
         Me.cbSkipLoadingGameSetting.ForeColor = System.Drawing.SystemColors.ControlText
         Me.cbSkipLoadingGameSetting.Location = New System.Drawing.Point(6, 116)
         Me.cbSkipLoadingGameSetting.Name = "cbSkipLoadingGameSetting"
-        Me.cbSkipLoadingGameSetting.Size = New System.Drawing.Size(155, 17)
+        Me.cbSkipLoadingGameSetting.Size = New System.Drawing.Size(160, 17)
         Me.cbSkipLoadingGameSetting.TabIndex = 0
-        Me.cbSkipLoadingGameSetting.Text = "Skip Loading Game Setting"
+        Me.cbSkipLoadingGameSetting.Text = "Skip Loading Game Settings"
         Me.ToolTip2.SetToolTip(Me.cbSkipLoadingGameSetting, "Отключает загрузку всех настроек конфигурации игры из сохраненной игры.")
         Me.ToolTip1.SetToolTip(Me.cbSkipLoadingGameSetting, "Disables loading of all configuration settings of the game from the saved game.")
         Me.cbSkipLoadingGameSetting.UseVisualStyleBackColor = True

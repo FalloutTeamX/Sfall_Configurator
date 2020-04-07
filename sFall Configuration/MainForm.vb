@@ -465,11 +465,13 @@ Public Class MainForm
             cbItemPickUpFix.CheckState = CheckState.Unchecked
             cbItemPickUpFix.Checked = CBool(valueStr)
         End If
-        valueStr = GetIni_Param("SkipLoadingGameSetting")
+        valueStr = GetIni_Param("SkipLoadingGameSettings")
         If valueStr <> Nothing Then
             cbSkipLoadingGameSetting.Enabled = True
-            cbSkipLoadingGameSetting.CheckState = CheckState.Unchecked
-            cbSkipLoadingGameSetting.Checked = CBool(valueStr)
+            If valueStr = "2" Then
+                cbSkipLoadingGameSetting.CheckState = CheckState.Unchecked
+                cbSkipLoadingGameSetting.Checked = CBool(valueStr)
+            End If
         End If
         valueStr = GetIni_Param("UseScrollWheel")
         If valueStr <> Nothing Then
@@ -1282,7 +1284,6 @@ EXITAPP:
             cbSkipLoadingGameSetting.ForeColor = Color.MediumVioletRed
             Value = cbSkipLoadingGameSetting.Checked
             If Value > 1 Then Value = 2
-            SetIni_ParamValue("SkipLoadingGameSetting", Value)
             SetIni_ParamValue("SkipLoadingGameSettings", Value)
         End If
     End Sub
