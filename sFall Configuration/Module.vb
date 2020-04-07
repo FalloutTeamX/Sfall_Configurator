@@ -173,7 +173,7 @@ Module M_Module
 
         param = param.ToLower
         For n As Integer = 0 To UBound(iniData)
-            If GetIni_NameParam(iniData(n)) = param Then
+            If GetIni_NameParam(iniData(n)).ToLower = param Then
                 Return GetIni_ValueParam(iniData(n))
             End If
         Next
@@ -184,7 +184,7 @@ Module M_Module
     Friend Function GetIni_Param(ByVal param As String) As String
         param = param.ToLower
         For Each line As String In Ddraw_ini
-            If GetIni_NameParam(line) = param Then
+            If GetIni_NameParam(line).ToLower = param Then
                 Return GetIni_ValueParam(line)
             End If
         Next
@@ -195,7 +195,7 @@ Module M_Module
         Dim m As Integer = InStr(2, str, "=")
         If m = 0 Then Return String.Empty
         'возвращаем
-        Return str.Substring(0, m - 1).ToLower()
+        Return str.Substring(0, m - 1)
     End Function
 
     Friend Function GetIni_ValueParam(ByVal str As String) As String
@@ -212,7 +212,7 @@ Module M_Module
 
         param = param.ToLower
         For n As Integer = 0 To UBound(iniData)
-            If GetIni_NameParam(iniData(n)) = param Then
+            If GetIni_NameParam(iniData(n)).ToLower = param Then
                 Dim m As Integer = iniData(n).IndexOf("=", 2)
                 If m <= 0 Then Exit Sub
                 'записываем
@@ -225,7 +225,7 @@ Module M_Module
     Friend Sub SetIni_ParamValue(ByVal param As String, ByVal value As String)
         param = param.ToLower
         For n As Integer = 0 To Ddraw_ini.Count - 1
-            If GetIni_NameParam(Ddraw_ini(n)) = param Then
+            If GetIni_NameParam(Ddraw_ini(n)).ToLower = param Then
                 Set_Value(n, value)
                 Exit Sub
             End If
@@ -246,7 +246,7 @@ Module M_Module
     Friend Function GetIni_Param_Line(ByVal param As String) As Integer
         param = param.ToLower
         For n As Integer = 0 To Ddraw_ini.Count - 1
-            If GetIni_NameParam(Ddraw_ini(n)) = param Then
+            If GetIni_NameParam(Ddraw_ini(n)).ToLower = param Then
                 Return n
             End If
         Next
@@ -280,7 +280,7 @@ Module M_Module
     '    If val > 1 Then val = 1
 
     '    For n = n + 1 To Ddraw_ini.Count - 1
-    '        If GetIni_NameParam(Ddraw_ini(n)) = "enable" Then
+    '       If GetIni_NameParam(Ddraw_ini(n)).ToLower = "enable" Then
     '            Ddraw_ini(n) = "Enable=" + CStr(val)
     '        End If
     '    Next

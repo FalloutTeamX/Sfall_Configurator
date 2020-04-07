@@ -702,7 +702,7 @@ Public Class MainForm
             SetIni_ParamValue("SpeedMultiInitial", speedValue)
 
             For n = n + 1 To Ddraw_ini.Count - 1
-                If GetIni_NameParam(Ddraw_ini(n)) = "enable" Then
+                If GetIni_NameParam(Ddraw_ini(n)).ToLower = "enable" Then
                     If (cmbSpeedMultiInit.SelectedIndex > 0) Then
                         Ddraw_ini(n) = "Enable=1"
                     Else
