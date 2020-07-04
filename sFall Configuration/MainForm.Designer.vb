@@ -26,6 +26,7 @@ Partial Class MainForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.cbAutoMoveToAttack = New System.Windows.Forms.CheckBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.cmbSpeedMultiInit = New System.Windows.Forms.ComboBox()
         Me.bReloadSetKey = New System.Windows.Forms.Button()
@@ -34,7 +35,6 @@ Partial Class MainForm
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.cbCanSellGeiger = New System.Windows.Forms.CheckBox()
-        Me.cbActiveGeigerMsgs = New System.Windows.Forms.CheckBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.cbAutoReloadWeapon = New System.Windows.Forms.CheckBox()
         Me.cbFreeWeight = New System.Windows.Forms.CheckBox()
@@ -63,6 +63,7 @@ Partial Class MainForm
         Me.cbReloadWeapon = New System.Windows.Forms.CheckBox()
         Me.cbFastMoveContainer = New System.Windows.Forms.CheckBox()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.cbActiveGeigerMsgs = New System.Windows.Forms.CheckBox()
         Me.cbPunchKnockback = New System.Windows.Forms.CheckBox()
         Me.cbTryFindTarget = New System.Windows.Forms.CheckBox()
         Me.Label21 = New System.Windows.Forms.Label()
@@ -112,7 +113,7 @@ Partial Class MainForm
         Me.cbExplosionsEmitLight = New System.Windows.Forms.CheckBox()
         Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
         Me.cbGPUBlt = New System.Windows.Forms.CheckBox()
-        Me.CheckBox14 = New System.Windows.Forms.CheckBox()
+        Me.cbUse32BitHeadGraphics = New System.Windows.Forms.CheckBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cbSkipOpeningMovies = New System.Windows.Forms.CheckBox()
         Me.cmbMode = New System.Windows.Forms.ComboBox()
@@ -184,8 +185,8 @@ Partial Class MainForm
         'TabControl1
         '
         Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Controls.Add(Me.TabPage2)
@@ -199,6 +200,7 @@ Partial Class MainForm
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.cbAutoMoveToAttack)
         Me.TabPage1.Controls.Add(Me.Label25)
         Me.TabPage1.Controls.Add(Me.cmbSpeedMultiInit)
         Me.TabPage1.Controls.Add(Me.bReloadSetKey)
@@ -207,7 +209,6 @@ Partial Class MainForm
         Me.TabPage1.Controls.Add(Me.Label19)
         Me.TabPage1.Controls.Add(Me.Label20)
         Me.TabPage1.Controls.Add(Me.cbCanSellGeiger)
-        Me.TabPage1.Controls.Add(Me.cbActiveGeigerMsgs)
         Me.TabPage1.Controls.Add(Me.GroupBox6)
         Me.TabPage1.Controls.Add(Me.cbBonusDamage)
         Me.TabPage1.Controls.Add(Me.cbPartyMemberTakeOffItem)
@@ -239,6 +240,23 @@ Partial Class MainForm
         Me.TabPage1.Text = "Base Options"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'cbAutoMoveToAttack
+        '
+        Me.cbAutoMoveToAttack.AutoSize = True
+        Me.cbAutoMoveToAttack.Checked = True
+        Me.cbAutoMoveToAttack.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbAutoMoveToAttack.Enabled = False
+        Me.cbAutoMoveToAttack.Location = New System.Drawing.Point(6, 142)
+        Me.cbAutoMoveToAttack.Name = "cbAutoMoveToAttack"
+        Me.cbAutoMoveToAttack.Size = New System.Drawing.Size(128, 17)
+        Me.cbAutoMoveToAttack.TabIndex = 24
+        Me.cbAutoMoveToAttack.Text = "Auto Move To Attack"
+        Me.ToolTip2.SetToolTip(Me.cbAutoMoveToAttack, "Позволяет совершать рукопашные и ближние атаки без необходимости предварительного" & _
+        " подхода к атакуемой цели.")
+        Me.ToolTip1.SetToolTip(Me.cbAutoMoveToAttack, "Allows to perform unarmed and melee attacks without the need for a preliminary ap" & _
+        "proach to the target being attacked.")
+        Me.cbAutoMoveToAttack.UseVisualStyleBackColor = True
+        '
         'Label25
         '
         Me.Label25.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -260,8 +278,8 @@ Partial Class MainForm
         Me.cmbSpeedMultiInit.Name = "cmbSpeedMultiInit"
         Me.cmbSpeedMultiInit.Size = New System.Drawing.Size(63, 21)
         Me.cmbSpeedMultiInit.TabIndex = 22
-        Me.ToolTip1.SetToolTip(Me.cmbSpeedMultiInit, "Increases game speed.")
         Me.ToolTip2.SetToolTip(Me.cmbSpeedMultiInit, "Увеличивает скорость игры." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Это также будет действовать на анимацию в игре.")
+        Me.ToolTip1.SetToolTip(Me.cmbSpeedMultiInit, "Increases game speed.")
         '
         'bReloadSetKey
         '
@@ -295,9 +313,9 @@ Partial Class MainForm
         Me.cbInstanWeaponEquip.TabIndex = 3
         Me.cbInstanWeaponEquip.Text = "Instant Weapon Equip"
         Me.ToolTip2.SetToolTip(Me.cbInstanWeaponEquip, "Отключает анимацию убирания/доставания оружия при его смене, открытии ящиков, две" & _
-                "рей и т.д.")
+        "рей и т.д.")
         Me.ToolTip1.SetToolTip(Me.cbInstanWeaponEquip, "Disable weapon animation (put away/take out) when searching containers and doing " & _
-                "other stuff.")
+        "other stuff.")
         Me.cbInstanWeaponEquip.UseVisualStyleBackColor = True
         '
         'Label19
@@ -335,25 +353,10 @@ Partial Class MainForm
         Me.ToolTip1.SetToolTip(Me.cbCanSellGeiger, "Enable sale of earlier used Geiger Counter/Stealth Boy.")
         Me.cbCanSellGeiger.UseVisualStyleBackColor = True
         '
-        'cbActiveGeigerMsgs
-        '
-        Me.cbActiveGeigerMsgs.AutoSize = True
-        Me.cbActiveGeigerMsgs.Checked = True
-        Me.cbActiveGeigerMsgs.CheckState = System.Windows.Forms.CheckState.Indeterminate
-        Me.cbActiveGeigerMsgs.Enabled = False
-        Me.cbActiveGeigerMsgs.Location = New System.Drawing.Point(6, 142)
-        Me.cbActiveGeigerMsgs.Name = "cbActiveGeigerMsgs"
-        Me.cbActiveGeigerMsgs.Size = New System.Drawing.Size(149, 17)
-        Me.cbActiveGeigerMsgs.TabIndex = 2
-        Me.cbActiveGeigerMsgs.Text = "Geiger Radiaton Message"
-        Me.ToolTip2.SetToolTip(Me.cbActiveGeigerMsgs, "Отображать сообщения включенного счетчика Гейгера при получении радиации.")
-        Me.ToolTip1.SetToolTip(Me.cbActiveGeigerMsgs, "Display messages of the active Geiger counter when receiving radiation.")
-        Me.cbActiveGeigerMsgs.UseVisualStyleBackColor = True
-        '
         'GroupBox6
         '
         Me.GroupBox6.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox6.Controls.Add(Me.cbAutoReloadWeapon)
         Me.GroupBox6.Controls.Add(Me.cbFreeWeight)
         Me.GroupBox6.Controls.Add(Me.cbOpenAndPassUnlockedDoors)
@@ -377,9 +380,9 @@ Partial Class MainForm
         Me.cbAutoReloadWeapon.TabIndex = 2
         Me.cbAutoReloadWeapon.Text = "Auto Reload Weapon"
         Me.ToolTip2.SetToolTip(Me.cbAutoReloadWeapon, "Автоматически перезаряжать оружие после окончания боя. (Только для версии Sfall о" & _
-                "т Crafty)")
+        "т Crafty)")
         Me.ToolTip1.SetToolTip(Me.cbAutoReloadWeapon, "Automatically reload weapon at the end of combat. (Only for sFall Crafty version)" & _
-                "")
+        "")
         Me.cbAutoReloadWeapon.UseVisualStyleBackColor = True
         '
         'cbFreeWeight
@@ -394,9 +397,9 @@ Partial Class MainForm
         Me.cbFreeWeight.TabIndex = 2
         Me.cbFreeWeight.Text = "View Free Weight/Size"
         Me.ToolTip2.SetToolTip(Me.cbFreeWeight, "Показывать оставшийся вес для игрока и НПС в инвентаре  обмена и торговли. (Тольк" & _
-                "о для версии Sfall от Crafty)")
+        "о для версии Sfall от Crafty)")
         Me.ToolTip1.SetToolTip(Me.cbFreeWeight, "Enable view of free weight in an exchange window. (Only for sFall Crafty version)" & _
-                "")
+        "")
         Me.cbFreeWeight.UseVisualStyleBackColor = True
         '
         'cbOpenAndPassUnlockedDoors
@@ -430,9 +433,9 @@ Partial Class MainForm
         Me.cbEquipArmor.TabIndex = 2
         Me.cbEquipArmor.Text = "Auto Equip Armor "
         Me.ToolTip2.SetToolTip(Me.cbEquipArmor, "После обмена с партийцем, автоматически экипировать ему лучшую броню. (Только для" & _
-                " версии Sfall от Crafty)")
+        " версии Sfall от Crafty)")
         Me.ToolTip1.SetToolTip(Me.cbEquipArmor, "Equip best armor after closing of an exchange window. (Only for sFall Crafty vers" & _
-                "ion)")
+        "ion)")
         Me.cbEquipArmor.UseVisualStyleBackColor = True
         '
         'cbBonusDamage
@@ -447,9 +450,9 @@ Partial Class MainForm
         Me.cbBonusDamage.TabIndex = 4
         Me.cbBonusDamage.Text = "Display Bonus Damage"
         Me.ToolTip2.SetToolTip(Me.cbBonusDamage, "Отобразить в инвентаре дополнительные очки повреждений от бонуса НТН атак и перка" & _
-                " Ranged Damage.")
+        " Ranged Damage.")
         Me.ToolTip1.SetToolTip(Me.cbBonusDamage, "Display additional points of damage from Bonus HtH/Ranged Damage perks in the inv" & _
-                "entory.")
+        "entory.")
         Me.cbBonusDamage.UseVisualStyleBackColor = True
         '
         'cbPartyMemberTakeOffItem
@@ -467,9 +470,9 @@ Partial Class MainForm
         Me.cbPartyMemberTakeOffItem.TabIndex = 2
         Me.cbPartyMemberTakeOffItem.Text = "Party Member Take Off Item"
         Me.ToolTip2.SetToolTip(Me.cbPartyMemberTakeOffItem, "Позволить в панели управления напарниками повторным нажатием кнопок лучшего оружи" & _
-                "е/броня снимать экипированный предмет.")
+        "е/броня снимать экипированный предмет.")
         Me.ToolTip1.SetToolTip(Me.cbPartyMemberTakeOffItem, "To allow in the control panel of party member by re-pressing the buttons of the b" & _
-                "est weapons/armor to remove the equipped item.")
+        "est weapons/armor to remove the equipped item.")
         Me.cbPartyMemberTakeOffItem.UseVisualStyleBackColor = True
         '
         'cbExtraSaveSlots
@@ -500,7 +503,7 @@ Partial Class MainForm
         Me.cbDontTurnOffSneak.TabIndex = 2
         Me.cbDontTurnOffSneak.Text = "Dont Turn Off Sneak"
         Me.ToolTip2.SetToolTip(Me.cbDontTurnOffSneak, "Не отключать активное умение ""Скрытность"" при беге игрока. Полезно при настройки " & _
-                "в игре ""Бег всегда"".")
+        "в игре ""Бег всегда"".")
         Me.ToolTip1.SetToolTip(Me.cbDontTurnOffSneak, "Do not disable the skill to ""Sneak"" when running.")
         Me.cbDontTurnOffSneak.UseVisualStyleBackColor = True
         '
@@ -544,7 +547,7 @@ Partial Class MainForm
         Me.cmbQuickSavePage.Size = New System.Drawing.Size(48, 21)
         Me.cmbQuickSavePage.TabIndex = 3
         Me.ToolTip2.SetToolTip(Me.cmbQuickSavePage, "Значение определяет страницу в которую будет осуществляться запись быстрого сохра" & _
-                "нения (0..999).")
+        "нения (0..999).")
         '
         'cmbQuickSave
         '
@@ -557,10 +560,10 @@ Partial Class MainForm
         Me.cmbQuickSave.Name = "cmbQuickSave"
         Me.cmbQuickSave.Size = New System.Drawing.Size(48, 21)
         Me.cmbQuickSave.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.cmbQuickSave, "The value determines the number of used slots (1..10).")
         Me.ToolTip2.SetToolTip(Me.cmbQuickSave, "Быстрое автоматическое сохранение без предварительного выбора слотов." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Значение (" & _
-                "1..10) определяет количество используемых слотов для циклической перезаписи." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0 " & _
-                "- для отключения.")
+        "1..10) определяет количество используемых слотов для циклической перезаписи." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0 " & _
+        "- для отключения.")
+        Me.ToolTip1.SetToolTip(Me.cmbQuickSave, "The value determines the number of used slots (1..10).")
         '
         'cbHighlightContainers
         '
@@ -582,7 +585,7 @@ Partial Class MainForm
         'cmbReloadReserve
         '
         Me.cmbReloadReserve.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbReloadReserve.DropDownWidth = 200
         Me.cmbReloadReserve.Enabled = False
         Me.cmbReloadReserve.FormattingEnabled = True
@@ -592,7 +595,7 @@ Partial Class MainForm
         Me.cmbReloadReserve.Size = New System.Drawing.Size(152, 21)
         Me.cmbReloadReserve.TabIndex = 3
         Me.ToolTip2.SetToolTip(Me.cmbReloadReserve, "1. Fallout 2 (по умолчанию)." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2. Использовать все количество боеприпасов в пачке " & _
-                "патронов." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3. Оставить количество пачек патронов (значение 1 и более).")
+        "патронов." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3. Оставить количество пачек патронов (значение 1 и более).")
         '
         'cbScrollingQuestsList
         '
@@ -606,7 +609,7 @@ Partial Class MainForm
         Me.cbScrollingQuestsList.Text = "Scrolling Quests List"
         Me.ToolTip2.SetToolTip(Me.cbScrollingQuestsList, "Отобразить в PipBoy'е кнопки для прокрутки списка с квестами.")
         Me.ToolTip1.SetToolTip(Me.cbScrollingQuestsList, "Add scroll buttons to the pip boy quest list, and remove the quests per area limi" & _
-                "t.")
+        "t.")
         Me.cbScrollingQuestsList.UseVisualStyleBackColor = True
         '
         'Label6
@@ -633,7 +636,7 @@ Partial Class MainForm
         Me.cbItemHighlightsKey.Text = "Highlights Item"
         Me.ToolTip2.SetToolTip(Me.cbItemHighlightsKey, "Подсвечивать предметы на карте клавишей ""Shift"". ")
         Me.ToolTip1.SetToolTip(Me.cbItemHighlightsKey, "Press ""Shift"" key to toggle the highlighting of all items on the ground on the cu" & _
-                "rrent map.")
+        "rrent map.")
         Me.cbItemHighlightsKey.UseVisualStyleBackColor = True
         '
         'cbStackEmptyWeapons
@@ -648,7 +651,7 @@ Partial Class MainForm
         Me.cbStackEmptyWeapons.TabIndex = 2
         Me.cbStackEmptyWeapons.Text = "Stack Empty Weapons"
         Me.ToolTip2.SetToolTip(Me.cbStackEmptyWeapons, "Складывать разряженное одинаковое оружие с разными типами патронов в один слот ин" & _
-                "вентаря.")
+        "вентаря.")
         Me.ToolTip1.SetToolTip(Me.cbStackEmptyWeapons, "Stack together identical weapon without bullets.")
         Me.cbStackEmptyWeapons.UseVisualStyleBackColor = True
         '
@@ -726,9 +729,9 @@ Partial Class MainForm
         Me.cbDisplayWeaponRange.TabIndex = 2
         Me.cbDisplayWeaponRange.Text = "Show Second Range"
         Me.ToolTip2.SetToolTip(Me.cbDisplayWeaponRange, "Отображать в инвентаре игрока вторичный диапазон дальности оружия," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "при переключе" & _
-                "нии режима атаки.")
+        "нии режима атаки.")
         Me.ToolTip1.SetToolTip(Me.cbDisplayWeaponRange, "Display the range of the second attack mode in the inventory when you switch weap" & _
-                "on modes in active item slots.")
+        "on modes in active item slots.")
         Me.cbDisplayWeaponRange.UseVisualStyleBackColor = True
         '
         'cbItemFastMoveKey
@@ -744,9 +747,9 @@ Partial Class MainForm
         Me.cbItemFastMoveKey.TabIndex = 2
         Me.cbItemFastMoveKey.Text = "Item Fast Move Key"
         Me.ToolTip2.SetToolTip(Me.cbItemFastMoveKey, "Включает режим быстрого перемещения стопки предметов в инвентаре, при удержании к" & _
-                "лавиши Ctrl.")
+        "лавиши Ctrl.")
         Me.ToolTip1.SetToolTip(Me.cbItemFastMoveKey, "Кey to hold down to let you move/drop a whole stack of items at once without the " & _
-                "'Move Items' window. (default Ctrl)")
+        "'Move Items' window. (default Ctrl)")
         Me.cbItemFastMoveKey.UseVisualStyleBackColor = True
         '
         'cbReloadWeapon
@@ -783,6 +786,7 @@ Partial Class MainForm
         '
         'TabPage4
         '
+        Me.TabPage4.Controls.Add(Me.cbActiveGeigerMsgs)
         Me.TabPage4.Controls.Add(Me.cbPunchKnockback)
         Me.TabPage4.Controls.Add(Me.cbTryFindTarget)
         Me.TabPage4.Controls.Add(Me.Label21)
@@ -816,6 +820,21 @@ Partial Class MainForm
         Me.TabPage4.Text = "Advanced"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
+        'cbActiveGeigerMsgs
+        '
+        Me.cbActiveGeigerMsgs.AutoSize = True
+        Me.cbActiveGeigerMsgs.Checked = True
+        Me.cbActiveGeigerMsgs.CheckState = System.Windows.Forms.CheckState.Indeterminate
+        Me.cbActiveGeigerMsgs.Enabled = False
+        Me.cbActiveGeigerMsgs.Location = New System.Drawing.Point(6, 146)
+        Me.cbActiveGeigerMsgs.Name = "cbActiveGeigerMsgs"
+        Me.cbActiveGeigerMsgs.Size = New System.Drawing.Size(149, 17)
+        Me.cbActiveGeigerMsgs.TabIndex = 26
+        Me.cbActiveGeigerMsgs.Text = "Geiger Radiaton Message"
+        Me.ToolTip2.SetToolTip(Me.cbActiveGeigerMsgs, "Отображать сообщения включенного счетчика Гейгера при получении радиации.")
+        Me.ToolTip1.SetToolTip(Me.cbActiveGeigerMsgs, "Display messages of the active Geiger counter when receiving radiation.")
+        Me.cbActiveGeigerMsgs.UseVisualStyleBackColor = True
+        '
         'cbPunchKnockback
         '
         Me.cbPunchKnockback.AutoSize = True
@@ -823,15 +842,15 @@ Partial Class MainForm
         Me.cbPunchKnockback.CheckState = System.Windows.Forms.CheckState.Indeterminate
         Me.cbPunchKnockback.Enabled = False
         Me.cbPunchKnockback.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.cbPunchKnockback.Location = New System.Drawing.Point(6, 146)
+        Me.cbPunchKnockback.Location = New System.Drawing.Point(6, 169)
         Me.cbPunchKnockback.Name = "cbPunchKnockback"
         Me.cbPunchKnockback.Size = New System.Drawing.Size(153, 17)
         Me.cbPunchKnockback.TabIndex = 24
         Me.cbPunchKnockback.Text = "Disable Punch Knockback"
         Me.ToolTip2.SetToolTip(Me.cbPunchKnockback, "Отключает для рукопашных атак кулаками эффект отбрасывания." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Для ударов ногами эф" & _
-                "фект отбрасывания сохраняется.")
+        "фект отбрасывания сохраняется.")
         Me.ToolTip1.SetToolTip(Me.cbPunchKnockback, "Disabled the knockback effect for punch attacks, the knockback effect for kicks a" & _
-                "ttacks will be preserved.")
+        "ttacks will be preserved.")
         Me.cbPunchKnockback.UseVisualStyleBackColor = True
         '
         'cbTryFindTarget
@@ -849,7 +868,7 @@ Partial Class MainForm
         Me.cbTryFindTarget.TabIndex = 23
         Me.cbTryFindTarget.Text = "Try Find New Target"
         Me.ToolTip2.SetToolTip(Me.cbTryFindTarget, "Заставляет NPC каждый свой боевой ход переключаться на более подходящую/доступную" & _
-                " для себя цель.")
+        " для себя цель.")
         Me.ToolTip1.SetToolTip(Me.cbTryFindTarget, "Force the NPC find more suitable targets every his combat turn.")
         Me.cbTryFindTarget.UseVisualStyleBackColor = True
         '
@@ -862,7 +881,7 @@ Partial Class MainForm
         Me.Label21.TabIndex = 17
         Me.Label21.Text = "Save In Combat Mode"
         Me.ToolTip2.SetToolTip(Me.Label21, "Предотвращает сохранение в режиме боя, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "чтобы избежать вероятность возникновения" & _
-                " ошибок при сохранении игры.")
+        " ошибок при сохранении игры.")
         Me.ToolTip1.SetToolTip(Me.Label21, "Prevents you from saving in combat, to avoid a few bugs.")
         '
         'cbHeroAppearMod
@@ -880,7 +899,7 @@ Partial Class MainForm
         'cbSaveInCombat
         '
         Me.cbSaveInCombat.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbSaveInCombat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbSaveInCombat.DropDownWidth = 200
         Me.cbSaveInCombat.FormattingEnabled = True
@@ -912,15 +931,15 @@ Partial Class MainForm
         Me.cbWeaponAmmoCost.TabIndex = 2
         Me.cbWeaponAmmoCost.Text = "Check Weapon Ammo"
         Me.ToolTip2.SetToolTip(Me.cbWeaponAmmoCost, "Проверять, есть ли достаточное количество боеприпасов в оружии, чтобы произвести " & _
-                "выстрел очередью.")
+        "выстрел очередью.")
         Me.ToolTip1.SetToolTip(Me.cbWeaponAmmoCost, "Add proper checks if there is enough ammo to use weapons that use multiple ammo p" & _
-                "er shot.")
+        "er shot.")
         Me.cbWeaponAmmoCost.UseVisualStyleBackColor = True
         '
         'GroupBox7
         '
         Me.GroupBox7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox7.Controls.Add(Me.cbCanSeeHear)
         Me.GroupBox7.Controls.Add(Me.Label22)
         Me.GroupBox7.Controls.Add(Me.NumericUpDown5)
@@ -947,7 +966,7 @@ Partial Class MainForm
         Me.cbCanSeeHear.TabIndex = 13
         Me.cbCanSeeHear.Text = "Can See && Hear Fix"
         Me.ToolTip2.SetToolTip(Me.cbCanSeeHear, "Дополнительная проверка на слепоту и прямую видимость." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Экспериментальное исправл" & _
-                "ение.")
+        "ение.")
         Me.ToolTip1.SetToolTip(Me.cbCanSeeHear, "Additional checks on a blindness and direct visibility." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Experimental fix.")
         Me.cbCanSeeHear.UseVisualStyleBackColor = True
         '
@@ -987,9 +1006,9 @@ Partial Class MainForm
         Me.cbDrugExploit.TabIndex = 1
         Me.cbDrugExploit.Text = "Drug Exploit Fix"
         Me.ToolTip2.SetToolTip(Me.cbDrugExploit, "Выключает последствия злоупотребления наркотиками для предотвращения усиления нав" & _
-                "ыков," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "через чтение книг или получении перков.")
+        "ыков," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "через чтение книг или получении перков.")
         Me.ToolTip1.SetToolTip(Me.cbDrugExploit, "Turns off the effects of drug abuse to prevent skill, books and perk gain exploit" & _
-                "s.")
+        "s.")
         Me.cbDrugExploit.UseVisualStyleBackColor = True
         '
         'cbPartySkills
@@ -1004,7 +1023,7 @@ Partial Class MainForm
         Me.cbPartySkills.TabIndex = 4
         Me.cbPartySkills.Text = "Use Party Skills"
         Me.ToolTip1.SetToolTip(Me.cbPartySkills, "Always use party members with highest level of skills (first aid, doctor, lockpic" & _
-                "k, traps, science, repair).")
+        "k, traps, science, repair).")
         Me.cbPartySkills.UseVisualStyleBackColor = True
         '
         'cbCorpseLine
@@ -1027,7 +1046,7 @@ Partial Class MainForm
         'cmbFastShotFix
         '
         Me.cmbFastShotFix.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbFastShotFix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbFastShotFix.DropDownWidth = 200
         Me.cmbFastShotFix.FormattingEnabled = True
@@ -1036,10 +1055,10 @@ Partial Class MainForm
         Me.cmbFastShotFix.Name = "cmbFastShotFix"
         Me.cmbFastShotFix.Size = New System.Drawing.Size(138, 21)
         Me.cmbFastShotFix.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.cmbFastShotFix, "Two alternate fixes to the interaction between HtH attacks and the fast shot trai" & _
-                "t.")
         Me.ToolTip2.SetToolTip(Me.cmbFastShotFix, "1. Fallout 2 поведение." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2. Вызывается выстрелы, включено и для HTH атак. (Haenlo" & _
-                "mal's fix). " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3. Fallout 1 поведение. (-1 бонус AP для HTH атак).")
+        "mal's fix). " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3. Fallout 1 поведение. (-1 бонус AP для HTH атак).")
+        Me.ToolTip1.SetToolTip(Me.cmbFastShotFix, "Two alternate fixes to the interaction between HtH attacks and the fast shot trai" & _
+        "t.")
         '
         'Label23
         '
@@ -1052,15 +1071,15 @@ Partial Class MainForm
         Me.Label23.Text = "NPC Try To Spend AP"
         Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.ToolTip2.SetToolTip(Me.Label23, "НПС которые завершили свой боевой ход с оставшимися AP" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "попытаются найти способ п" & _
-                "отратить свои неизрасходованные AP." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Действует для тех НПС у которых АР осталось" & _
-                " больше или равно в указанном значении.")
+        "отратить свои неизрасходованные AP." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Действует для тех НПС у которых АР осталось" & _
+        " больше или равно в указанном значении.")
         Me.ToolTip1.SetToolTip(Me.Label23, "Causes npc's who complete their combat turn with ap left over will try and find o" & _
-                "ther ways to spend it.")
+        "ther ways to spend it.")
         '
         'cmbDamageFormula
         '
         Me.cmbDamageFormula.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbDamageFormula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbDamageFormula.DropDownWidth = 200
         Me.cmbDamageFormula.FormattingEnabled = True
@@ -1069,10 +1088,10 @@ Partial Class MainForm
         Me.cmbDamageFormula.Name = "cmbDamageFormula"
         Me.cmbDamageFormula.Size = New System.Drawing.Size(138, 21)
         Me.cmbDamageFormula.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.cmbDamageFormula, "Don't set this to anything other than default unless another mod you're using exp" & _
-                "licitly tells you to!")
         Me.ToolTip2.SetToolTip(Me.cmbDamageFormula, "Не устанавливайте это ни к чему, кроме по умолчанию, если соответствующий мод не " & _
-                "установлен!")
+        "установлен!")
+        Me.ToolTip1.SetToolTip(Me.cmbDamageFormula, "Don't set this to anything other than default unless another mod you're using exp" & _
+        "licitly tells you to!")
         '
         'cbObjCanSeeObj
         '
@@ -1098,8 +1117,8 @@ Partial Class MainForm
         Me.cmbTimeLimit.Name = "cmbTimeLimit"
         Me.cmbTimeLimit.Size = New System.Drawing.Size(133, 21)
         Me.cmbTimeLimit.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.cmbTimeLimit, "Remove time limit in years.")
         Me.ToolTip2.SetToolTip(Me.cmbTimeLimit, resources.GetString("cmbTimeLimit.ToolTip"))
+        Me.ToolTip1.SetToolTip(Me.cmbTimeLimit, "Remove time limit in years.")
         '
         'NumericUpDown6
         '
@@ -1135,7 +1154,7 @@ Partial Class MainForm
         Me.Label13.Text = "Fast Shot Trait"
         Me.ToolTip2.SetToolTip(Me.Label13, "Альтернативные взаимодействия с НТН атак, и трэйта ""Быстрого Стрелка"".")
         Me.ToolTip1.SetToolTip(Me.Label13, "Two alternate fixes to the interaction between HtH attacks and the fast shot trai" & _
-                "t.")
+        "t.")
         '
         'cbAISmartBehavior
         '
@@ -1188,9 +1207,9 @@ Partial Class MainForm
         Me.cbItemPickUpFix.TabIndex = 10
         Me.cbItemPickUpFix.Text = "NPC Item Pick Up Fix"
         Me.ToolTip2.SetToolTip(Me.cbItemPickUpFix, "Исправляет поведение AI в бою, когда NPC пытается подобрать предмет на земле" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "не " & _
-                "имея для этого достаточного количества очков действий.")
+        "имея для этого достаточного количества очков действий.")
         Me.ToolTip1.SetToolTip(Me.cbItemPickUpFix, "Fix the behavior of AI in combat, when the NPC tries to pick up an object on the " & _
-                "ground without having enough actions points.")
+        "ground without having enough actions points.")
         Me.cbItemPickUpFix.UseVisualStyleBackColor = True
         '
         'cbRemoveCriticalTime
@@ -1202,9 +1221,9 @@ Partial Class MainForm
         Me.cbRemoveCriticalTime.TabIndex = 10
         Me.cbRemoveCriticalTime.Text = "Remove Critical Time Limits"
         Me.ToolTip2.SetToolTip(Me.cbRemoveCriticalTime, "Убрает ограничение, позволяющее игроку получать критические успехи/промахи в перв" & _
-                "ый день игрового времени.")
+        "ый день игрового времени.")
         Me.ToolTip1.SetToolTip(Me.cbRemoveCriticalTime, "Remove the limits that stop the player rolling critical successes/misses in the f" & _
-                "irst few days of game time.")
+        "irst few days of game time.")
         Me.cbRemoveCriticalTime.UseVisualStyleBackColor = True
         '
         'cbControlCombat
@@ -1230,8 +1249,8 @@ Partial Class MainForm
         Me.cmbMotionScanner.Name = "cmbMotionScanner"
         Me.cmbMotionScanner.Size = New System.Drawing.Size(133, 21)
         Me.cmbMotionScanner.TabIndex = 3
-        Me.ToolTip1.SetToolTip(Me.cmbMotionScanner, "Some bit flags to alter behaviour of the motion sensor.")
         Me.ToolTip2.SetToolTip(Me.cmbMotionScanner, resources.GetString("cmbMotionScanner.ToolTip"))
+        Me.ToolTip1.SetToolTip(Me.cmbMotionScanner, "Some bit flags to alter behaviour of the motion sensor.")
         '
         'Label8
         '
@@ -1265,7 +1284,7 @@ Partial Class MainForm
         Me.TabPage2.Controls.Add(Me.cbExplosionsEmitLight)
         Me.TabPage2.Controls.Add(Me.NumericUpDown3)
         Me.TabPage2.Controls.Add(Me.cbGPUBlt)
-        Me.TabPage2.Controls.Add(Me.CheckBox14)
+        Me.TabPage2.Controls.Add(Me.cbUse32BitHeadGraphics)
         Me.TabPage2.Controls.Add(Me.Label3)
         Me.TabPage2.Controls.Add(Me.cbSkipOpeningMovies)
         Me.TabPage2.Controls.Add(Me.cmbMode)
@@ -1283,8 +1302,8 @@ Partial Class MainForm
         'ListBox1
         '
         Me.ListBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.Location = New System.Drawing.Point(158, 20)
         Me.ListBox1.Name = "ListBox1"
@@ -1295,7 +1314,7 @@ Partial Class MainForm
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.cbActionPointsBar)
         Me.GroupBox1.Controls.Add(Me.cbWorldmapFontFix)
         Me.GroupBox1.Controls.Add(Me.Label27)
@@ -1327,7 +1346,7 @@ Partial Class MainForm
         Me.cbActionPointsBar.TabIndex = 12
         Me.cbActionPointsBar.Text = "Expand AP Bar"
         Me.ToolTip2.SetToolTip(Me.cbActionPointsBar, "Плзволяет отображать увеличенное количество очков дейсвия на игроваой панели инте" & _
-                "рфейса.")
+        "рфейса.")
         Me.ToolTip1.SetToolTip(Me.cbActionPointsBar, "Expand the number of action points displayed on the interface bar.")
         Me.cbActionPointsBar.UseVisualStyleBackColor = True
         '
@@ -1344,7 +1363,7 @@ Partial Class MainForm
         Me.cbWorldmapFontFix.TabIndex = 12
         Me.cbWorldmapFontFix.Text = "Worldmap Font Fix"
         Me.ToolTip2.SetToolTip(Me.cbWorldmapFontFix, "Для названий городов на карте мира использовать шрифт Fallout, вместо DOS подобно" & _
-                "го шрифта.")
+        "го шрифта.")
         Me.ToolTip1.SetToolTip(Me.cbWorldmapFontFix, "Use Fallout's normal text font instead of DOS-like font on the world map.")
         Me.cbWorldmapFontFix.UseVisualStyleBackColor = True
         '
@@ -1362,9 +1381,9 @@ Partial Class MainForm
         'cmbExpWorldmap
         '
         Me.cmbExpWorldmap.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbExpWorldmap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbExpWorldmap.DropDownWidth = 175
+        Me.cmbExpWorldmap.DropDownWidth = 200
         Me.cmbExpWorldmap.FormattingEnabled = True
         Me.cmbExpWorldmap.Items.AddRange(New Object() {"Default size", "Expanded size", "Expanded size w/o scaled town markers"})
         Me.cmbExpWorldmap.Location = New System.Drawing.Point(7, 38)
@@ -1402,9 +1421,9 @@ Partial Class MainForm
         Me.cbAmmoMetre.TabIndex = 8
         Me.cbAmmoMetre.Text = "Alternate Ammo Metre"
         Me.ToolTip2.SetToolTip(Me.cbAmmoMetre, "Меняет цвет индикатора патронов в зависимости от того, сколько патронов остается " & _
-                "в вашем активном оружие." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Только для HRP.")
+        "в вашем активном оружие." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Только для HRP.")
         Me.ToolTip1.SetToolTip(Me.cbAmmoMetre, "Changes colour depending how much ammo remains in your current weapon." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Only for " & _
-                "HRP.")
+        "HRP.")
         Me.cbAmmoMetre.UseVisualStyleBackColor = True
         '
         'NumericUpDown2
@@ -1531,22 +1550,22 @@ Partial Class MainForm
         Me.cbGPUBlt.TabIndex = 3
         Me.cbGPUBlt.Text = "Don't use GPU"
         Me.ToolTip2.SetToolTip(Me.cbGPUBlt, "Установите чтобы принудительно использовать CPU для обработки игровой палитры." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "П" & _
-                "оумолчанию используется GPU. Только для режима DX9.")
+        "оумолчанию используется GPU. Только для режима DX9.")
         Me.ToolTip1.SetToolTip(Me.cbGPUBlt, "Set to force the CPU to handle the game's palette.")
         Me.cbGPUBlt.UseVisualStyleBackColor = True
         '
-        'CheckBox14
+        'cbUse32BitHeadGraphics
         '
-        Me.CheckBox14.AutoSize = True
-        Me.CheckBox14.Location = New System.Drawing.Point(6, 131)
-        Me.CheckBox14.Name = "CheckBox14"
-        Me.CheckBox14.Size = New System.Drawing.Size(127, 17)
-        Me.CheckBox14.TabIndex = 3
-        Me.CheckBox14.Text = "32-Bit Head Graphics"
-        Me.ToolTip2.SetToolTip(Me.CheckBox14, "Разрешить использование альтернативной 32-битной графики для говорящих голов." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Тр" & _
-                "ебуется включение графического режим DX9.")
-        Me.ToolTip1.SetToolTip(Me.CheckBox14, "Allow using 32-bit graphics for talking heads." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Requires graphics mode DX9.")
-        Me.CheckBox14.UseVisualStyleBackColor = True
+        Me.cbUse32BitHeadGraphics.AutoSize = True
+        Me.cbUse32BitHeadGraphics.Location = New System.Drawing.Point(6, 131)
+        Me.cbUse32BitHeadGraphics.Name = "cbUse32BitHeadGraphics"
+        Me.cbUse32BitHeadGraphics.Size = New System.Drawing.Size(127, 17)
+        Me.cbUse32BitHeadGraphics.TabIndex = 3
+        Me.cbUse32BitHeadGraphics.Text = "32-Bit Head Graphics"
+        Me.ToolTip2.SetToolTip(Me.cbUse32BitHeadGraphics, "Разрешить использование альтернативной 32-битной графики для говорящих голов." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Тр" & _
+        "ебуется включение графического режим DX9.")
+        Me.ToolTip1.SetToolTip(Me.cbUse32BitHeadGraphics, "Allow using 32-bit graphics for talking heads." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Requires graphics mode DX9.")
+        Me.cbUse32BitHeadGraphics.UseVisualStyleBackColor = True
         '
         'Label3
         '
@@ -1624,7 +1643,7 @@ Partial Class MainForm
         'GroupBox5
         '
         Me.GroupBox5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox5.Controls.Add(Me.Button5)
         Me.GroupBox5.Controls.Add(Me.ComboBox8)
         Me.GroupBox5.Controls.Add(Me.Label26)
@@ -1643,10 +1662,10 @@ Partial Class MainForm
         Me.Button5.Size = New System.Drawing.Size(49, 23)
         Me.Button5.TabIndex = 4
         Me.Button5.Text = "Open"
-        Me.ToolTip1.SetToolTip(Me.Button5, "Merge setting from old ini file (changes will be applied only for those settings " & _
-                "that exist in the current ddraw.ini).")
         Me.ToolTip2.SetToolTip(Me.Button5, "Применить настройки из старого ini-файла (изменения будут внесены только для тех " & _
-                "настроек которые существуют в текущем ddraw.ini).")
+        "настроек которые существуют в текущем ddraw.ini).")
+        Me.ToolTip1.SetToolTip(Me.Button5, "Merge setting from old ini file (changes will be applied only for those settings " & _
+        "that exist in the current ddraw.ini).")
         Me.Button5.UseVisualStyleBackColor = True
         '
         'ComboBox8
@@ -1683,7 +1702,7 @@ Partial Class MainForm
         'GroupBox4
         '
         Me.GroupBox4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox4.Controls.Add(Me.Label12)
         Me.GroupBox4.Controls.Add(Me.numMouseSensitivity)
         Me.GroupBox4.Controls.Add(Me.Label18)
@@ -1709,9 +1728,9 @@ Partial Class MainForm
         Me.Label12.TabIndex = 6
         Me.Label12.Text = "Mouse Sensitivity %"
         Me.ToolTip2.SetToolTip(Me.Label12, "Регулирует чувствительность мыши в процентах от нормального." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Отрицательные значе" & _
-                "ния инвертируют ось мыши.")
+        "ния инвертируют ось мыши.")
         Me.ToolTip1.SetToolTip(Me.Label12, "Adjusts mouse sensitivity to some percentage of normal." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Negative values are vali" & _
-                "d, if you want your mouse axis reversed for some reason.")
+        "d, if you want your mouse axis reversed for some reason.")
         '
         'numMouseSensitivity
         '
@@ -1773,7 +1792,7 @@ Partial Class MainForm
         Me.cbUseScrollWheel.Text = "Use Scroll Wheel"
         Me.ToolTip2.SetToolTip(Me.cbUseScrollWheel, "Активирует колесо мыши для прокрутки списков предметов в инвентаре.")
         Me.ToolTip1.SetToolTip(Me.cbUseScrollWheel, "Enable the mouse scroll wheel to scroll through inventory, barter, and loot scree" & _
-                "ns.")
+        "ns.")
         Me.cbUseScrollWheel.UseVisualStyleBackColor = True
         '
         'cbReverseMouseButtons
@@ -1804,7 +1823,7 @@ Partial Class MainForm
         'GroupBox3
         '
         Me.GroupBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox3.Controls.Add(Me.cbAllowUnsafe)
         Me.GroupBox3.Controls.Add(Me.cmbDebugLog)
         Me.GroupBox3.Controls.Add(Me.Button4)
@@ -1832,14 +1851,14 @@ Partial Class MainForm
         Me.cbAllowUnsafe.TabIndex = 5
         Me.cbAllowUnsafe.Text = "Allow Unsafe Scripting"
         Me.ToolTip2.SetToolTip(Me.cbAllowUnsafe, "Позволить использовать небезопасные функции скриптинга." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Требуется для некоторых " & _
-                "модов.")
+        "модов.")
         Me.ToolTip1.SetToolTip(Me.cbAllowUnsafe, "Allow the use of unsafe scripting functions (required for some mods).")
         Me.cbAllowUnsafe.UseVisualStyleBackColor = True
         '
         'cmbDebugLog
         '
         Me.cmbDebugLog.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbDebugLog.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbDebugLog.DropDownWidth = 175
         Me.cmbDebugLog.FormattingEnabled = True
@@ -1848,8 +1867,8 @@ Partial Class MainForm
         Me.cmbDebugLog.Name = "cmbDebugLog"
         Me.cmbDebugLog.Size = New System.Drawing.Size(132, 21)
         Me.cmbDebugLog.TabIndex = 4
-        Me.ToolTip1.SetToolTip(Me.cmbDebugLog, "Mode for output debugging log.")
         Me.ToolTip2.SetToolTip(Me.cmbDebugLog, "Режим для вывода журнала отладки.")
+        Me.ToolTip1.SetToolTip(Me.cmbDebugLog, "Mode for output debugging log.")
         '
         'Button4
         '
@@ -1865,14 +1884,14 @@ Partial Class MainForm
         'tbExtraCRC
         '
         Me.tbExtraCRC.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbExtraCRC.Location = New System.Drawing.Point(6, 19)
         Me.tbExtraCRC.Name = "tbExtraCRC"
         Me.tbExtraCRC.Size = New System.Drawing.Size(249, 20)
         Me.tbExtraCRC.TabIndex = 1
-        Me.ToolTip2.SetToolTip(Me.tbExtraCRC, "Вы можете переопределить здесь CRC," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "в случае если Sfall выдает ошибку о неправил" & _
-                "ьном CRC.")
         Me.ToolTip1.SetToolTip(Me.tbExtraCRC, "You can override the CRC that sfall looks for here.")
+        Me.ToolTip2.SetToolTip(Me.tbExtraCRC, "Вы можете переопределить здесь CRC," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "в случае если Sfall выдает ошибку о неправил" & _
+        "ьном CRC.")
         '
         'cbSkipLoadingGameSetting
         '
@@ -1942,7 +1961,7 @@ Partial Class MainForm
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.LinkLabel1)
         Me.GroupBox2.Controls.Add(Me.Label11)
@@ -2034,8 +2053,8 @@ Partial Class MainForm
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Done"
-        Me.ToolTip1.SetToolTip(Me.Button1, "Save and close.")
         Me.ToolTip2.SetToolTip(Me.Button1, "Сохранить настройки и закрыть.")
+        Me.ToolTip1.SetToolTip(Me.Button1, "Save and close.")
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
@@ -2047,8 +2066,8 @@ Partial Class MainForm
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "Run Game"
-        Me.ToolTip1.SetToolTip(Me.Button2, "Save and run game.")
         Me.ToolTip2.SetToolTip(Me.Button2, "Сохранить настройки и запустить игру.")
+        Me.ToolTip1.SetToolTip(Me.Button2, "Save and run game.")
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
@@ -2059,8 +2078,8 @@ Partial Class MainForm
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 3
         Me.Button3.Text = "Open Config"
-        Me.ToolTip1.SetToolTip(Me.Button3, "Save and open ddraw.ini")
         Me.ToolTip2.SetToolTip(Me.Button3, "Сохранить настройки и открыть ddraw.ini")
+        Me.ToolTip1.SetToolTip(Me.Button3, "Save and open ddraw.ini")
         Me.Button3.UseVisualStyleBackColor = True
         '
         'ToolTip1
@@ -2092,7 +2111,7 @@ Partial Class MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(316, 441)
+        Me.ClientSize = New System.Drawing.Size(316, 445)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -2169,9 +2188,8 @@ Partial Class MainForm
     Friend WithEvents cbHighlightContainers As System.Windows.Forms.CheckBox
     Friend WithEvents cbItemHighlightsKey As System.Windows.Forms.CheckBox
     Friend WithEvents cmbQuickSave As System.Windows.Forms.ComboBox
-    Friend WithEvents cbActiveGeigerMsgs As System.Windows.Forms.CheckBox
     Friend WithEvents cbGPUBlt As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBox14 As System.Windows.Forms.CheckBox
+    Friend WithEvents cbUse32BitHeadGraphics As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
@@ -2272,5 +2290,7 @@ Partial Class MainForm
     Friend WithEvents cbActionPointsBar As System.Windows.Forms.CheckBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents cmbSpeedMultiInit As System.Windows.Forms.ComboBox
+    Friend WithEvents cbAutoMoveToAttack As System.Windows.Forms.CheckBox
+    Friend WithEvents cbActiveGeigerMsgs As System.Windows.Forms.CheckBox
 
 End Class
