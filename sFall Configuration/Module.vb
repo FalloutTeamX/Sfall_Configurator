@@ -26,29 +26,36 @@ Module M_Module
 
     Friend Sub DatDesc()
         Dim path As String = App_Path & "\dat.unp"
-        Dim datFiles() As String = Directory.GetFiles(App_Path, "*.dat", SearchOption.TopDirectoryOnly)
-        If datFiles.Length Then
+        Dim datFiles = Directory.GetFiles(App_Path, "*.dat", SearchOption.TopDirectoryOnly).ToList
+        If Directory.Exists(App_Path + "\mods\") Then
+            datFiles.AddRange(Directory.GetFiles(App_Path + "\mods\", "*.dat", SearchOption.TopDirectoryOnly).ToList)
+        End If
+
+        If datFiles.Count Then
             File.Delete(path)
             File.WriteAllBytes(path, My.Resources.dat2)
             File.SetAttributes(path, FileAttributes.Hidden)
         End If
 
         For Each datFile In datFiles
-            Dim z As Integer = datFile.LastIndexOf("\") + 1
-            datFile = datFile.Substring(z)
-
-            Shell(App_Path & "\dat.unp x " & datFile & " desc.id", AppWinStyle.Hide, True, 1000)
+            Shell(App_Path & "\dat.unp x """ & datFile & """ desc.id", AppWinStyle.Hide, True, 1000)
 
             Dim descID As String() = Nothing
             path = App_Path & "\desc.id"
             If File.Exists(path) Then
                 descID = File.ReadAllLines(path)
             End If
+
+            Dim z As Integer = datFile.LastIndexOf("\") + 1
+            Dim item As ListViewItem
             If descID Is Nothing Then
-                MainForm.ListView1.Items.Add(New ListViewItem(New String() {datFile, "<no description>"}))
+                item = New ListViewItem(New String() {datFile.Substring(z), "<no description>"})
             Else
-                MainForm.ListView1.Items.Add(New ListViewItem(descID))
+                item = New ListViewItem(New String() {datFile.Substring(z), descID(1)})
             End If
+            item.ToolTipText = datFile
+            MainForm.ListView1.Items.Add(item)
+
             File.Delete(path)
         Next
     End Sub
@@ -66,6 +73,7 @@ Module M_Module
         If desc <> String.Empty AndAlso desc <> MainForm.ListView1.FocusedItem.SubItems(1).Text Then
             MainForm.ListView1.FocusedItem.SubItems(1).Text = desc
             Dim desc_dat As String() = {Name, desc}
+            Name = """" & MainForm.ListView1.FocusedItem.ToolTipText & """"
             File.WriteAllLines(App_Path & "\desc.id", desc_dat)
             Shell(App_Path & "\dat.unp d " & Name & " desc.id", AppWinStyle.Hide, True, 1000)
             Shell(App_Path & "\dat.unp a " & Name & " desc.id", AppWinStyle.Hide, True, 1000)

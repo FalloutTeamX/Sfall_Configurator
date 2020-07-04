@@ -39,6 +39,10 @@ Public Class MainForm
             Ddraw_ini = File.ReadAllLines(App_Path & "\ddraw.ini", Encoding.Default).ToList
         End If
 
+        'Дата релиза
+        Dim fileDate = File.GetLastWriteTime(Application.ExecutablePath).Date.ToString
+        Label7.Text = String.Format(Label7.Text, fileDate.Remove(fileDate.IndexOf(" "c)))
+
         If File.Exists(App_Path & "\f2_res.ini") Then
             F2res_ini = File.ReadAllLines(App_Path & "\f2_res.ini", Encoding.Default)
         End If

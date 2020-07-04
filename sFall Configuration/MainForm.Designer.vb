@@ -1960,9 +1960,9 @@ Partial Class MainForm
         Me.Label7.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.Label7.Location = New System.Drawing.Point(42, 32)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(205, 13)
+        Me.Label7.Size = New System.Drawing.Size(161, 13)
         Me.Label7.TabIndex = 2
-        Me.Label7.Text = "Release 20/03/2019 by Fakels (Mr.Stalin)"
+        Me.Label7.Text = "Release {0} by Fakels (Mr.Stalin)"
         '
         'LinkLabel1
         '
@@ -2009,6 +2009,7 @@ Partial Class MainForm
         Me.ListView1.Location = New System.Drawing.Point(3, 3)
         Me.ListView1.MultiSelect = False
         Me.ListView1.Name = "ListView1"
+        Me.ListView1.ShowItemToolTips = True
         Me.ListView1.Size = New System.Drawing.Size(296, 370)
         Me.ListView1.Sorting = System.Windows.Forms.SortOrder.Ascending
         Me.ListView1.TabIndex = 0
