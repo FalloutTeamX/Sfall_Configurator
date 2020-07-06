@@ -8,6 +8,9 @@ Public Class MainForm
 
     Private savedValues As Dictionary(Of String, Byte) = New Dictionary(Of String, Byte)
 
+    Private reloadWeaponKeyCode As Byte = 17 'DIK_W
+    Private itemFastMoveKeyCode As Byte = 29 'Ctrl Key
+
     Public Sub New()
 
         Dim arguments As String() = System.Environment.GetCommandLineArgs()
@@ -158,6 +161,9 @@ Public Class MainForm
             cbReloadWeapon.Enabled = True
             cbReloadWeapon.CheckState = CheckState.Unchecked
             cbReloadWeapon.Checked = CBool(valueStr)
+
+            Dim code As Byte
+            If Byte.TryParse(valueStr, code) AndAlso code <> 0 Then reloadWeaponKeyCode = code
         End If
 
         valueStr = GetIni_Param("MotionScannerFlags")
@@ -495,7 +501,11 @@ Public Class MainForm
             If Val(valueStr) > 0 Then
                 cbItemFastMoveKey.Checked = True
             End If
+
+            Dim code As Byte
+            If Byte.TryParse(valueStr, code) AndAlso code <> 0 Then itemFastMoveKeyCode = code
         End If
+
         valueStr = GetIni_Param("FastMoveFromContainer")
         If valueStr <> Nothing Then
             cbFastMoveContainer.Enabled = True
@@ -550,6 +560,10 @@ Public Class MainForm
             cbAmmoMetre.CheckState = CheckState.Unchecked
             cbAmmoMetre.Checked = CBool(GetIni_Param(F2res_ini, "ALTERNATE_AMMO_METRE"))
         End If
+
+        bReloadSetKey.Text = reloadWeaponKeyCode.ToString
+        bItemFastMoveSetKey.Text = itemFastMoveKeyCode.ToString
+
     End Sub
 
     Private Sub SetSavedValue(optionName As String, value As Byte)
@@ -577,13 +591,36 @@ Public Class MainForm
         Return Color.MediumVioletRed
     End Function
 
+    Private Function DXKeyCode(strCode As String, ByRef code As Byte) As Boolean
+        Dim frm = New InputKeyCodeForm()
+        For Each item As String In frm.ComboBox1.Items
+            If item.StartsWith(strCode) Then
+                frm.ComboBox1.Text = item
+                Exit For
+            End If
+        Next
+        If String.IsNullOrEmpty(frm.ComboBox1.Text) Then
+            frm.ComboBox1.Text = strCode
+        End If
+
+        If frm.ShowDialog(Me) <> Windows.Forms.DialogResult.OK Then Return False
+
+        If Byte.TryParse(frm.ComboBox1.Text.Trim(), code) = False Then
+            Dim n = frm.ComboBox1.Text.IndexOf(" "c)
+            If n = -1 Then Return False
+            Dim str = frm.ComboBox1.Text.Remove(n).TrimStart
+            If Byte.TryParse(str, code) = False Then Return False
+        End If
+        Return True
+    End Function
+
     Private Sub cbReloadWeapon_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbReloadWeapon.CheckedChanged
         If FormReady Then
             Value = cbReloadWeapon.Checked
 
             cbReloadWeapon.ForeColor = SetColor("ReloadWeaponKey", Value)
 
-            If Value > 0 Then Value = 17 'DIK_W
+            If Value > 0 Then Value = reloadWeaponKeyCode 'DIK_W
             SetIni_ParamValue("ReloadWeaponKey", Value)
         End If
     End Sub
@@ -1369,7 +1406,7 @@ EXITAPP:
 
             cbItemFastMoveKey.ForeColor = SetColor("ItemFastMoveKey", Value)
 
-            If Value > 1 Then Value = 29 'Ctrl Key
+            If Value > 1 Then Value = itemFastMoveKeyCode
             SetIni_ParamValue("ItemFastMoveKey", Value)
         End If
     End Sub
@@ -1456,11 +1493,25 @@ EXITAPP:
     End Sub
 
     Private Sub bReloadSetKey_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bReloadSetKey.Click
-
+        Dim code As Byte
+        If (DXKeyCode(reloadWeaponKeyCode.ToString, code)) Then
+            reloadWeaponKeyCode = code
+            bReloadSetKey.Text = reloadWeaponKeyCode.ToString
+            If cbReloadWeapon.CheckState = CheckState.Checked Then
+                SetIni_ParamValue("AutoReloadWeapon", reloadWeaponKeyCode.ToString)
+            End If
+        End If
     End Sub
 
     Private Sub bItemFastMoveSetKey_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bItemFastMoveSetKey.Click
-
+        Dim code As Byte
+        If (DXKeyCode(itemFastMoveKeyCode.ToString, code)) Then
+            itemFastMoveKeyCode = code
+            bItemFastMoveSetKey.Text = itemFastMoveKeyCode.ToString
+            If cbItemFastMoveKey.CheckState = CheckState.Checked Then
+                SetIni_ParamValue("ItemFastMoveKey", itemFastMoveKeyCode.ToString)
+            End If
+        End If
     End Sub
 
     Private Sub cbPunchKnockback_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbPunchKnockback.CheckedChanged

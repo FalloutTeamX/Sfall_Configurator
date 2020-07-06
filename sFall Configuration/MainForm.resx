@@ -117,17 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ToolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>111, 17</value>
+  </metadata>
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="ToolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>111, 17</value>
   </metadata>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="cbFastMoveContainer.ToolTip" xml:space="preserve">
-    <value>Включает возможность быстрого перемещения  всей стопки предеметов из контейнеров в инвентарь игрока
-без необходимости удержания клавиши Ctrl.
-Опция ItemFastMoveKey должна быть при этом включена, при этом удержание клавиши Ctrl
+    <value>Включает возможность быстрого перемещения всей стопки предметов из контейнеров в инвентарь игрока
+без необходимости удержания клавиши Ctrl (или назначенной клавиши для опции ItemFastMoveKey).
+Опция ItemFastMoveKey должна быть при этом включена, при этом удержание назначенной клавиши (по умолчанию Ctrl)
 отобразит окно перемещения предметов.</value>
+  </data>
+  <data name="cbFastMoveContainer.ToolTip1" xml:space="preserve">
+    <value>Enables the ability to quickly move the entire stack of items from containers to the player's inventory
+without having to hold down the Ctrl key (or the assigned key for the ItemFastMoveKey option).
+The ItemFastMoveKey option should be enabled, while holding the assigned key (Ctrl by default)
+displays the items movement window.</value>
   </data>
   <data name="cmbTimeLimit.ToolTip" xml:space="preserve">
     <value>1. Вы умираете в момент, когда вы покидаете Арройо.
@@ -143,11 +155,26 @@
 3. Датчик движения  не требует заряды. 
 4. Использовать как функцию подсветки предметов. (Highlights Item должна быть включена)</value>
   </data>
+  <metadata name="ToolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>111, 17</value>
+  </metadata>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="ToolTip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>337, 17</value>
   </metadata>
   <metadata name="OpenFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>205, 17</value>
+  </metadata>
+  <metadata name="ToolTip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>337, 17</value>
+  </metadata>
+  <metadata name="ToolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>111, 17</value>
+  </metadata>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
