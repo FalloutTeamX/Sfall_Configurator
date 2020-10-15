@@ -30,7 +30,7 @@ Public Class MainForm
         Next
 
         InitializeComponent()
-        Me.Text &= My.Application.Info.Version.ToString
+        Me.Text &= Application.ProductVersion
 
         If Not (File.Exists(App_Path & "\ddraw.ini")) Then
             For i = 0 To 3
@@ -45,8 +45,8 @@ Public Class MainForm
         End If
 
         'Дата релиза
-        Dim fileDate = File.GetLastWriteTime(Application.ExecutablePath).Date.ToString
-        Label7.Text = String.Format(Label7.Text, fileDate.Remove(fileDate.IndexOf(" "c)))
+        Dim releaseDate = New DateTime(2000, 1, 1).AddDays(My.Application.Info.Version.Build).AddSeconds(My.Application.Info.Version.Revision * 2).ToString
+        Label7.Text = String.Format(Label7.Text, releaseDate.Remove(releaseDate.IndexOf(" "c)))
 
         If File.Exists(App_Path & "\f2_res.ini") Then
             F2res_ini = File.ReadAllLines(App_Path & "\f2_res.ini", Encoding.Default)
@@ -61,7 +61,7 @@ Public Class MainForm
             mods_ini = File.ReadAllLines(App_Path & sfallModsFile, Encoding.Default)
         End If
 
-        ListBox1.Items.AddRange(Resolution.GetResolution)
+        ListBox1.Items.AddRange(Resolution.GetResolution.ToArray)
         Initialization()
     End Sub
 
@@ -198,6 +198,10 @@ Public Class MainForm
         valueStr = GetIni_Param("Mode")
         If CInt(valueStr) > 0 Then
             cmbMode.SelectedIndex = CInt(valueStr) - 3
+            ListBox1.Enabled = CBool(cmbMode.SelectedIndex)
+            NumericUpDown3.Enabled = ListBox1.Enabled
+            NumericUpDown4.Enabled = ListBox1.Enabled
+            cbScale.Enabled = ListBox1.Enabled
         Else
             cmbMode.SelectedIndex = 0
         End If
@@ -206,8 +210,7 @@ Public Class MainForm
         NumericUpDown3.Value = GetIni_Param("GraphicsHeight")
         cbGPUBlt.Checked = (GetIni_Param("GPUBlt") = "2")
 
-        cbUse32BitHeadGraphics.Checked = CBool(GetIni_Param("Use32BitHeadGraphics"))
-
+        cbFadeMultiplier.Checked = (GetIni_Param("FadeMultiplier") = "50")
         cbSkipOpeningMovies.Checked = CBool(GetIni_Param("SkipOpeningMovies"))
         cbSpeedInterfaceCounter.Checked = CBool(GetIni_Param("SpeedInterfaceCounterAnims"))
         cbExplosionsEmitLight.Checked = CBool(GetIni_Param("ExplosionsEmitLight"))
@@ -480,8 +483,8 @@ Public Class MainForm
         valueStr = GetIni_Param("SkipLoadingGameSettings")
         If valueStr <> Nothing Then
             cbSkipLoadingGameSetting.Enabled = True
+            cbSkipLoadingGameSetting.CheckState = CheckState.Unchecked
             If valueStr = "2" Then
-                cbSkipLoadingGameSetting.CheckState = CheckState.Unchecked
                 cbSkipLoadingGameSetting.Checked = CBool(valueStr)
             End If
         End If
@@ -551,11 +554,15 @@ Public Class MainForm
             cbAutoMoveToAttack.Checked = CBool(valueStr)
         End If
 
+        valueStr = GetIni_Param("TextureFilter")
+        If valueStr <> Nothing Then
+            cbTextureFilter.Enabled = True
+            cbTextureFilter.CheckState = CheckState.Unchecked
+            cbTextureFilter.Checked = CBool(valueStr)
+        End If
+
         'for HRP
         If F2res_ini IsNot Nothing Then
-            cbIsGrayScale.Enabled = True
-            cbIsGrayScale.CheckState = CheckState.Unchecked
-            cbIsGrayScale.Checked = CBool(GetIni_Param(F2res_ini, "IS_GRAY_SCALE"))
             cbAmmoMetre.Enabled = True
             cbAmmoMetre.CheckState = CheckState.Unchecked
             cbAmmoMetre.Checked = CBool(GetIni_Param(F2res_ini, "ALTERNATE_AMMO_METRE"))
@@ -566,20 +573,20 @@ Public Class MainForm
 
     End Sub
 
-    Private Sub SetSavedValue(optionName As String, value As Byte)
+    Private Sub SetSavedValue(ByVal optionName As String, ByVal value As Byte)
         If savedValues.ContainsKey(optionName) Then Return
 
         savedValues.Add(optionName, value)
     End Sub
 
-    Private Function GetSavedValue(optionName As String, ByRef outValue As Byte) As Boolean
+    Private Function GetSavedValue(ByVal optionName As String, ByRef outValue As Byte) As Boolean
         If savedValues.ContainsKey(optionName) = False Then Return False
 
         outValue = savedValues.Item([optionName])
         Return True
     End Function
 
-    Private Function SetColor(optionName As String, setValue As Byte) As Color
+    Private Function SetColor(ByVal optionName As String, ByVal setValue As Byte) As Color
         Dim savedValue As Byte
         If GetSavedValue(optionName, savedValue) = False Then
             SetSavedValue(optionName, Not setValue)
@@ -591,7 +598,7 @@ Public Class MainForm
         Return Color.MediumVioletRed
     End Function
 
-    Private Function DXKeyCode(strCode As String, ByRef code As Byte) As Boolean
+    Private Function DXKeyCode(ByVal strCode As String, ByRef code As Byte) As Boolean
         Dim frm = New InputKeyCodeForm()
         For Each item As String In frm.ComboBox1.Items
             If item.StartsWith(strCode) Then
@@ -894,27 +901,37 @@ Public Class MainForm
     Private Sub Mode(ByVal sender As Object, ByVal e As EventArgs) Handles cmbMode.SelectedIndexChanged
         If FormReady Then
             Value = cmbMode.SelectedIndex
+            ListBox1.Enabled = CBool(Value)
+            NumericUpDown3.Enabled = ListBox1.Enabled
+            NumericUpDown4.Enabled = ListBox1.Enabled
+            cbScale.Enabled = ListBox1.Enabled
             If Value > 0 Then Value += 3
             SetIni_ParamValue("Mode", Value)
         End If
     End Sub
 
     Private Sub ResolutionChanged(ByVal sender As Object, ByVal e As EventArgs) Handles NumericUpDown3.Leave, NumericUpDown4.Leave
-        SetIni_ParamValue("GraphicsHeight", NumericUpDown3.Value)
-        SetIni_ParamValue("GraphicsWidth", NumericUpDown4.Value)
+        Dim height As Integer = NumericUpDown3.Value
+        Dim width As Integer = NumericUpDown4.Value
 
-        SetIni_ParamValue(F2res_ini, "SCR_HEIGHT", NumericUpDown3.Value)
-        SetIni_ParamValue(F2res_ini, "SCR_WIDTH", NumericUpDown4.Value)
+        SetIni_ParamValue("GraphicsHeight", height)
+        SetIni_ParamValue("GraphicsWidth", width)
+        If cbScale.Checked Then
+            height /= 2
+            width /= 2
+        End If
+        SetIni_ParamValue(F2res_ini, "SCR_HEIGHT", height)
+        SetIni_ParamValue(F2res_ini, "SCR_WIDTH", width)
     End Sub
 
-    Private Sub Use32BitHeadGraphics(ByVal sender As Object, ByVal e As EventArgs) Handles cbUse32BitHeadGraphics.CheckedChanged
+    Private Sub Use32BitHeadGraphics(ByVal sender As Object, ByVal e As EventArgs) Handles cbFadeMultiplier.CheckedChanged
         If FormReady Then
-            Value = cbUse32BitHeadGraphics.Checked
+            Value = cbFadeMultiplier.Checked
 
-            cbUse32BitHeadGraphics.ForeColor = SetColor("Use32BitHeadGraphics", Value)
+            cbFadeMultiplier.ForeColor = SetColor("FadeMultiplier", Value)
 
-            If Value > 1 Then Value = 1
-            SetIni_ParamValue("Use32BitHeadGraphics", Value)
+            If Value >= 1 Then Value = 50 Else Value = 100
+            SetIni_ParamValue("FadeMultiplier", Value)
         End If
     End Sub
 
@@ -1101,14 +1118,28 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub IsGrayScale(ByVal sender As Object, ByVal e As EventArgs) Handles cbIsGrayScale.CheckedChanged
+    Private Sub cbScale_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbScale.CheckedChanged
+        ListBox1.Items.Clear()
+        If cbScale.Checked Then
+            For Each r As String In Resolution.GetResolution
+                Dim i = r.LastIndexOf("X"c) + 1
+                If (CInt(r.Substring(i).Trim()) >= 960) Then
+                    ListBox1.Items.Add(r)
+                End If
+            Next
+        Else
+            ListBox1.Items.AddRange(Resolution.GetResolution.ToArray)
+        End If
+    End Sub
+
+    Private Sub TextureFilter(ByVal sender As Object, ByVal e As EventArgs) Handles cbTextureFilter.CheckedChanged
         If FormReady Then
-            Value = cbIsGrayScale.Checked
+            Value = cbTextureFilter.Checked
 
-            cbIsGrayScale.ForeColor = SetColor("IS_GRAY_SCALE", Value)
+            cbTextureFilter.ForeColor = SetColor("TextureFilter", Value)
 
-            If Value > 1 Then Value = 1
-            SetIni_ParamValue(F2res_ini, "IS_GRAY_SCALE", Value)
+            If Value >= 1 Then Value = 2
+            SetIni_ParamValue("TextureFilter", Value)
         End If
     End Sub
 
@@ -1450,7 +1481,11 @@ EXITAPP:
 
             cbSkipLoadingGameSetting.ForeColor = SetColor("SkipLoadingGameSettings", Value)
 
-            If Value > 1 Then Value = 2
+            If Value = 0 Then
+                Value = 1
+            Else
+                Value = 2
+            End If
             SetIni_ParamValue("SkipLoadingGameSettings", Value)
         End If
     End Sub

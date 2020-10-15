@@ -48,7 +48,7 @@ Friend Class Resolution
         Public dmDisplayFrequency As Integer
     End Structure
 
-    Shared Function GetResolution() As Object()
+    Shared Function GetResolution() As ArrayList
         Dim DevM As DEVMODE
         DevM.dmDeviceName = New [String](New Char(32) {})
         DevM.dmFormName = New [String](New Char(32) {})
@@ -67,7 +67,7 @@ Friend Class Resolution
         Loop
 
         Res.Reverse()
-        Return Res.ToArray
+        Return Res
     End Function
 
 #If DEBUG Then
