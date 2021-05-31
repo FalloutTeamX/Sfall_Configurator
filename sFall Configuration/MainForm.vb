@@ -8,8 +8,9 @@ Public Class MainForm
 
     Private savedValues As Dictionary(Of String, Byte) = New Dictionary(Of String, Byte)
 
-    Private reloadWeaponKeyCode As Byte = 17 'DIK_W
+    Private reloadWeaponKeyCode As Byte = 17 'W
     Private itemFastMoveKeyCode As Byte = 29 'Ctrl Key
+    Private highlightKeyCode As Byte = 42 'SHIFT
 
     Public Sub New()
 
@@ -30,8 +31,16 @@ Public Class MainForm
         Next
 
         InitializeComponent()
-        Me.Text &= Application.ProductVersion
 
+        Me.Text &= Application.ProductVersion
+        
+        For Each exePath As String In Directory.GetFiles(App_Path, "*.exe", SearchOption.TopDirectoryOnly)
+            Dim exe = Path.GetFileName(exePath)
+            If (exe <> AppDomain.CurrentDomain.FriendlyName)
+                cbGameExe.Items.Add(exe)
+            End If
+        Next
+        
         If Not (File.Exists(App_Path & "\ddraw.ini")) Then
             For i = 0 To 3
                 TabControl1.TabPages.RemoveAt(0)
@@ -52,14 +61,17 @@ Public Class MainForm
             F2res_ini = File.ReadAllLines(App_Path & "\f2_res.ini", Encoding.Default)
         End If
 
-        Dim path = GetIni_Param("IniConfigFolder")
-        If path <> Nothing Then
-            path = path.Replace("/", "").Trim()
-            sfallModsFile = "\" & path.Trim("\") & sfallModsFile
+        Dim iniPath = GetIni_Param("IniConfigFolder")
+        If iniPath <> Nothing Then
+            iniPath = iniPath.Replace("/", "").Trim()
+            sfallModsFile = "\" & iniPath.Trim("\") & sfallModsFile
         End If
         If File.Exists(App_Path & sfallModsFile) Then
             mods_ini = File.ReadAllLines(App_Path & sfallModsFile, Encoding.Default)
         End If
+
+        cbGameExe.Text = GetIni_Param("sFallConfigatorGameExe")
+        if (cbGameExe.Text = Nothing) then cbGameExe.Text = "Fallout2.exe"
 
         ListBox1.Items.AddRange(Resolution.GetResolution.ToArray)
         Initialization()
@@ -105,6 +117,12 @@ Public Class MainForm
         If valueStr <> Nothing Then
             cbItemHighlightsKey.Enabled = True
             cbItemHighlightsKey.Checked = CBool(valueStr)
+
+            Dim code As Byte
+            If Byte.TryParse(valueStr, code) AndAlso code <> 0 Then highlightKeyCode = code
+            
+            btnHighlightKey.Text = highlightKeyCode.ToString
+            btnHighlightKey.Enabled = True
         End If
 
         'v3.7
@@ -121,9 +139,12 @@ Public Class MainForm
             'ElseIf GetIni_Param(mods_ini, "DisplayName") <> Nothing Then
             '    nudShowNameBar.Enabled = True
         End If
+        cmbControlCombat.SelectedIndex = 0
         If valueStr <> Nothing Then
-            cbControlCombat.Enabled = True
-            cbControlCombat.Checked = CBool(valueStr)
+            Dim index As Integer = valueStr
+            If (index > 0 andAlso index < 5) Then
+                cmbControlCombat.SelectedIndex = index
+            End If
         End If
         '
         Dim n As Integer = Get_Section_Line("[Speed]")
@@ -494,6 +515,7 @@ Public Class MainForm
             cbUseScrollWheel.CheckState = CheckState.Unchecked
             cbUseScrollWheel.Checked = CBool(valueStr)
         End If
+
         valueStr = GetIni_Param("ItemFastMoveKey")
         If valueStr <> Nothing Then
             cbItemFastMoveKey.Enabled = True
@@ -621,13 +643,23 @@ Public Class MainForm
         Return True
     End Function
 
+    Private Sub cbGameExe_SelectedIndexChanged(sender As Object,  e As EventArgs) Handles cbGameExe.SelectedIndexChanged
+        If FormReady then SetGameExe_Ini(cbGameExe.Text)
+    End Sub
+
     Private Sub cbReloadWeapon_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbReloadWeapon.CheckedChanged
         If FormReady Then
             Value = cbReloadWeapon.Checked
 
             cbReloadWeapon.ForeColor = SetColor("ReloadWeaponKey", Value)
 
-            If Value > 0 Then Value = reloadWeaponKeyCode 'DIK_W
+            If Value > 0 Then 
+                Value = reloadWeaponKeyCode 'DIK_W
+                bReloadSetKey.Enabled = true
+            Else
+                bReloadSetKey.Enabled = false
+            End If
+            
             SetIni_ParamValue("ReloadWeaponKey", Value)
         End If
     End Sub
@@ -726,10 +758,15 @@ Public Class MainForm
 
             cbItemHighlightsKey.ForeColor = SetColor("ToggleItemHighlightsKey", Value)
 
-            If Value > 0 Then Value = 42 'shift key
-            SetIni_ParamValue("ToggleItemHighlightsKey", Value)
+            If Value > 0 Then 
+                Value = highlightKeyCode '42 shift key
+                btnHighlightKey.Enabled = true
+            Else
+                btnHighlightKey.Enabled = False
+            End If
 
             SetIni_ParamValue(mods_ini, "Key", Value)
+            SetIni_ParamValue("ToggleItemHighlightsKey", Value)
         End If
     End Sub
 
@@ -770,20 +807,20 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub cbControlCombat_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbControlCombat.CheckedChanged
+    Private Sub cbControlCombat_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cb.CheckedChanged
         If FormReady Then
-            Value = cbControlCombat.Checked
-
-            cbControlCombat.ForeColor = SetColor("ControlCombat", Value)
-
-            If Value > 1 Then Value = 2 'Set to control all party members
-            SetIni_ParamValue("ControlCombat", Value)
-
-            SetIni_ParamValue(mods_ini, "Mode", Value)
         End If
     End Sub
+    
+    Private Sub cmbControlCombat_SelectionChangeCommitted( sender As Object,  e As EventArgs) Handles cmbControlCombat.SelectionChangeCommitted
+         Value = cmbControlCombat.SelectedIndex
+        'If Value == 1 Then Value = 0 'Set to control all party members
 
-    Private Sub cbActiveGeigerMsgs_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        If Value < 3 then SetIni_ParamValue("ControlCombat", Value)
+        SetIni_ParamValue(mods_ini, "Mode", Value)
+    End Sub
+
+    Private Sub cbActiveGeigerMsgs_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbActiveGeigerMsgs.CheckedChanged
         If FormReady Then
             Value = cbActiveGeigerMsgs.Checked
 
@@ -1437,7 +1474,13 @@ EXITAPP:
 
             cbItemFastMoveKey.ForeColor = SetColor("ItemFastMoveKey", Value)
 
-            If Value > 1 Then Value = itemFastMoveKeyCode
+            If Value > 1 Then 
+                Value = itemFastMoveKeyCode
+                bItemFastMoveSetKey.Enabled = True
+            Else
+                bItemFastMoveSetKey.Enabled = False
+            End If
+           
             SetIni_ParamValue("ItemFastMoveKey", Value)
         End If
     End Sub
@@ -1532,9 +1575,7 @@ EXITAPP:
         If (DXKeyCode(reloadWeaponKeyCode.ToString, code)) Then
             reloadWeaponKeyCode = code
             bReloadSetKey.Text = reloadWeaponKeyCode.ToString
-            If cbReloadWeapon.CheckState = CheckState.Checked Then
-                SetIni_ParamValue("AutoReloadWeapon", reloadWeaponKeyCode.ToString)
-            End If
+            SetIni_ParamValue("ReloadWeaponKey", reloadWeaponKeyCode.ToString)
         End If
     End Sub
 
@@ -1543,9 +1584,7 @@ EXITAPP:
         If (DXKeyCode(itemFastMoveKeyCode.ToString, code)) Then
             itemFastMoveKeyCode = code
             bItemFastMoveSetKey.Text = itemFastMoveKeyCode.ToString
-            If cbItemFastMoveKey.CheckState = CheckState.Checked Then
-                SetIni_ParamValue("ItemFastMoveKey", itemFastMoveKeyCode.ToString)
-            End If
+            SetIni_ParamValue("ItemFastMoveKey", itemFastMoveKeyCode.ToString)
         End If
     End Sub
 
@@ -1601,12 +1640,24 @@ EXITAPP:
 
     Private Sub cbAutoMoveToAttack_CheckedChanged(sender As Object, e As EventArgs) Handles cbAutoMoveToAttack.CheckedChanged
         If FormReady Then
-            Value = cbActionPointsBar.Checked
+            Value = cbAutoMoveToAttack.Checked
 
-            cbActionPointsBar.ForeColor = SetColor("AutoMoveToAttack", Value)
+            cbAutoMoveToAttack.ForeColor = SetColor("AutoMoveToAttack", Value)
 
             If Value > 1 Then Value = 1
             SetIni_ParamValue("AutoMoveToAttack", Value)
         End If
     End Sub
+
+    Private Sub btnHighlightKey_Click(sender As Object,  e As EventArgs) Handles btnHighlightKey.Click
+        Dim code As Byte
+        If (DXKeyCode(highlightKeyCode.ToString, code)) Then
+            highlightKeyCode = code
+            btnHighlightKey.Text = highlightKeyCode.ToString
+
+            SetIni_ParamValue(mods_ini, "Key", highlightKeyCode.ToString)
+            SetIni_ParamValue("ToggleItemHighlightsKey", highlightKeyCode.ToString)
+        End If
+    End Sub
+
 End Class
